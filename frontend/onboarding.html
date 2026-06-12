@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding — SkillViva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-white overflow-hidden font-sans">
+  <main class="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-black">
+    <!-- Background textures -->
+    <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px);"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-[#e63329] rounded-full blur-[150px] opacity-20 pointer-events-none"></div>
+
+    <a href="index.html" class="absolute top-8 left-8 brush-text text-white text-2xl tracking-widest hover:text-[#e63329] transition-colors">
+      SKILLVIVA
+    </a>
+
+    <div class="card-gritty w-full max-w-md relative z-10 fade-up">
+      <div class="tag tag-red mb-6">CHANGE ROLE</div>
+      <h1 class="brush-text text-white text-5xl mb-2">SELECT<br>YOUR TARGET.</h1>
+      <p class="font-body text-[#888] text-sm mb-8">
+        Pick the role you want to be interviewed for. Your resume will be analyzed against it.
+      </p>
+
+      <form id="onboarding-form" class="flex flex-col gap-5">
+        <div>
+          <label class="font-body text-xs text-[#555] uppercase tracking-widest mb-2 block">
+            Your Name
+          </label>
+          <input
+            id="name-input"
+            type="text"
+            class="input-gritty"
+            placeholder="e.g. Rahul Sharma"
+            required
+          >
+        </div>
+
+        <div>
+          <label class="font-body text-xs text-[#555] uppercase tracking-widest mb-2 block">
+            Dream Job Title
+          </label>
+          <select
+            id="role-select"
+            class="input-gritty appearance-none bg-black text-white"
+            required
+          >
+            <option value="" disabled selected>Select your target role</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          id="submit-btn"
+          class="btn-primary w-full justify-center mt-2"
+        >
+          ▶ ENTER THE ARENA
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    // ==========================================
+    // EXPLAINING THE ONBOARDING FLOW
+    // ==========================================
+    // VISUAL FLOW:
+    // USER (Logs in for the very first time)
+    // ↓
+    // JAVASCRIPT (Asks the backend for a list of available Job Roles)
+    // ↓
+    // DOM MANIPULATION (Fills the dropdown menu with jobs like 'Frontend', 'Backend', etc.)
+    // ↓
+    // USER (Types their name and picks a job, then clicks "Enter The Arena")
+    // ↓
+    // EVENT LISTENER (Catches the click)
+    // ↓
+    // API REQUEST (Sends name and job choice to /api/auth/onboarding)
+    // ↓
+    // JAVASCRIPT (Redirects the user to resume.html so they can upload their CV)
+
+    // 1. Grab the HTML elements from the screen so we can control them
+    const form = document.getElementById("onboarding-form");
+    const nameInput = document.getElementById("name-input");
+    const roleSelect = document.getElementById("role-select");
+    const submitBtn = document.getElementById("submit-btn");
+
+    // 2. Check if the user is actually logged in
+    // We look for their email in the browser's memory
+    const email = localStorage.getItem("skillviva_email");
+    if (!email) {
+      // Not logged in? Get out!
+      window.location.href = "login.html";
+    }
+
+    // 3. API REQUEST: Get the list of job roles from our backend
+    // "fetch" goes to the server and downloads the list of roles
+    fetch("/api/roles")
+      .then(res => res.json()) // Convert the server's reply into JSON
+      .then(roles => {
+        // We have a list of roles! Now let's loop through them.
+        roles.forEach(role => {
+          // DOM MANIPULATION: Create a new <option> for the dropdown menu
+          const opt = document.createElement("option");
+          opt.value = role.name; // The value the computer uses
+          opt.innerText = role.name; // The text the user sees
+          roleSelect.appendChild(opt); // Add it to the dropdown menu on screen
+        });
+      })
+      .catch(err => console.error("Failed to load roles:", err)); // If it fails, log an error
+
+    // 4. Form Submission Event Listener
+    // What button triggers it? The giant red "ENTER THE ARENA" button!
+    // What does it do? It saves the user's name and dream job.
+    form.addEventListener("submit", async (e) => {
+      // e.preventDefault() stops the web page from reloading automatically
+      e.preventDefault();
+      
+      // Get what the user typed
+      const name = nameInput.value.trim();
+      const targetRole = roleSelect.value;
+      
+      // If they left it blank, do nothing
+      if (!name || !targetRole) return;
+
+      // Make the button show a loading message
+      submitBtn.innerText = "INITIALIZING...";
+      submitBtn.disabled = true; // Stop them from clicking twice
+
+      try {
+        // API REQUEST: Save their choices to the database
+        const res = await fetch("/api/auth/onboarding", {
+          method: "POST", // We are sending data
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Email": email // We tell the server WHO is saving this data
+          },
+          // Convert their name and job choice into a JSON string
+          body: JSON.stringify({ name, targetRole })
+        });
+        
+        // 5. Check the backend's response
+        if (res.ok) {
+          // SUCCESS! Their profile is created. Next step: Upload a Resume!
+          window.location.href = "resume.html";
+        } else {
+          // Uh oh, the server said no.
+          alert("Failed to submit onboarding.");
+          submitBtn.innerText = "▶ ENTER THE ARENA"; // Fix the button
+          submitBtn.disabled = false;
+        }
+      } catch (err) {
+        // The internet is broken
+        alert("Server error occurred.");
+        submitBtn.innerText = "▶ ENTER THE ARENA";
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

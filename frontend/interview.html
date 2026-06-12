@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Interview Arena — SkillViva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Mic glow indicator */
+    .mic-glow {
+      box-shadow: 0 0 40px rgba(230, 51, 41, 0.4);
+      animation: pulseGlow 1.5s infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 60px rgba(230, 51, 41, 0.75); }
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans overflow-x-hidden">
+
+  <!-- ── NAV ── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-[#1a1a1a] bg-black/95 backdrop-blur-md">
+    <div class="max-w-7xl w-full mx-auto px-4 h-16 flex items-center justify-between">
+      <span class="brush-text text-white text-2xl tracking-widest mt-1 select-none">
+        SKILLVIVA <span class="text-xs text-[#e63329] border border-[#e63329]/30 bg-[#e63329]/5 px-2 py-0.5 rounded-sm">ARENA</span>
+      </span>
+      <div id="tts-source-badge" class="hidden sm:block font-body text-[10px] text-[#555] uppercase tracking-widest border border-[#222] px-3 py-1">
+        TTS: CONNECTING...
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="profile.html" class="flex items-center hover:opacity-80 transition-opacity" target="_blank" title="Opens Profile in new tab">
+          <div class="hidden sm:flex flex-col items-end mr-2">
+            <span id="user-display-name" class="font-body text-xs text-white font-semibold">User</span>
+            <span id="user-display-role" class="font-body text-[10px] text-[#e63329] uppercase tracking-widest">Frontend Developer</span>
+          </div>
+          <div id="user-display-avatar" class="w-8 h-8 rounded-full bg-[#111] border border-[#333] flex items-center justify-center flex-shrink-0 transition-colors">
+            <span class="font-body text-xs font-bold text-white">U</span>
+          </div>
+        </a>
+        <button id="logout-btn" class="font-body text-xs text-[#555] hover:text-[#e63329] uppercase tracking-widest transition-colors ml-2">
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="h-16"></div>
+
+  <!-- ── ARENA TERMINAL ── -->
+  <main class="max-w-4xl mx-auto px-4 py-8 min-h-[calc(100vh-64px)] flex flex-col justify-between">
+    
+    <!-- Header status -->
+    <div class="flex justify-between items-center fade-up">
+      <div>
+        <div class="tag tag-red mb-2" id="round-indicator">ROUND 1 OF 5</div>
+        <div id="difficulty-badge" class="font-body text-[10px] text-[#888] uppercase tracking-widest">LEVEL 1 (BASIC)</div>
+      </div>
+      <div class="text-right">
+        <div id="timer-display" class="brush-text text-3xl text-white">00:30</div>
+        <div class="font-body text-[10px] text-[#555] uppercase tracking-widest">Time Remaining</div>
+      </div>
+    </div>
+
+    <!-- Central Console -->
+    <div class="my-8 flex-1 flex flex-col justify-center items-center">
+      
+      <!-- Loading view -->
+      <div id="console-loading" class="text-center py-12">
+        <div class="w-10 h-10 border-2 border-[#222] border-t-[#e63329] rounded-full animate-spin mx-auto mb-6"></div>
+        <p id="loading-msg" class="font-body text-xs text-[#555] uppercase tracking-widest">Loading interview environment...</p>
+      </div>
+
+      <!-- Main Q&A console -->
+      <div id="console-qa" class="hidden w-full text-center fade-up">
+        
+        <!-- Question block -->
+        <div class="mb-12 max-w-2xl mx-auto">
+          <div class="tag tag-red mb-4">INTERVIEWER QUESTION</div>
+          <h2 id="question-text" class="brush-text text-3xl sm:text-4xl text-white leading-tight mb-4">
+            Loading question...
+          </h2>
+          <div class="h-1 w-12 bg-[#e63329] mx-auto"></div>
+        </div>
+
+        <!-- Visualizers & Controls -->
+        <div class="flex flex-col items-center justify-center gap-6">
+          
+          <!-- Realtime audio waveform visualizer canvas -->
+          <canvas id="waveform" class="w-full max-w-md h-12 bg-[#050505] border border-[#222]/50 my-4 hidden rounded-sm"></canvas>
+          
+          <!-- Mic trigger -->
+          <button id="mic-btn" disabled class="w-24 h-24 rounded-full border border-[#222] bg-[#111] hover:border-[#e63329] flex items-center justify-center text-3xl transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed">
+            🎤
+          </button>
+          
+          <div id="console-tip" class="font-body text-[10px] text-[#555] uppercase tracking-widest">
+            Waiting for audio synthesis...
+          </div>
+
+          <!-- Realtime VAD Feedback visualizer -->
+          <div id="vad-indicator" class="hidden flex items-center gap-1.5 justify-center py-2 px-4 border border-[#e63329]/10 bg-[#e63329]/5">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse" id="voice-dot"></span>
+            <span id="vad-status-text" class="font-body text-[10px] text-green-500 uppercase tracking-widest">Voice Detected</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Realtime feedback/evaluation review -->
+      <div id="console-evaluation" class="hidden w-full max-w-2xl mx-auto fade-up">
+        <div class="card-gritty">
+          <div class="flex justify-between items-center mb-6">
+            <div class="tag tag-red">ROUND SCORED</div>
+            <div class="brush-text text-4xl text-[#e63329]" id="score-display">7/10</div>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-2">Recruiter Feedback</div>
+              <p id="feedback-text" class="font-body text-xs text-[#888] leading-relaxed font-medium">Good answer, but try to structure it better.</p>
+            </div>
+            <div>
+              <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-2">Ideal Response</div>
+              <p id="ideal-text" class="font-body text-xs text-[#888] leading-relaxed font-semibold">Here is what you should have said.</p>
+            </div>
+          </div>
+
+          <!-- Confident Tone and Grammar Indicators -->
+          <div class="grid grid-cols-2 gap-4 mb-6 border-t border-[#222]/50 pt-4 text-left">
+            <div class="border border-[#222]/30 p-3 bg-[#0a0f1e]/20">
+              <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-1">Confidence Tone</div>
+              <div id="confidence-badge" class="font-body text-xs font-bold text-green-500">CONFIDENT</div>
+            </div>
+            <div class="border border-[#222]/30 p-3 bg-[#0a0f1e]/20">
+              <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-1">Grammar Score</div>
+              <div id="grammar-display" class="font-body text-xs font-bold text-white">8/10</div>
+            </div>
+          </div>
+
+          <button id="next-q-btn" class="btn-primary w-full justify-center py-4">
+            ▶ PROCEED TO NEXT ROUND
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom logs -->
+    <div class="border-t border-[#111] pt-6 flex justify-between items-center fade-up">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[#e63329]"></span>
+        <span id="role-display-name" class="font-body text-[10px] text-[#555] uppercase tracking-widest">Frontend Developer</span>
+      </div>
+      <button id="conclude-btn" class="font-body text-[10px] text-[#555] hover:text-[#e63329] uppercase tracking-widest">
+        Abort Interview
+      </button>
+    </div>
+  </main>
+
+  <script>
+    const email = localStorage.getItem("skillviva_email");
+    const configStr = localStorage.getItem("skillviva_interview_config");
+    
+    if (!email || !configStr) {
+      window.location.href = "login.html";
+    }
+
+    const config = JSON.parse(configStr);
+    
+    // UI state
+    document.getElementById("role-display-name").innerText = config.role;
+    
+    let interviewId = null;
+    let currentQuestion = null;
+    let prefetchedQuestion = null;
+    let status = "IDLE"; // IDLE, LOADING, READY, LISTENING, EVALUATING, FEEDBACK, CONCLUDED
+    let qNum = 1;
+    const maxQs = 5;
+    
+    // Metrics
+    let hesitationSeconds = 0;
+    let preAnswerDelay = 0;
+    let startTime = 0;
+    let countdownTimer = null;
+    let timeLeft = 30;
+    
+    // Audio contexts
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let audioContext = null;
+    let analyser = null;
+    let stream = null;
+    let vadInterval = null;
+    let speakAudio = null;
+    let animationFrameId = null; // Animates the canvas visualizer
+    let fallbackTranscript = "";
+    let fallbackRecognition = null;
+    
+    // History
+    let historyLog = [];
+    let recentScores = [];
+
+    // ==========================================
+    // EXPLAINING THE INITIALIZATION FLOW (initInterview)
+    // ==========================================
+    // VISUAL FLOW:
+    // USER (Enters the arena page) 
+    // ↓
+    // JAVASCRIPT (Runs initInterview automatically)
+    // ↓
+    // API REQUEST (Tells backend: "Hey, I'm starting an interview for Frontend Developer Level 1")
+    // ↓
+    // DATABASE (Creates a new empty interview record and returns an ID)
+    // ↓
+    // JAVASCRIPT (Saves the ID and calls loadQuestion to get the first question)
+    
+    // What is an 'async' function? It means the code will pause and wait for the server to answer.
+    const initInterview = async () => {
+      // 1. Change the screen to show a loading spinner
+      setStatus("LOADING", "Initializing secure session...");
+      
+      try {
+        // 2. Talk to our Python backend server
+        // We are using fetch() to send a POST request to "/api/interviews"
+        const res = await fetch("/api/interviews", {
+          method: "POST", // We are creating something new
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Email": email // We send the email so the backend knows who is taking the interview!
+          },
+          // We send the role and difficulty (e.g. Frontend Developer, Level 1)
+          body: JSON.stringify({
+            role: config.role,
+            difficulty: config.difficulty
+          })
+        });
+        
+        // 3. The server replies with a special ID for this interview
+        const data = await res.json();
+        interviewId = data.interviewId; // We save this ID for later
+        
+        // 4. Now that the interview is created, ask the server for Question #1
+        loadQuestion();
+      } catch (err) {
+        // What happens if the request fails? (e.g. No internet)
+        alert("Failed to initialize session. Make sure FastAPI backend is active.");
+        window.location.href = "dashboard.html"; // Send them back to safety
+      }
+    };
+
+    // Set Status Machine UI states
+    const setStatus = (newStatus, msg = "") => {
+      status = newStatus;
+      console.log("Status changed:", newStatus);
+
+      const loadingView = document.getElementById("console-loading");
+      const qaView = document.getElementById("console-qa");
+      const evalView = document.getElementById("console-evaluation");
+      const micBtn = document.getElementById("mic-btn");
+      const tipText = document.getElementById("console-tip");
+      const vadPanel = document.getElementById("vad-indicator");
+
+      // Reset
+      loadingView.classList.add("hidden");
+      qaView.classList.add("hidden");
+      evalView.classList.add("hidden");
+      vadPanel.classList.add("hidden");
+
+      if (newStatus === "LOADING") {
+        loadingView.classList.remove("hidden");
+        document.getElementById("loading-msg").innerText = msg;
+      } 
+      else if (newStatus === "READY") {
+        qaView.classList.remove("hidden");
+        micBtn.disabled = false;
+        micBtn.className = "w-24 h-24 rounded-full border border-green-500 bg-green-500/10 flex items-center justify-center text-3xl cursor-pointer hover:bg-green-500/20";
+        tipText.innerText = "CLICK TO START RESPONDING";
+      }
+      else if (newStatus === "SPEAKING") {
+        qaView.classList.remove("hidden");
+        micBtn.disabled = true;
+        micBtn.className = "w-24 h-24 rounded-full border border-[#555] bg-[#111] flex items-center justify-center text-3xl opacity-50 cursor-not-allowed";
+        tipText.innerText = "LISTEN TO THE QUESTION...";
+      }
+      else if (newStatus === "LISTENING") {
+        qaView.classList.remove("hidden");
+        vadPanel.classList.remove("hidden");
+        micBtn.disabled = false;
+        micBtn.className = "w-24 h-24 rounded-full border border-[#e63329] bg-[#e63329]/10 mic-glow flex items-center justify-center text-3xl cursor-pointer";
+        tipText.innerText = "SPEAK INTO MICROPHONE — CLICK TO FINISH";
+      }
+      else if (newStatus === "EVALUATING") {
+        loadingView.classList.remove("hidden");
+        document.getElementById("loading-msg").innerText = "Analyzing speech patterns & metrics...";
+      }
+      else if (newStatus === "FEEDBACK") {
+        evalView.classList.remove("hidden");
+      }
+    };
+
+    // ==========================================
+    // EXPLAINING THE QUESTION GENERATION FLOW (loadQuestion)
+    // ==========================================
+    // VISUAL FLOW:
+    // JAVASCRIPT (Needs next question)
+    // ↓
+    // API REQUEST (/api/questions)
+    // ↓
+    // BACKEND (Reads user resume from DB)
+    // ↓
+    // AI MODEL (Generates a tough interview question)
+    // ↓
+    // FRONTEND (Updates text on screen)
+    // ↓
+    // API REQUEST (/api/tts -> Text-To-Speech)
+    // ↓
+    // BROWSER (Plays the audio out loud)
+    
+    const loadQuestion = async () => {
+      // 1. Show the loading screen so the user knows to wait
+      setStatus("LOADING", `Loading Question ${qNum}...`);
+      
+      // 2. Update the red tags on the top of the screen to say "ROUND 1 OF 5"
+      document.getElementById("round-indicator").innerText = `ROUND ${qNum} OF ${maxQs}`;
+      
+      const levelMap = {"1": "Level 1 (Basic)", "2": "Level 2 (Intermediate)", "3": "Level 3 (Advanced)"};
+      document.getElementById("difficulty-badge").innerText = levelMap[config.difficulty];
+      
+      try {
+        // 3. Ask the backend for a question
+        if (qNum === 1) {
+          // If it's the first question, we just ask for a basic intro question
+          const res = await fetch("/api/questions", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-User-Email": email },
+            body: JSON.stringify({
+              role_id: config.role,
+              difficulty: config.difficulty,
+              questionNumber: qNum
+            })
+          });
+          const data = await res.json();
+          currentQuestion = data.question; // Save the question text
+        } else if (prefetchedQuestion) {
+          // Sometimes we download the next question early to save time!
+          currentQuestion = prefetchedQuestion;
+          prefetchedQuestion = null;
+        } else {
+          // If we don't have it downloaded early, ask the backend right now
+          const askedIds = historyLog.map(h => h.questionId).filter(Boolean);
+          const res = await fetch("/api/questions", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-User-Email": email },
+            body: JSON.stringify({
+              role_id: config.role,
+              difficulty: config.difficulty,
+              questionNumber: qNum,
+              askedQuestionIds: askedIds // Send the list of old questions so we don't repeat them!
+            })
+          });
+          const data = await res.json();
+          currentQuestion = data.question;
+        }
+
+        // 4. DOM MANIPULATION: Show the question text on the giant screen
+        // "innerText" safely puts text into HTML without running bad code
+        document.getElementById("question-text").innerText = currentQuestion.text;
+        
+        // Change the screen status so the user knows they should listen
+        setStatus("SPEAKING");
+        
+        // 5. Read the question out loud!
+        // This calls another function (speakText) which asks the AI to generate an audio voice
+        speakText(currentQuestion.text, () => {
+          // What happens when the AI finishes speaking?
+          // This "callback" runs. It changes the status to "READY" so the user can finally answer.
+          setStatus("READY");
+          startTime = Date.now(); // Start a timer so we know if the user hesitated!
+        });
+
+      } catch (err) {
+        // Error handling if something breaks
+        console.error("Failed to load question:", err);
+        alert("Failed to fetch next question.");
+      }
+    };
+
+    // Prefetch Next Question Silently
+    const prefetchQuestion = async () => {
+      if (qNum >= maxQs) return;
+      const askedIds = historyLog.map(h => h.questionId).filter(Boolean);
+      if (currentQuestion && currentQuestion._id) {
+        askedIds.push(currentQuestion._id);
+      }
+      
+      try {
+        const res = await fetch("/api/questions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Email": email
+          },
+          body: JSON.stringify({
+            role_id: config.role,
+            difficulty: config.difficulty,
+            questionNumber: qNum + 1,
+            askedQuestionIds: askedIds
+          })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          prefetchedQuestion = data.question;
+          console.log("Silent prefetching complete:", prefetchedQuestion);
+        }
+      } catch (e) {
+        console.warn("Silent prefetching failed:", e);
+      }
+    };
+
+    const speakText = (text, callback) => {
+      if (speakAudio) {
+        try { speakAudio.pause(); } catch(e) {}
+      }
+      const badge = document.getElementById("tts-source-badge");
+      if (badge) {
+        badge.innerText = "TTS: SARVAM AI (BULBUL:V3)";
+        badge.className = "font-body text-[10px] text-green-500 uppercase tracking-widest border border-green-500/30 bg-green-500/10 px-3 py-1";
+      }
+      
+      fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text })
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("TTS API Failed");
+        return res.json();
+      })
+      .then(data => {
+        // Play base64 audio
+        speakAudio = new Audio("data:audio/wav;base64," + data.audioBase64);
+        speakAudio.play();
+        speakAudio.onended = callback;
+      })
+      .catch(err => {
+        console.warn("Sarvam TTS failed, falling back to Browser SpeechSynth:", err);
+        const badge = document.getElementById("tts-source-badge");
+        if (badge) {
+          badge.innerText = "TTS: BROWSER SYNTHESIS";
+          badge.className = "font-body text-[10px] text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-3 py-1";
+        }
+        
+        // Browser speech fallback
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.onend = callback;
+        synth.speak(utterance);
+      });
+    };
+
+    // Voice Activity Detection (VAD) & Response Capturing
+    document.getElementById("mic-btn").addEventListener("click", () => {
+      if (status === "READY") {
+        startListening();
+      } else if (status === "LISTENING") {
+        stopListening();
+      }
+    });
+
+    // Draws real-time voice frequencies on the canvas visualizer
+    const drawWaveform = () => {
+      const canvas = document.getElementById("waveform");
+      const canvasCtx = canvas.getContext("2d");
+      
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+      
+      const draw = () => {
+        if (status !== "LISTENING") return;
+        animationFrameId = requestAnimationFrame(draw);
+        
+        analyser.getByteTimeDomainData(dataArray);
+        
+        canvasCtx.fillStyle = "#050505";
+        canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        canvasCtx.lineWidth = 2;
+        canvasCtx.strokeStyle = "#e63329";
+        canvasCtx.beginPath();
+        
+        const sliceWidth = canvas.width * 1.0 / bufferLength;
+        let x = 0;
+        
+        for (let i = 0; i < bufferLength; i++) {
+          const v = dataArray[i] / 128.0;
+          const y = v * canvas.height / 2;
+          
+          if (i === 0) {
+            canvasCtx.moveTo(x, y);
+          } else {
+            canvasCtx.lineTo(x, y);
+          }
+          
+          x += sliceWidth;
+        }
+        
+        canvasCtx.lineTo(canvas.width, canvas.height / 2);
+        canvasCtx.stroke();
+      };
+      
+      canvas.classList.remove("hidden");
+      draw();
+    };
+
+    // ==========================================
+    // EXPLAINING THE MICROPHONE & VOICE DETECTION FLOW (startListening)
+    // ==========================================
+    // VISUAL FLOW:
+    // USER (Clicks Microphone Button)
+    // ↓
+    // BROWSER (Asks for Permission) -> Starts 30-sec Timer
+    // ↓
+    // AUDIO CONTEXT (Listens to the microphone volume level)
+    // ↓
+    // VAD INTERVAL (Checks 10 times a second: Is it loud or quiet?)
+    // ↓
+    // IF SILENT FOR 3 SECONDS -> stopListening() is called automatically!
+    
+    const startListening = async () => {
+      // 1. Calculate how long the user hesitated before clicking "start"
+      preAnswerDelay = (Date.now() - startTime) / 1000;
+      
+      // Change UI status
+      setStatus("LISTENING");
+      
+      // Reset variables for this new answer
+      audioChunks = []; // We will store little pieces of audio in this array
+      hesitationSeconds = 0; // Reset hesitation counter
+      timeLeft = 30; // 30 seconds max to answer
+      fallbackTranscript = ""; // Reset fallback
+      
+      // 2. Start a 30-second Countdown Timer
+      // Why a timer? So the user doesn't talk forever!
+      document.getElementById("timer-display").innerText = "00:30";
+      countdownTimer = setInterval(() => {
+        timeLeft--;
+        // Format the text to look like a digital clock (e.g. 00:09)
+        const str = "00:" + (timeLeft < 10 ? "0" + timeLeft : timeLeft);
+        document.getElementById("timer-display").innerText = str;
+        
+        // What happens when the timer hits zero?
+        // We automatically stop the microphone!
+        if (timeLeft <= 0) {
+          stopListening();
+        }
+      }, 1000); // 1000 milliseconds = 1 second
+
+      try {
+        // 3. Ask the user's browser for Microphone Permission
+        // 'await' means the code pauses here until the user clicks "Allow" or "Block"
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        
+        // 4. Set up the Media Recorder (The thing that actually records the voice)
+        let mime = "audio/webm"; // We prefer webm format
+        if (!MediaRecorder.isTypeSupported(mime)) {
+          mime = "audio/mp4"; // Fallback for Safari
+        }
+        mediaRecorder = new MediaRecorder(stream, { mimeType: mime });
+        
+        // Whenever the recorder has a new piece of audio ready, save it in our array
+        mediaRecorder.ondataavailable = (e) => {
+          if (e.data.size > 0) {
+            audioChunks.push(e.data);
+          }
+        };
+
+        // When the recorder stops, run the `processRecording` function
+        mediaRecorder.onstop = processRecording;
+        
+        // 5. Voice Activity Detection (VAD) - The "Silence Detector"
+        // Why? So the user doesn't have to click a button to stop. The AI knows when they are done talking!
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = audioContext.createAnalyser(); // A tool to check volume levels
+        const source = audioContext.createMediaStreamSource(stream);
+        source.connect(analyser);
+        analyser.fftSize = 512;
+        
+        const bufferLength = analyser.fftSize;
+        const dataArray = new Float32Array(bufferLength);
+        
+        let silentMs = 0; // How many milliseconds has it been quiet?
+        
+        // We check the volume level every 100 milliseconds (10 times a second)
+        vadInterval = setInterval(() => {
+          analyser.getFloatTimeDomainData(dataArray);
+          
+          // Math to calculate the average volume (RMS)
+          let sumSquares = 0;
+          for (let i = 0; i < bufferLength; i++) {
+            sumSquares += dataArray[i] * dataArray[i];
+          }
+          const rms = Math.sqrt(sumSquares / bufferLength);
+          
+          const voiceDot = document.getElementById("voice-dot");
+          const vadText = document.getElementById("vad-status-text");
+          
+          if (rms > 0.015) {
+            // The volume is LOUD. The user is SPEAKING.
+            silentMs = 0; // Reset silence counter
+            voiceDot.className = "w-2 h-2 rounded-full bg-green-500 animate-pulse";
+            vadText.innerText = "Voice Detected";
+            vadText.className = "font-body text-[10px] text-green-500 uppercase tracking-widest";
+          } else {
+            // The volume is LOW. The user is SILENT.
+            silentMs += 100; // Add 100 milliseconds of silence
+            voiceDot.className = "w-2 h-2 rounded-full bg-[#555]";
+            vadText.innerText = "Silence / Hesitation";
+            vadText.className = "font-body text-[10px] text-[#555] uppercase tracking-widest";
+            
+            // If they are silent for 1 whole second, increase their "hesitation score"
+            if (silentMs >= 1000) {
+              hesitationSeconds += 0.1;
+            }
+          }
+        }, 100);
+
+        // Finally, start recording!
+        mediaRecorder.start();
+        drawWaveform(); // Turn on the cool visualizer animation
+
+      } catch (err) {
+        // If the user clicks "Block" on the microphone popup, this runs
+        console.error("Microphone access failed:", err);
+        alert("Microphone permission denied.");
+        setStatus("READY");
+      }
+    };
+
+    const stopListening = () => {
+      clearInterval(countdownTimer);
+      clearInterval(vadInterval);
+      
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      document.getElementById("waveform").classList.add("hidden");
+
+      if (audioContext) {
+        audioContext.close();
+      }
+      
+      if (fallbackRecognition) {
+        try { fallbackRecognition.stop(); } catch(e) {}
+      }
+      
+      if (mediaRecorder && mediaRecorder.state !== "inactive") {
+        mediaRecorder.stop();
+      }
+      
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+    };
+
+    // Process Recording -> STT -> Evaluate Q&A
+    const processRecording = async () => {
+      setStatus("EVALUATING");
+      
+      const audioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType });
+      const formData = new FormData();
+      formData.append("file", audioBlob, "audio.webm");
+
+      try {
+        let transcript = "";
+        
+        // 1. Transcription (STT) - Primary: Sarvam AI
+        try {
+          const sttRes = await fetch("/api/stt", {
+            method: "POST",
+            headers: { "X-User-Email": email },
+            body: formData
+          });
+          if (!sttRes.ok) throw new Error("Sarvam STT failed.");
+          const sttData = await sttRes.json();
+          transcript = sttData.transcript || "";
+        } catch (sttErr) {
+          console.warn("Sarvam STT API failed, gracefully falling back to browser SpeechRecognition:", sttErr);
+          transcript = fallbackTranscript; // Use the background fallback
+        }
+        
+        if (!transcript.trim()) {
+          alert("I couldn't hear you speak. Let me repeat the question.");
+          loadQuestion();
+          return;
+        }
+
+        // 2. Count Fillers
+        const fillerRegex = /\b(um+|uh+|er+|ah+|like|you know|basically|literally|so|right|okay|hmm+|well|kind of|sort of|i mean|actually|honestly)\b/gi;
+        const fillerCount = (transcript.match(fillerRegex) || []).length;
+
+        // 3. Evaluation
+        const evalRes = await fetch("/api/evaluate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Email": email
+          },
+          body: JSON.stringify({
+            question: currentQuestion.text,
+            answer: transcript,
+            hesitationSeconds: hesitationSeconds,
+            preAnswerDelay: preAnswerDelay,
+            fillerCount: fillerCount,
+            currentLevel: config.difficulty,
+            role: config.role,
+            recentScores: recentScores
+          })
+        });
+        
+        const evalData = await evalRes.json();
+        if (!evalRes.ok) {
+          throw new Error(evalData.error || "Evaluation failed on the server.");
+        }
+        
+        // Store metrics in history log
+        const historyItem = {
+          question: currentQuestion.text,
+          answer: transcript,
+          score: evalData.score,
+          feedback: evalData.feedback,
+          hesitation: Math.round(hesitationSeconds),
+          questionId: currentQuestion._id || null
+        };
+        historyLog.push(historyItem);
+        recentScores.push(evalData.score * 10);
+        
+        // FIXED: guard against nextLevel being undefined (e.g. if server had a partial error)
+        // evalData.nextLevel comes from Python adaptive difficulty logic
+        if (evalData.nextLevel !== undefined && evalData.nextLevel !== null) {
+          config.difficulty = evalData.nextLevel.toString();
+          localStorage.setItem("skillviva_interview_config", JSON.stringify(config));
+        }
+
+        // Save progress to database
+        await fetch(`/api/interviews/${interviewId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Email": email
+          },
+          body: JSON.stringify({ historyItem: historyItem })
+        });
+
+        // Prefetch next question background silently
+        prefetchQuestion();
+
+        // Speak evaluation feedback
+        setStatus("FEEDBACK");
+        document.getElementById("score-display").innerText = evalData.score + "/10";
+        document.getElementById("feedback-text").innerText = evalData.feedback;
+        document.getElementById("ideal-text").innerText = evalData.idealAnswer;
+        
+        // Render confidence tone & grammar metrics from backend
+        const confBadge = document.getElementById("confidence-badge");
+        const confText = evalData.confidence || "Neutral";
+        confBadge.innerText = confText.toUpperCase();
+        if (confText.toLowerCase() === "confident") {
+          confBadge.className = "font-body text-xs font-bold text-green-500";
+        } else if (confText.toLowerCase() === "nervous") {
+          confBadge.className = "font-body text-xs font-bold text-[#e63329]";
+        } else {
+          confBadge.className = "font-body text-xs font-bold text-yellow-500";
+        }
+        
+        document.getElementById("grammar-display").innerText = (evalData.grammarScore || 8) + "/10";
+        
+        speakText(evalData.feedback);
+
+      } catch (err) {
+        console.error("Audio processing failed:", err);
+        // Show specific error message, not generic alert
+        alert("Processing error: " + (err.message || "Unknown error. Check console."));
+        setStatus("READY");
+      }
+    };
+
+    // Proceed to next question / Conclude Report
+    document.getElementById("next-q-btn").addEventListener("click", () => {
+      qNum++;
+      if (qNum <= maxQs) {
+        loadQuestion();
+      } else {
+        generateReport();
+      }
+    });
+
+    const generateReport = async () => {
+      setStatus("LOADING", "Compiling final mock performance report...");
+      
+      try {
+        const res = await fetch("/api/report", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            history: historyLog,
+            role: config.role
+          })
+        });
+        const reportData = await res.json();
+        
+        // Save report & status CONCLUDED in db
+        await fetch(`/api/interviews/${interviewId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Email": email
+          },
+          body: JSON.stringify({
+            reportData: reportData,
+            status: "CONCLUDED"
+          })
+        });
+
+        // Save session storage for visualizer
+        sessionStorage.setItem("skillviva_report", JSON.stringify({
+          reportData: reportData,
+          history: historyLog,
+          role: config.role,
+          interviewId: interviewId
+        }));
+        
+        window.location.href = "report.html";
+        
+      } catch (err) {
+        console.error("Report generation failed:", err);
+        alert("Failed to generate performance report.");
+        window.location.href = "dashboard.html";
+      }
+    };
+
+    // Conclude Actions
+    document.getElementById("conclude-btn").addEventListener("click", () => {
+      if (confirm("Are you sure you want to abort the current interview? Your progress won't be saved.")) {
+        if (speakAudio) speakAudio.pause();
+        window.location.href = "dashboard.html";
+      }
+    });
+
+    // Load user profile for navbar
+    fetch("/api/auth/me", {
+      headers: { "X-User-Email": email }
+    })
+    .then(res => res.json())
+    .then(user => {
+      document.getElementById("user-display-name").innerText = user.name || "User";
+      document.getElementById("user-display-role").innerText = user.targetRole || "Frontend Developer";
+      document.getElementById("user-display-avatar").firstElementChild.innerText = (user.name || "U").charAt(0).toUpperCase();
+    })
+    .catch(err => console.warn("Failed to load user profile in navbar:", err));
+
+    // Logout Action
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      if (confirm("Are you sure you want to log out? Active interview session will be aborted.")) {
+        if (speakAudio) speakAudio.pause();
+        localStorage.removeItem("skillviva_email");
+        localStorage.removeItem("skillviva_resume_context");
+        localStorage.removeItem("skillviva_interview_config");
+        window.location.href = "login.html";
+      }
+    });
+
+    // Start Page Onload
+    const activeId = localStorage.getItem("skillviva_active_interview_id");
+    if (activeId) {
+      // Resume existing
+      interviewId = activeId;
+      localStorage.removeItem("skillviva_active_interview_id");
+      
+      // Load current progress
+      setStatus("LOADING", "Resuming interview session...");
+      fetch("/api/interviews/user", { headers: { "X-User-Email": email } })
+        .then(res => res.json())
+        .then(list => {
+          const s = list.find(l => l._id === interviewId);
+          if (s) {
+            historyLog = s.history || [];
+            qNum = historyLog.length + 1;
+            recentScores = historyLog.map(h => (h.score || 5) * 10);
+            loadQuestion();
+          } else {
+            initInterview();
+          }
+        })
+        .catch(() => initInterview());
+    } else {
+      initInterview();
+    }
+  </script>
+</body>
+</html>

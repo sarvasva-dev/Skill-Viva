@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — SkillViva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-white font-sans">
+
+  <!-- ── NAV ── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-[#1a1a1a] bg-black/95 backdrop-blur-md">
+    <div class="max-w-7xl w-full mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="dashboard.html" class="brush-text text-white text-2xl tracking-widest hover:text-[#e63329] transition-colors mt-1">
+        SKILLVIVA
+      </a>
+      <div class="hidden sm:flex items-center gap-6">
+        <a href="dashboard.html" class="nav-link text-[#e63329]">Dashboard</a>
+        <a href="resume.html" class="nav-link">Resume</a>
+        <a href="interview.html" class="nav-link">Interview</a>
+        <a href="profile.html" class="nav-link">Profile</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="profile.html" class="flex items-center hover:opacity-80 transition-opacity">
+          <div class="hidden sm:flex flex-col items-end mr-2">
+            <span id="user-display-name" class="font-body text-xs text-white font-semibold">User</span>
+            <span id="user-display-role" class="font-body text-[10px] text-[#e63329] uppercase tracking-widest">Frontend Developer</span>
+          </div>
+          <div id="user-display-avatar" class="w-8 h-8 rounded-full bg-[#111] border border-[#333] flex items-center justify-center flex-shrink-0 transition-colors">
+            <span class="font-body text-xs font-bold text-white">U</span>
+          </div>
+        </a>
+        <button id="logout-btn" class="font-body text-xs text-[#555] hover:text-[#e63329] uppercase tracking-widest transition-colors ml-2">
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="h-16"></div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    <div class="fade-up">
+      <div class="tag tag-red mb-4">TRAINING TERMINAL</div>
+      <h1 class="brush-text text-5xl sm:text-6xl text-white mb-8">
+        WELCOME BACK, <span id="welcome-name" class="text-[#e63329]">CANDIDATE</span>.
+      </h1>
+    </div>
+
+    <!-- Grid: Start Interview & Resume Feedback -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 fade-up">
+      
+      <!-- Launch Panel -->
+      <div class="card-gritty lg:col-span-1 flex flex-col justify-between">
+        <div>
+          <div class="tag tag-red mb-4">MOCK INTERVIEW</div>
+          <h3 class="brush-text text-white text-3xl mb-6">START TRAINING</h3>
+          
+          <div class="flex flex-col gap-4 mb-6">
+            <div>
+              <label class="font-body text-xs text-[#555] uppercase tracking-widest mb-2 block">Interview Role</label>
+              <select id="interview-role-select" class="input-gritty bg-black text-white">
+                <!-- Populated via API -->
+              </select>
+            </div>
+            
+            <div>
+              <label class="font-body text-xs text-[#555] uppercase tracking-widest mb-2 block">Difficulty Level</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" onclick="selectDifficulty('1')" id="diff-btn-1" class="border border-[#e63329] bg-[#e63329]/10 text-white font-body py-3 text-xs tracking-wider uppercase transition-colors">Level 1</button>
+                <button type="button" onclick="selectDifficulty('2')" id="diff-btn-2" class="border border-[#222] text-[#555] font-body py-3 text-xs tracking-wider uppercase transition-colors">Level 2</button>
+                <button type="button" onclick="selectDifficulty('3')" id="diff-btn-3" class="border border-[#222] text-[#555] font-body py-3 text-xs tracking-wider uppercase transition-colors">Level 3</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button id="start-interview-btn" class="btn-primary w-full justify-center py-4 mt-4">
+          ▶ START INTERVIEW
+        </button>
+      </div>
+
+      <!-- Resume Status Card -->
+      <div class="card-gritty lg:col-span-2 flex flex-col justify-between">
+        <div id="resume-container">
+          <div class="tag tag-red mb-4">RESUME FEEDBACK</div>
+          <div id="resume-loading" class="py-8 text-center text-[#555] font-body text-sm">Loading resume data...</div>
+          
+          <!-- State: No Resume -->
+          <div id="state-no-resume" class="hidden py-8 text-center">
+            <p class="font-body text-[#888] text-sm mb-6">No resume parsed yet. Upload your resume to unlock hyper-personalized interview questions.</p>
+            <a href="resume.html" class="btn-outline py-3 px-6 text-xs inline-flex">▶ UPLOAD RESUME</a>
+          </div>
+
+          <!-- State: Resume Loaded -->
+          <div id="state-has-resume" class="hidden">
+            <h3 class="brush-text text-white text-3xl mb-4">RESUME SCORED</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+              <div class="border border-[#222] p-4">
+                <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-1">ATS Friendly</div>
+                <div id="resume-ats-friendly" class="font-body text-sm font-bold text-green-500">YES</div>
+              </div>
+              <div class="border border-[#222] p-4 sm:col-span-2">
+                <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-1">Brutal Review</div>
+                <p id="resume-feedback-text" class="font-body text-xs text-[#888] leading-relaxed">No resume info loaded.</p>
+              </div>
+            </div>
+            
+            <div>
+              <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-2">Targeted Missing Skills</div>
+              <div id="resume-missing-skills" class="flex flex-wrap gap-1.5">
+                <!-- Skills listed -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="resume-update-panel" class="hidden mt-6 pt-4 border-t border-[#1a1a1a] flex justify-between items-center">
+          <span class="font-body text-xs text-[#555]">Want to improve your scores?</span>
+          <a href="resume.html" class="font-body text-xs text-[#e63329] hover:underline">Re-upload Resume →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interview History Log -->
+    <div class="card-gritty fade-up">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <div class="tag tag-red mb-3">HISTORICAL PERFORMANCE</div>
+          <h3 class="brush-text text-white text-3xl">INTERVIEW HISTORY</h3>
+        </div>
+        <button id="clear-history-btn" class="font-body text-xs text-[#555] hover:text-[#e63329] uppercase tracking-widest transition-colors">
+          Clear History
+        </button>
+      </div>
+
+      <div class="overflow-x-auto w-full">
+        <table class="w-full text-left font-body text-xs">
+          <thead>
+            <tr class="border-b border-[#222] text-[#555] uppercase tracking-wider">
+              <th class="py-3 px-4">Date</th>
+              <th class="py-3 px-4">Target Role</th>
+              <th class="py-3 px-4">Difficulty</th>
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4">Avg Score</th>
+              <th class="py-3 px-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="history-table-body">
+            <!-- Populated via API -->
+          </tbody>
+        </table>
+      </div>
+      <div id="history-empty" class="hidden text-center py-12 text-[#555] font-body text-sm border-t border-[#111] mt-4">
+        No mock interviews conducted yet. Choose a role above to begin.
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const email = localStorage.getItem("skillviva_email");
+    if (!email) {
+      window.location.href = "login.html";
+    }
+
+    let currentDifficulty = "1";
+    let currentUserProfile = null;
+
+    // ==========================================
+    // EXPLAINING THE DASHBOARD FLOW
+    // ==========================================
+    // VISUAL FLOW:
+    // USER (Visits Dashboard)
+    // ↓
+    // JAVASCRIPT (Checks if they are logged in) -> If no, sends them to login.html
+    // ↓
+    // API REQUEST (/api/auth/me)
+    // ↓
+    // BACKEND (Returns the user's name and past interviews)
+    // ↓
+    // DOM MANIPULATION (Puts the user's name on the screen and fills the History table)
+
+    // Load user dashboard info
+    // "async" means it talks to the server and waits for a response.
+    const loadDashboard = async () => {
+      try {
+        // 1. API REQUEST: Ask the server for the user's latest data
+        const res = await fetch("/api/auth/me", {
+          headers: { "X-User-Email": email } // We show our "ID card" (the email header)
+        });
+        
+        if (!res.ok) {
+          // If the server says "Unauthorized", clear memory and kick them out
+          localStorage.removeItem("skillviva_email");
+          window.location.href = "login.html";
+          return;
+        }
+
+        // We turn the server's reply into a JSON object we can use in JavaScript
+        const user = await res.json();
+        currentUserProfile = user;
+        
+        // 2. DOM MANIPULATION: Update the screen with their real name
+        // The `||` means "OR". If they don't have a name, use "User".
+        document.getElementById("user-display-name").innerText = user.name || "User";
+        document.getElementById("user-display-role").innerText = user.targetRole || "Frontend Developer";
+        document.getElementById("user-display-avatar").firstElementChild.innerText = (user.name || "U").charAt(0).toUpperCase();
+        document.getElementById("welcome-name").innerText = (user.name || "CANDIDATE").toUpperCase();
+
+        // 3. API REQUEST: Get the list of job roles from the server
+        const roleRes = await fetch("/api/roles");
+        const roles = await roleRes.json();
+        const roleSelect = document.getElementById("interview-role-select");
+        roleSelect.innerHTML = ""; // Clear out any old data
+        
+        // Loop through the roles and add them to the dropdown menu on screen
+        roles.forEach(r => {
+          const opt = document.createElement("option");
+          opt.value = r.name;
+          opt.innerText = r.name;
+          if (user.targetRole && user.targetRole.toLowerCase() === r.name.toLowerCase()) {
+            opt.selected = true; // Auto-select their favorite role!
+          }
+          roleSelect.appendChild(opt);
+        });
+
+        // 4. Resume status check
+        // Did they upload a resume?
+        document.getElementById("resume-loading").classList.add("hidden"); // Hide the loading spinner
+        
+        if (user.resumeAnalysis) {
+          // Yes! Show the resume panel!
+          document.getElementById("state-has-resume").classList.remove("hidden");
+          document.getElementById("resume-update-panel").classList.remove("hidden");
+          
+          const ana = user.resumeAnalysis;
+          document.getElementById("resume-ats-friendly").innerText = ana.atsFriendly ? "YES" : "NO";
+          document.getElementById("resume-ats-friendly").className = "font-body text-sm font-bold " + (ana.atsFriendly ? "text-green-500" : "text-[#e63329]");
+          document.getElementById("resume-feedback-text").innerText = ana.feedback || "Brutal analysis complete.";
+          
+          // Show Missing Skills tags
+          const container = document.getElementById("resume-missing-skills");
+          container.innerHTML = "";
+          if (ana.missingSkills && ana.missingSkills.length > 0) {
+            ana.missingSkills.forEach(s => {
+              const span = document.createElement("span");
+              span.className = "bg-[#e63329]/15 border border-[#e63329]/30 text-[#e63329] px-2 py-0.5 rounded-sm font-body text-[10px]";
+              span.innerText = s;
+              container.appendChild(span);
+            });
+          } else {
+            container.innerText = "No critical skills missing for target role.";
+          }
+        } else {
+          // No resume! Show the warning panel!
+          document.getElementById("state-no-resume").classList.remove("hidden");
+        }
+
+        // 5. Ask the server for the user's past interviews
+        loadHistory();
+
+      } catch (err) {
+        // If the internet is down, just print an error to the secret developer console
+        console.error("Dashboard error:", err);
+      }
+    };
+
+    // This function asks the server for the history of old interviews
+    const loadHistory = async () => {
+      try {
+        // 1. API REQUEST: Fetch the interviews
+        const res = await fetch("/api/interviews/user", {
+          headers: { "X-User-Email": email }
+        });
+        const history = await res.json();
+        
+        const tbody = document.getElementById("history-table-body");
+        tbody.innerHTML = ""; // Clear out the loading text
+        
+        // 2. If they have never taken an interview, show a friendly message
+        if (history.length === 0) {
+          document.getElementById("history-empty").classList.remove("hidden");
+          return;
+        }
+
+        document.getElementById("history-empty").classList.add("hidden");
+
+        // 3. We loop through every old interview and create a table row for it
+        history.forEach(item => {
+          const date = new Date(item.createdAt).toLocaleDateString();
+          
+          // Math time: Calculate the average score for the interview
+          let avgScore = "N/A";
+          if (item.history && item.history.length > 0) {
+            // Add up all the scores
+            const sum = item.history.reduce((total, question) => total + (question.score || 0), 0);
+            // Divide by the number of questions to get the average
+            avgScore = (sum / item.history.length).toFixed(1) + "/10";
+          }
+
+          // DOM MANIPULATION: Create a new HTML table row
+          const tr = document.createElement("tr");
+          tr.className = "border-b border-[#111] hover:bg-[#050505] transition-colors";
+          
+          // Fill the row with data
+          tr.innerHTML = `
+            <td class="py-4 px-4 text-[#888]">${date}</td>
+            <td class="py-4 px-4 text-white font-bold">${item.role}</td>
+            <td class="py-4 px-4 text-[#e63329] uppercase tracking-wider">${item.initialDifficulty ? "Level " + item.initialDifficulty : "Level 1"}</td>
+            <td class="py-4 px-4">
+              <span class="px-2 py-0.5 border text-[10px] rounded-sm font-semibold uppercase ${item.status === 'CONCLUDED' ? 'border-green-500/30 bg-green-500/10 text-green-500' : 'border-yellow-500/30 bg-yellow-500/10 text-yellow-500'}">
+                ${item.status}
+              </span>
+            </td>
+            <td class="py-4 px-4 font-bold text-white">${avgScore}</td>
+            <td class="py-4 px-4 text-right">
+              ${item.status === 'CONCLUDED' ? `<button onclick="viewReport('${item._id}')" class="text-white hover:text-[#e63329] font-bold">VIEW REPORT →</button>` : `<button onclick="resumeInterview('${item._id}')" class="text-[#e63329] hover:underline font-bold">RESUME →</button>`}
+            </td>
+          `;
+          // Put the row on the screen!
+          tbody.appendChild(tr);
+        });
+      } catch (err) {
+        console.error("Failed to load history:", err);
+      }
+    };
+
+    // 4. Difficulty selection
+    window.selectDifficulty = (diff) => {
+      currentDifficulty = diff;
+      for (let i = 1; i <= 3; i++) {
+        const btn = document.getElementById("diff-btn-" + i);
+        if (i.toString() === diff) {
+          btn.className = "border border-[#e63329] bg-[#e63329]/10 text-white font-body py-3 text-xs tracking-wider uppercase transition-colors";
+        } else {
+          btn.className = "border border-[#222] text-[#555] font-body py-3 text-xs tracking-wider uppercase transition-colors";
+        }
+      }
+    };
+
+    // 5. Start Interview Event Listener
+    // What button triggers it? The giant red "ENTER ARENA" button.
+    document.getElementById("start-interview-btn").addEventListener("click", async () => {
+      // Find out what role they selected from the dropdown
+      const selectedRole = document.getElementById("interview-role-select").value;
+      
+      // SAFETY CHECK: Did they upload a resume?
+      if (!currentUserProfile.resumeAnalysis || !currentUserProfile.resumeText || currentUserProfile.resumeText.length < 20) {
+        alert("Please upload a valid resume first to target your interview questions.");
+        window.location.href = "resume.html"; // Send them to the resume page!
+        return;
+      }
+
+      // If they changed their target role, tell the backend to update it in the database
+      if (currentUserProfile.targetRole !== selectedRole) {
+        await fetch("/api/auth/me", {
+          method: "PUT", // PUT means we are updating existing data
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Email": email
+          },
+          body: JSON.stringify({ targetRole: selectedRole })
+        });
+      }
+
+      // Change the button text to show loading
+      document.getElementById("start-interview-btn").innerText = "GENERATING QUESTIONS...";
+      document.getElementById("start-interview-btn").disabled = true;
+
+      try {
+        // API REQUEST: Ask the server to pre-generate AI questions based on their resume
+        // Why? So the live interview doesn't lag!
+        const batchRes = await fetch("/api/questions/generate-batch", {
+          method: "POST", // POST means we are sending data
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Email": email
+          },
+          body: JSON.stringify({
+            role: selectedRole,
+            resumeContext: currentUserProfile.resumeText || ""
+          })
+        });
+
+        if (batchRes.ok) {
+          // SUCCESS! Save their settings to the browser memory
+          localStorage.setItem("skillviva_interview_config", JSON.stringify({
+            role: selectedRole,
+            difficulty: currentDifficulty
+          }));
+          // JUMP TO THE INTERVIEW ARENA!
+          window.location.href = "interview.html";
+        } else {
+          // Even if pre-generation fails, we still let them start the interview using offline backup questions
+          alert("Failed to pre-generate questions. Continuing anyway...");
+          localStorage.setItem("skillviva_interview_config", JSON.stringify({
+            role: selectedRole,
+            difficulty: currentDifficulty
+          }));
+          window.location.href = "interview.html";
+        }
+      } catch (e) {
+        console.error("Batch gen error:", e);
+        window.location.href = "interview.html";
+      }
+    });
+
+    // View Report Action
+    window.viewReport = async (interviewId) => {
+      try {
+        const res = await fetch("/api/interviews/user", {
+          headers: { "X-User-Email": email }
+        });
+        const history = await res.json();
+        const interview = history.find(h => h._id === interviewId);
+        if (interview) {
+          sessionStorage.setItem("skillviva_report", JSON.stringify({
+            reportData: interview.reportData,
+            history: interview.history,
+            role: interview.role,
+            interviewId: interview._id
+          }));
+          window.location.href = "report.html";
+        }
+      } catch (e) {
+        console.error("Failed to load report session:", e);
+      }
+    };
+
+    // Resume Interview Action
+    window.resumeInterview = (interviewId) => {
+      localStorage.setItem("skillviva_active_interview_id", interviewId);
+      const interviewRole = document.getElementById("interview-role-select").value;
+      localStorage.setItem("skillviva_interview_config", JSON.stringify({
+        role: interviewRole,
+        difficulty: currentDifficulty
+      }));
+      window.location.href = "interview.html";
+    };
+
+    // Clear History Action
+    document.getElementById("clear-history-btn").addEventListener("click", async () => {
+      if (!confirm("Are you sure you want to clear your entire mock interview history? This cannot be undone.")) return;
+      
+      try {
+        const res = await fetch("/api/interviews/user/clear", {
+          method: "DELETE",
+          headers: { "X-User-Email": email }
+        });
+        if (res.ok) {
+          loadHistory();
+        }
+      } catch (err) {
+        console.error("Failed to clear history:", err);
+      }
+    });
+
+    // Logout Action
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      localStorage.removeItem("skillviva_email");
+      localStorage.removeItem("skillviva_resume_context");
+      localStorage.removeItem("skillviva_interview_config");
+      window.location.href = "login.html";
+    });
+
+    // Initialize Page
+    loadDashboard();
+  </script>
+</body>
+</html>

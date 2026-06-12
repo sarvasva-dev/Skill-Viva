@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillViva — Master Your Interview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Config tailwind colors/font to support Inter and Space Grotesk
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-black text-white overflow-x-hidden font-sans">
+
+  <!-- ── NAVBAR ── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-[#111] bg-black/90 backdrop-blur-md w-full">
+    <div class="max-w-7xl w-full mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="brush-text text-white text-2xl tracking-widest hover:text-[#e63329] transition-colors">SKILLVIVA</a>
+      <div class="flex items-center gap-3">
+        <a href="login.html" class="font-body text-xs text-[#888] uppercase tracking-widest hover:text-white transition-colors">
+          Login
+        </a>
+        <a href="login.html" class="btn-primary py-2 px-4 text-xs">
+          GET STARTED
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="relative min-h-screen w-full flex flex-col items-center justify-center px-4 pt-14 text-center overflow-hidden">
+    <!-- Glow blobs -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#e63329] rounded-full blur-[160px] opacity-15 pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-64 h-64 bg-[#e63329] rounded-full blur-[120px] opacity-10 pointer-events-none"></div>
+    <!-- Grid -->
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 border border-[#e63329]/30 bg-[#e63329]/10 px-3 py-1.5 mb-8 rounded-sm">
+        <span class="w-1.5 h-1.5 bg-[#e63329] rounded-full animate-pulse"></span>
+        <span class="font-body text-xs text-[#e63329] uppercase tracking-widest">Powered by Sarvam AI Voice</span>
+      </div>
+
+      <h1 class="brush-text text-white leading-none mb-6 text-5xl sm:text-7xl md:text-8xl">
+        STOP<br>PRACTICING.<br><span class="text-[#e63329]">START</span><br>PERFORMING.
+      </h1>
+
+      <p class="font-body text-[#888] text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-10">
+        SkillViva grills you with AI-powered voice interviews tailored to your resume. 
+        Get brutally honest feedback. Improve your scores. Land the job.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="login.html" class="btn-primary py-4 px-8 text-base justify-center">
+          ▶ GET STARTED FREE
+        </a>
+        <a href="#how-it-works" class="btn-outline py-4 px-8 text-base justify-center">
+          SEE HOW IT WORKS ↓
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <span class="font-body text-[10px] text-[#444] uppercase tracking-widest">Scroll</span>
+      <svg class="w-4 h-4 text-[#444]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section id="how-it-works" class="w-full py-24 px-4 border-t border-[#111]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="tag tag-red mb-4 inline-block">THE PROCESS</div>
+        <h2 class="brush-text text-white text-4xl sm:text-5xl">HOW IT WORKS</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="card-gritty relative">
+          <div class="brush-text text-6xl text-[#1a1a1a] absolute top-4 right-4 leading-none select-none">01</div>
+          <div class="text-3xl mb-4">📄</div>
+          <h3 class="brush-text text-white text-xl mb-3">Upload Resume</h3>
+          <p class="font-body text-[#666] text-sm leading-relaxed">Drop your PDF. Our AI reads every line and identifies gaps, mismatches, and strengths against your target role.</p>
+        </div>
+        <div class="card-gritty relative">
+          <div class="brush-text text-6xl text-[#1a1a1a] absolute top-4 right-4 leading-none select-none">02</div>
+          <div class="text-3xl mb-4">🧠</div>
+          <h3 class="brush-text text-white text-xl mb-3">AI Analyzes You</h3>
+          <p class="font-body text-[#666] text-sm leading-relaxed">We map your experience to real interview patterns. Missing skills, misaligned roles, weak spots — all exposed.</p>
+        </div>
+        <div class="card-gritty relative">
+          <div class="brush-text text-6xl text-[#1a1a1a] absolute top-4 right-4 leading-none select-none">03</div>
+          <div class="text-3xl mb-4">🎙️</div>
+          <h3 class="brush-text text-white text-xl mb-3">Get Grilled</h3>
+          <p class="font-body text-[#666] text-sm leading-relaxed">Live voice interview. AI asks role-specific questions, detects hesitation, tracks filler words, scores in real-time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURES ── -->
+  <section class="w-full py-24 px-4 border-t border-[#111] bg-[#050505]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="tag tag-red mb-4 inline-block">FEATURES</div>
+        <h2 class="brush-text text-white text-4xl sm:text-5xl">BUILT DIFFERENT.</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="border border-[#1a1a1a] p-5 hover:border-[#e63329]/40 transition-colors group">
+          <div class="text-2xl mb-3">🎙️</div>
+          <h4 class="font-body text-white text-sm font-bold uppercase tracking-widest mb-2 group-hover:text-[#e63329] transition-colors">Voice AI</h4>
+          <p class="font-body text-[#555] text-xs leading-relaxed">Real microphone. Real speech. Sarvam AI transcribes and evaluates every word.</p>
+        </div>
+        <div class="border border-[#1a1a1a] p-5 hover:border-[#e63329]/40 transition-colors group">
+          <div class="text-2xl mb-3">🎯</div>
+          <h4 class="font-body text-white text-sm font-bold uppercase tracking-widest mb-2 group-hover:text-[#e63329] transition-colors">Resume-Targeted Qs</h4>
+          <p class="font-body text-[#555] text-xs leading-relaxed">Questions built from YOUR resume. Not generic. Not templated. Hyper-personal.</p>
+        </div>
+        <div class="border border-[#1a1a1a] p-5 hover:border-[#e63329]/40 transition-colors group">
+          <div class="text-2xl mb-3">⚡</div>
+          <h4 class="font-body text-white text-sm font-bold uppercase tracking-widest mb-2 group-hover:text-[#e63329] transition-colors">Brutal Feedback</h4>
+          <p class="font-body text-[#555] text-xs leading-relaxed">No sugar-coating. Score, what went wrong, what you should've said — all of it.</p>
+        </div>
+        <div class="border border-[#1a1a1a] p-5 hover:border-[#e63329]/40 transition-colors group">
+          <div class="text-2xl mb-3">📈</div>
+          <h4 class="font-body text-white text-sm font-bold uppercase tracking-widest mb-2 group-hover:text-[#e63329] transition-colors">Adaptive Difficulty</h4>
+          <p class="font-body text-[#555] text-xs leading-relaxed">Level 1 to 3. AI adjusts difficulty based on your answers in real-time.</p>
+        </div>
+        <div class="border border-[#1a1a1a] p-5 hover:border-[#e63329]/40 transition-colors group">
+          <div class="text-2xl mb-3">📊</div>
+          <h4 class="font-body text-white text-sm font-bold uppercase tracking-widest mb-2 group-hover:text-[#e63329] transition-colors">Performance Reports</h4>
+          <p class="font-body text-[#555] text-xs leading-relaxed">Full Q&A breakdown. Strengths, weaknesses, recommendations after every session.</p>
+        </div>
+        <div class="border border-[#1a1a1a] p-5 hover:border-[#e63329]/40 transition-colors group">
+          <div class="text-2xl mb-3">🔐</div>
+          <h4 class="font-body text-white text-sm font-bold uppercase tracking-widest mb-2 group-hover:text-[#e63329] transition-colors">Your Data, Secure</h4>
+          <p class="font-body text-[#555] text-xs leading-relaxed">Resume and interviews stored only for you, under your account.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ── -->
+  <section id="stats-section" class="w-full py-24 px-4 border-t border-[#111]">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+        <div>
+          <div id="stat-interviews" class="brush-text text-white leading-none mb-2 text-5xl sm:text-7xl md:text-8xl">0+</div>
+          <div class="font-body text-xs text-[#555] uppercase tracking-widest">Interviews Conducted</div>
+        </div>
+        <div>
+          <div id="stat-improvement" class="brush-text text-[#e63329] leading-none mb-2 text-5xl sm:text-7xl md:text-8xl">0%</div>
+          <div class="font-body text-xs text-[#555] uppercase tracking-widest">Average Improvement Rate</div>
+        </div>
+        <div>
+          <div id="stat-questions" class="brush-text text-white leading-none mb-2 text-5xl sm:text-7xl md:text-8xl">0+</div>
+          <div class="font-body text-xs text-[#555] uppercase tracking-widest">Role-Specific Questions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FINAL CTA ── -->
+  <section class="w-full py-32 px-4 border-t border-[#111] bg-[#050505] text-center">
+    <div class="max-w-4xl mx-auto">
+      <div class="tag tag-red mb-6 inline-block">YOUR MOVE</div>
+      <h2 class="brush-text text-white mb-6 text-4xl sm:text-6xl md:text-7xl">
+        READY TO GET<br><span class="text-[#e63329]">GRILLED?</span>
+      </h2>
+      <p class="font-body text-[#666] text-sm mb-8 leading-relaxed">
+        Upload your resume. Pick your role. Answer to the AI.<br>No shortcuts. No excuses. Just results.
+      </p>
+      <a href="login.html" class="btn-primary py-5 px-12 text-lg inline-flex" style="background: #e63329; color: #fff;">
+        ▶ START YOUR FIRST INTERVIEW
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="w-full border-t border-[#111] py-12 px-4 text-center">
+    <a href="index.html" class="brush-text text-white text-3xl tracking-widest hover:text-[#e63329] transition-colors">SKILLVIVA</a>
+    <p class="font-body text-[#444] text-xs mt-2">© 2025 SkillViva. Built with Sarvam AI.</p>
+  </footer>
+
+  <script>
+    // ==========================================
+    // EXPLAINING THE LANDING PAGE FLOW
+    // ==========================================
+    // VISUAL FLOW:
+    // USER (Scrolls down the landing page)
+    // ↓
+    // INTERSECTION OBSERVER (A built-in browser tool that watches when elements appear on screen)
+    // ↓
+    // JAVASCRIPT (Starts counting up the numbers like "10,000+" really fast for a cool visual effect)
+    // ↓
+    // JAVASCRIPT (Checks if they are already logged in -> Sends them straight to the Dashboard!)
+
+    // 1. This function creates the cool "counting up" animation for the stats
+    const animateStat = (id, target, suffix = "", duration = 2000) => {
+      // Find the text box on the screen
+      const el = document.getElementById(id);
+      let startTime = null; // We use this to track time
+      
+      // The "step" function runs over and over again, very fast!
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp; // Start the clock
+        
+        // Math: How far along are we? (From 0.0 to 1.0)
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        
+        // Math: Multiply our progress by the final number
+        // e.g. If we are 50% done, and the target is 100, the number is 50.
+        el.innerText = Math.floor(progress * target).toLocaleString() + suffix;
+        
+        // If we aren't at 100% yet, ask the browser to run this again on the next frame
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      
+      // Start the animation loop!
+      requestAnimationFrame(step);
+    };
+
+    // 2. The "Intersection Observer" watches the screen
+    // It triggers when the user scrolls down and sees the "stats-section"
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Is the section visible on screen right now?
+        if (entry.isIntersecting) {
+          // YES! Start the animations!
+          animateStat("stat-interviews", 10000, "+");
+          animateStat("stat-improvement", 94, "%");
+          animateStat("stat-questions", 500, "+");
+          
+          // We only want this to happen ONCE, so we turn the observer off.
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 }); // Trigger when 30% of the section is visible
+
+    // Tell the observer what HTML element it should be watching
+    observer.observe(document.getElementById("stats-section"));
+    
+    // 3. Auto-Login Check
+    // If a user comes to the homepage, but they are already logged in,
+    // we should instantly teleport them to their dashboard!
+    const email = localStorage.getItem("skillviva_email");
+    if (email) {
+      // They have an email saved! Let's double check it with the server.
+      fetch("/api/auth/me", {
+        headers: { "X-User-Email": email }
+      })
+      .then(res => {
+        // If the server says "Yes, they are logged in!", teleport them!
+        if (res.ok) window.location.href = "dashboard.html";
+      });
+    }
+  </script>
+</body>
+</html>

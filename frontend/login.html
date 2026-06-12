@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — SkillViva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-white overflow-hidden font-sans">
+  <main class="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-black">
+    <!-- Background textures -->
+    <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px);"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-[#e63329] rounded-full blur-[150px] opacity-20 pointer-events-none"></div>
+
+    <a href="index.html" class="absolute top-8 left-8 brush-text text-white text-2xl tracking-widest hover:text-[#e63329] transition-colors">
+      SKILLVIVA
+    </a>
+
+    <div class="card-gritty w-full max-w-md relative z-10 fade-up">
+      <div class="tag tag-red mb-6">MEMBER ACCESS</div>
+      <h1 class="brush-text text-white text-5xl mb-2">ACCESS<br>GRANTED.</h1>
+      
+      <!-- Step 1: Email Request -->
+      <div id="step-email">
+        <p class="font-body text-[#888] text-sm mb-8">
+          Enter your email to secure a passwordless access key.
+        </p>
+        <form id="email-form" class="flex flex-col gap-5">
+          <div>
+            <label class="font-body text-xs text-[#555] uppercase tracking-widest mb-2 block">
+              Email Address
+            </label>
+            <input
+              id="email-input"
+              type="email"
+              class="input-gritty"
+              placeholder="e.g. rahul@skillviva.dev"
+              required
+            >
+          </div>
+          <button type="submit" id="email-submit-btn" class="btn-primary w-full justify-center mt-2">
+            ▶ REQUEST OTP
+          </button>
+        </form>
+      </div>
+
+      <!-- Step 2: OTP Verification -->
+      <div id="step-otp" class="hidden">
+        <p class="font-body text-[#888] text-sm mb-6">
+          Enter the 6-digit access code sent to <span id="target-email" class="text-white font-bold">your email</span>.
+        </p>
+        <form id="otp-form" class="flex flex-col gap-5">
+          <div>
+            <label class="font-body text-xs text-[#555] uppercase tracking-widest mb-3 block">
+              Verification Code
+            </label>
+            <!-- 6 Digit Input boxes -->
+            <div class="flex gap-2 justify-between mb-2">
+              <input type="text" maxlength="1" class="otp-box w-12 h-14 text-center bg-[#111] border border-[#222] text-white font-bold font-body text-xl focus:border-[#e63329] focus:outline-none" required>
+              <input type="text" maxlength="1" class="otp-box w-12 h-14 text-center bg-[#111] border border-[#222] text-white font-bold font-body text-xl focus:border-[#e63329] focus:outline-none" required>
+              <input type="text" maxlength="1" class="otp-box w-12 h-14 text-center bg-[#111] border border-[#222] text-white font-bold font-body text-xl focus:border-[#e63329] focus:outline-none" required>
+              <input type="text" maxlength="1" class="otp-box w-12 h-14 text-center bg-[#111] border border-[#222] text-white font-bold font-body text-xl focus:border-[#e63329] focus:outline-none" required>
+              <input type="text" maxlength="1" class="otp-box w-12 h-14 text-center bg-[#111] border border-[#222] text-white font-bold font-body text-xl focus:border-[#e63329] focus:outline-none" required>
+              <input type="text" maxlength="1" class="otp-box w-12 h-14 text-center bg-[#111] border border-[#222] text-white font-bold font-body text-xl focus:border-[#e63329] focus:outline-none" required>
+            </div>
+          </div>
+          <button type="submit" id="otp-submit-btn" class="btn-primary w-full justify-center mt-2">
+            ▶ VERIFY CODE
+          </button>
+          <button type="button" id="back-btn" class="font-body text-[10px] text-[#555] hover:text-[#e63329] uppercase tracking-widest transition-colors mt-1">
+            ← Change Email
+          </button>
+        </form>
+      </div>
+
+      <div id="error-message" class="hidden text-[#e63329] font-body text-xs tracking-wide bg-[#e63329]/10 p-3 border border-[#e63329]/30 mt-4"></div>
+    </div>
+  </main>
+
+  <script>
+    const emailStep = document.getElementById("step-email");
+    const otpStep = document.getElementById("step-otp");
+    const emailForm = document.getElementById("email-form");
+    const emailInput = document.getElementById("email-input");
+    const emailSubmitBtn = document.getElementById("email-submit-btn");
+    
+    const otpStep = document.getElementById("step-otp");
+    const emailStep = document.getElementById("step-email");
+    const targetEmailSpan = document.getElementById("target-email");
+    const otpForm = document.getElementById("otp-form");
+    const otpBoxes = document.querySelectorAll(".otp-box");
+    const otpSubmitBtn = document.getElementById("otp-submit-btn");
+    
+    const errorMsg = document.getElementById("error-message");
+    const backBtn = document.getElementById("back-btn");
+
+    // We create a variable to remember the user's email temporarily while they check their inbox.
+    let loginEmail = "";
+
+    // OTP Box auto-advance logic
+    // This makes it easy for the user: when they type a number, the cursor automatically jumps to the next box!
+    otpBoxes.forEach((box, index) => {
+      box.addEventListener("input", (e) => {
+        if (e.target.value.length === 1) {
+          // If they typed 1 character, jump to the next box (if it exists)
+          if (index < otpBoxes.length - 1) otpBoxes[index + 1].focus();
+        }
+      });
+      box.addEventListener("keydown", (e) => {
+        // If they press backspace and the box is empty, jump to the previous box
+        if (e.key === "Backspace" && e.target.value === "") {
+          if (index > 0) otpBoxes[index - 1].focus();
+        }
+      });
+    });
+
+    // Step 1: Send OTP Event Listener
+    // What button triggers it? The "REQUEST OTP" button (inside the emailForm).
+    emailForm.addEventListener("submit", async (e) => {
+      // e.preventDefault() stops the page from reloading. We want to stay on this page!
+      e.preventDefault();
+      
+      // Hide any old error messages
+      errorMsg.classList.add("hidden");
+      
+      // Get the email they typed and make it lowercase
+      const email = emailInput.value.trim().toLowerCase();
+      if (!email) return; // If it's empty, do nothing
+
+      // Change the button text so the user knows something is loading
+      emailSubmitBtn.innerText = "SENDING OTP...";
+      emailSubmitBtn.disabled = true;
+
+      try {
+        // API REQUEST TO BACKEND
+        // We use fetch() to send the email to our Python server.
+        const res = await fetch("/api/auth/send-otp", {
+          method: "POST", // POST means we are SENDING data
+          headers: { "Content-Type": "application/json" }, // We are sending JSON format
+          body: JSON.stringify({ email }) // We turn the email variable into a JSON string
+        });
+        
+        // We wait for the backend to reply, then read the reply
+        const data = await res.json();
+        
+        // If the backend says everything is OK (status 200)
+        if (res.ok) {
+          // Save the email
+          loginEmail = email;
+          targetEmailSpan.innerText = email; // Show it on screen so they know where we sent it
+          
+          // DOM MANIPULATION: Hide the email box and show the 6-digit code boxes
+          emailStep.classList.add("hidden");
+          otpStep.classList.remove("hidden");
+          setTimeout(() => otpBoxes[0].focus(), 100); // Put their typing cursor in the first box
+        } else {
+          // If the backend gives an error, show it to the user
+          errorMsg.innerText = data.error || "Failed to send OTP.";
+          errorMsg.classList.remove("hidden");
+        }
+      } catch (err) {
+        // This happens if the internet is down or the Python server is not running
+        errorMsg.innerText = "Connection error. Make sure Python FastAPI backend is running.";
+        errorMsg.classList.remove("hidden");
+      } finally {
+        // Change the button back to normal no matter what happened
+        emailSubmitBtn.innerText = "▶ REQUEST OTP";
+        emailSubmitBtn.disabled = false;
+      }
+    });
+
+    // Step 2: Verify OTP Event Listener
+    // What button triggers it? The "VERIFY CODE" button (inside the otpForm).
+    otpForm.addEventListener("submit", async (e) => {
+      e.preventDefault(); // Stop page reload
+      errorMsg.classList.add("hidden");
+      
+      // Combine all 6 boxes into one string (like "123456")
+      let otpCode = "";
+      otpBoxes.forEach(b => otpCode += b.value);
+      if (otpCode.length !== 6) return; // Stop if they didn't type 6 numbers
+
+      // Change button text to show loading
+      otpSubmitBtn.innerText = "VERIFYING...";
+      otpSubmitBtn.disabled = true;
+
+      try {
+        // API REQUEST TO BACKEND
+        // We send BOTH the email and the 6-digit code to the server.
+        const res = await fetch("/api/auth/verify-otp", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: loginEmail, otp: otpCode })
+        });
+        
+        const data = await res.json();
+        
+        if (res.ok) {
+          // SUCCESS! The server says the code is correct.
+          // Save the email securely in the browser's memory (localStorage)
+          localStorage.setItem("skillviva_user_email", loginEmail);
+          
+          // Redirect the user to the correct page based on if they are a new user or not
+          if (!data.user.isOnboarded) {
+            window.location.href = "onboarding.html";
+          } else {
+            window.location.href = "dashboard.html";
+          }
+        } else {
+          // Code was wrong! Show error message
+          errorMsg.innerText = data.error || "Invalid verification code.";
+          errorMsg.classList.remove("hidden");
+          
+          // Clear all the boxes so they can try again
+          otpBoxes.forEach(b => b.value = "");
+          otpBoxes[0].focus(); // Put cursor back in first box
+        }
+      } catch (err) {
+        errorMsg.innerText = "Server connection error.";
+        errorMsg.classList.remove("hidden");
+      } finally {
+        // Reset the button
+        otpSubmitBtn.innerText = "▶ VERIFY CODE";
+        otpSubmitBtn.disabled = false;
+      }
+    });
+
+    // "Back" button listener. Lets the user go back if they typed the wrong email.
+    backBtn.addEventListener("click", () => {
+      errorMsg.classList.add("hidden");
+      otpStep.classList.add("hidden");
+      emailStep.classList.remove("hidden");
+      emailInput.focus();
+    });
+
+    // Auto-login Check
+    // When the page first loads, we check if the user is ALREADY logged in from yesterday!
+    const savedEmail = localStorage.getItem("skillviva_user_email");
+    if (savedEmail) {
+      // Send a quick request to the server to see if their account still exists
+      fetch("/api/auth/me", {
+        headers: { "X-User-Email": savedEmail }
+      }).then(res => {
+        if (res.ok) window.location.href = "dashboard.html"; // Jump straight to dashboard!
+      });
+    }
+  </script>
+</body>
+</html>

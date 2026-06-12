@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile — SkillViva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-white font-sans">
+
+  <!-- ── NAV ── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-[#1a1a1a] bg-black/95 backdrop-blur-md">
+    <div class="max-w-7xl w-full mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="dashboard.html" class="brush-text text-white text-2xl tracking-widest hover:text-[#e63329] transition-colors mt-1">
+        SKILLVIVA
+      </a>
+      <div class="hidden sm:flex items-center gap-6">
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="resume.html" class="nav-link">Resume</a>
+        <a href="interview.html" class="nav-link">Interview</a>
+        <a href="profile.html" class="nav-link text-[#e63329]">Profile</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="logout-btn" class="font-body text-xs text-[#555] hover:text-[#e63329] uppercase tracking-widest transition-colors ml-2">
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="h-16"></div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="max-w-3xl mx-auto px-4 py-12">
+    <div class="fade-up">
+      <div class="tag tag-red mb-4">CANDIDATE DOSSIER</div>
+      <h1 class="brush-text text-5xl sm:text-6xl text-white mb-8">
+        YOUR PROFILE.
+      </h1>
+      
+      <div class="card-gritty">
+        <form id="profile-form" class="flex flex-col gap-6">
+          <div>
+            <label class="font-body text-xs text-[#555] uppercase tracking-widest mb-2 block">
+              Full Name
+            </label>
+            <input
+              id="name-input"
+              type="text"
+              class="input-gritty"
+              placeholder="e.g. John Doe"
+              required
+            >
+          </div>
+          
+          <div>
+            <label class="font-body text-xs text-[#555] uppercase tracking-widest mb-2 block">
+              Target Role
+            </label>
+            <input
+              id="role-input"
+              type="text"
+              class="input-gritty"
+              placeholder="e.g. Frontend Developer"
+              required
+            >
+            <p class="font-body text-[10px] text-[#555] mt-2 leading-relaxed">
+              Updating your target role will affect the type of questions generated during your mock interviews.
+            </p>
+          </div>
+          
+          <div id="status-msg" class="hidden text-green-500 font-body text-xs tracking-wide bg-green-500/10 p-3 border border-green-500/30"></div>
+          <div id="error-msg" class="hidden text-[#e63329] font-body text-xs tracking-wide bg-[#e63329]/10 p-3 border border-[#e63329]/30"></div>
+
+          <button type="submit" id="save-btn" class="btn-primary w-full justify-center mt-4 py-4">
+            ▶ SAVE CHANGES
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // ==========================================
+    // EXPLAINING THE PROFILE UPDATE FLOW
+    // ==========================================
+    // VISUAL FLOW:
+    // JAVASCRIPT (Reads your email from memory)
+    // ↓
+    // API REQUEST (Fetches your current Name and Role from the database)
+    // ↓
+    // DOM MANIPULATION (Fills the input boxes with your current data)
+    // ↓
+    // USER (Types a new name or role and clicks "Save Changes")
+    // ↓
+    // EVENT LISTENER (Catches the form submit)
+    // ↓
+    // API REQUEST (Sends the new data to the server using PUT)
+    // ↓
+    // DOM MANIPULATION (Shows a green success message!)
+
+    // 1. Check if the user is logged in
+    const email = localStorage.getItem("skillviva_email");
+    if (!email) {
+      window.location.href = "login.html"; // Not logged in? Get out!
+    }
+
+    // Grab HTML elements so we can control them
+    const nameInput = document.getElementById("name-input");
+    const roleInput = document.getElementById("role-input");
+    const statusMsg = document.getElementById("status-msg");
+    const errorMsg = document.getElementById("error-msg");
+    const saveBtn = document.getElementById("save-btn");
+
+    // 2. Load the user's existing profile
+    // API REQUEST: Go to the server and ask for their details
+    fetch("/api/auth/me", {
+      headers: { "X-User-Email": email } // Show our ID card
+    })
+    .then(res => {
+      // If the server says "Who are you?", throw an error
+      if (!res.ok) throw new Error("Not authorized");
+      return res.json(); // Convert reply to JSON
+    })
+    .then(user => {
+      // DOM MANIPULATION: Fill the text boxes with their data
+      nameInput.value = user.name || "";
+      roleInput.value = user.targetRole || "";
+    })
+    .catch(err => {
+      // If they aren't authorized, clear memory and kick them to login
+      localStorage.removeItem("skillviva_email");
+      window.location.href = "login.html";
+    });
+
+    // 3. Handle the Profile Update Form
+    // What button triggers it? The "SAVE CHANGES" button!
+    document.getElementById("profile-form").addEventListener("submit", async (e) => {
+      // Stop the page from reloading
+      e.preventDefault();
+      
+      // Hide any old success or error messages
+      statusMsg.classList.add("hidden");
+      errorMsg.classList.add("hidden");
+      
+      // Show loading text on the button
+      saveBtn.innerText = "SAVING...";
+      saveBtn.disabled = true; // Stop double-clicking
+
+      try {
+        // API REQUEST: Send the new name and role to the server
+        const res = await fetch("/api/auth/me", {
+          method: "PUT", // PUT means we are UPDATING existing data
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Email": email
+          },
+          // Convert the text box values into JSON
+          body: JSON.stringify({
+            name: nameInput.value,
+            targetRole: roleInput.value
+          })
+        });
+
+        // 4. Check the server's reply
+        if (res.ok) {
+          // SUCCESS! Show the green message
+          statusMsg.innerText = "Profile updated successfully.";
+          statusMsg.classList.remove("hidden");
+        } else {
+          // ERROR! Show the red message
+          const data = await res.json();
+          errorMsg.innerText = data.error || "Failed to update profile.";
+          errorMsg.classList.remove("hidden");
+        }
+      } catch (err) {
+        // Internet is broken
+        errorMsg.innerText = "Network error occurred.";
+        errorMsg.classList.remove("hidden");
+      } finally {
+        // Fix the button back to normal
+        saveBtn.innerText = "▶ SAVE CHANGES";
+        saveBtn.disabled = false;
+      }
+    });
+
+    // 5. Logout Action
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      // Erase everything from browser memory!
+      localStorage.removeItem("skillviva_email");
+      localStorage.removeItem("skillviva_resume_context");
+      localStorage.removeItem("skillviva_interview_config");
+      window.location.href = "login.html"; // Go back to login
+    });
+  </script>
+</body>
+</html>

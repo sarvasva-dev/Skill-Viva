@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Analyzer — SkillViva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+</head>
+<body class="bg-black text-white font-sans">
+
+  <!-- ── NAV ── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-[#1a1a1a] bg-black/95 backdrop-blur-md">
+    <div class="max-w-7xl w-full mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="dashboard.html" class="brush-text text-white text-2xl tracking-widest hover:text-[#e63329] transition-colors mt-1">
+        SKILLVIVA
+      </a>
+      <div class="hidden sm:flex items-center gap-6">
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="resume.html" class="nav-link text-[#e63329]">Resume</a>
+        <a href="interview.html" class="nav-link">Interview</a>
+        <a href="profile.html" class="nav-link">Profile</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="profile.html" class="flex items-center hover:opacity-80 transition-opacity">
+          <div class="hidden sm:flex flex-col items-end mr-2">
+            <span id="user-display-name" class="font-body text-xs text-white font-semibold">User</span>
+            <span id="user-display-role" class="font-body text-[10px] text-[#e63329] uppercase tracking-widest">Frontend Developer</span>
+          </div>
+          <div id="user-display-avatar" class="w-8 h-8 rounded-full bg-[#111] border border-[#333] flex items-center justify-center flex-shrink-0 transition-colors">
+            <span class="font-body text-xs font-bold text-white">U</span>
+          </div>
+        </a>
+        <button id="logout-btn" class="font-body text-xs text-[#555] hover:text-[#e63329] uppercase tracking-widest transition-colors ml-2">
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="h-16"></div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+      
+      <!-- Upload Panel -->
+      <div class="lg:col-span-2">
+        <div class="tag tag-red mb-4">COMPLIANCE TEST</div>
+        <h1 class="brush-text text-5xl text-white mb-6">RESUME<br>ANALYSIS</h1>
+        <p class="font-body text-sm text-[#888] mb-8 leading-relaxed">
+          Upload your resume PDF. Our client-side parser extracts text locally without sending files to the server. 
+          The AI will cross-reference your skills against your dream job role.
+        </p>
+
+        <!-- Dropzone -->
+        <div id="dropzone" class="border-2 border-dashed border-[#222] hover:border-[#e63329]/50 bg-[#050505] p-8 text-center cursor-pointer transition-colors flex flex-col items-center justify-center min-h-[220px]">
+          <div class="text-4xl mb-4">📄</div>
+          <span class="font-body text-xs text-white uppercase tracking-widest font-bold mb-2">Drag & Drop Resume PDF</span>
+          <span class="font-body text-[10px] text-[#555] uppercase tracking-widest">or click to browse files</span>
+          <input type="file" id="file-input" class="hidden" accept=".pdf">
+        </div>
+        
+        <div id="status-panel" class="hidden mt-6 p-4 border border-[#e63329]/20 bg-[#e63329]/5">
+          <div class="flex items-center gap-3">
+            <div class="w-4 h-4 border-2 border-t-[#e63329] border-black rounded-full animate-spin"></div>
+            <span id="status-text" class="font-body text-xs text-white uppercase tracking-widest font-bold">Extracting local PDF...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analysis Results Panel -->
+      <div class="lg:col-span-3">
+        <div class="card-gritty min-h-[400px]">
+          <div class="tag tag-red mb-6">RECRUITER DEBRIEF</div>
+          
+          <div id="results-placeholder" class="h-[300px] flex items-center justify-center text-[#555] font-body text-sm border border-[#222] border-dashed">
+            Upload a PDF file to run mock recruiter compliance checks.
+          </div>
+
+          <div id="results-loaded" class="hidden">
+            <h3 class="brush-text text-white text-3xl mb-4" id="results-title">Brutal Recruiter Review</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              <div class="border border-[#222] p-4">
+                <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-1">ATS Friendly</div>
+                <div id="ats-friendly" class="font-body text-sm font-bold text-green-500">YES</div>
+                <div id="ats-reason" class="font-body text-[10px] text-[#888] mt-1">Excellent header format.</div>
+              </div>
+              <div class="border border-[#222] p-4">
+                <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-1">Recruiter score</div>
+                <div id="recruiter-difficulty" class="font-body text-sm font-bold text-[#e63329]">Level 2 (Suggested)</div>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-2">Critical Review</div>
+              <p id="recruiter-feedback" class="font-body text-xs text-[#888] leading-relaxed">Feedback details...</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-2">Targeted Missing Skills</div>
+                <ul id="missing-skills-list" class="list-disc pl-4 font-body text-xs text-[#e63329] flex flex-col gap-1">
+                  <!-- items -->
+                </ul>
+              </div>
+              <div>
+                <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-2] uppercase tracking-widest mb-2">ATS Improvements</div>
+                <ul id="improvements-list" class="list-disc pl-4 font-body text-xs text-green-500 flex flex-col gap-1">
+                  <!-- items -->
+                </ul>
+              </div>
+            </div>
+            
+            <div class="mt-8 pt-4 border-t border-[#1a1a1a] text-right">
+              <a href="dashboard.html" class="btn-primary py-3 px-6 text-xs justify-center">▶ GO TO DASHBOARD</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const email = localStorage.getItem("skillviva_email");
+    if (!email) {
+      window.location.href = "login.html";
+    }
+
+    let targetRole = "Frontend Developer";
+
+    // Setup navbar user state
+    fetch("/api/auth/me", {
+      headers: { "X-User-Email": email }
+    })
+    .then(res => res.json())
+    .then(user => {
+      document.getElementById("user-display-name").innerText = user.name || "User";
+      document.getElementById("user-display-role").innerText = user.targetRole || "Frontend Developer";
+      document.getElementById("user-display-avatar").firstElementChild.innerText = (user.name || "U").charAt(0).toUpperCase();
+      targetRole = user.targetRole || "Frontend Developer";
+    });
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+
+    const dropzone = document.getElementById("dropzone");
+    const fileInput = document.getElementById("file-input");
+    const statusPanel = document.getElementById("status-panel");
+    const statusText = document.getElementById("status-text");
+
+    dropzone.addEventListener("click", () => fileInput.click());
+    
+    // Drag & Drop
+    dropzone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      dropzone.style.borderColor = "#e63329";
+    });
+
+    dropzone.addEventListener("dragleave", () => {
+      dropzone.style.borderColor = "#222";
+    });
+
+    dropzone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      dropzone.style.borderColor = "#222";
+      const file = e.dataTransfer.files[0];
+      if (file && file.type === "application/pdf") {
+        processPDF(file);
+      } else {
+        alert("Please upload a valid PDF file.");
+      }
+    });
+
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        processPDF(file);
+      }
+    });
+
+    // 4. This function actually reads the PDF file
+    const processPDF = async (file) => {
+      // Show the loading spinner
+      statusPanel.classList.remove("hidden");
+      statusText.innerText = "Extracting local PDF text...";
+
+      try {
+        const fileReader = new FileReader(); // A built-in browser tool to read files
+        fileReader.onload = async function() {
+          const typedarray = new Uint8Array(this.result); // Convert file into computer numbers
+          const pdf = await pdfjsLib.getDocument(typedarray).promise; // Give the numbers to pdf.js
+          let fullText = "";
+          
+          // Loop through the pages of the PDF to grab the text
+          // We limit it to 3 pages so we don't break the AI with too much text!
+          const pagesToRead = Math.min(pdf.numPages, 3);
+          for (let i = 1; i <= pagesToRead; i++) {
+            const page = await pdf.getPage(i);
+            const textContent = await page.getTextContent(); // Get all the words
+            const pageText = textContent.items.map(item => item.str).join(" "); // Combine the words into a sentence
+            fullText += pageText + "\n";
+          }
+          
+          // Did we get any text? (Sometimes scanned PDFs have NO text, just pictures!)
+          if (!fullText.trim()) {
+            alert("No text could be extracted from this PDF. Please check if it's scanned.");
+            statusPanel.classList.add("hidden");
+            return;
+          }
+          
+          // Now that we have the text, send it to the AI for grading!
+          analyzeResume(fullText);
+        };
+        fileReader.readAsArrayBuffer(file);
+      } catch (err) {
+        // If the PDF was corrupt or broken
+        console.error("PDF read error:", err);
+        alert("Failed to parse PDF.");
+        statusPanel.classList.add("hidden");
+      }
+    };
+
+    // 5. Send the text to the Backend AI
+    const analyzeResume = async (text) => {
+      // Update loading message
+      statusText.innerText = "Recruiter analyzing your skills...";
+      
+      try {
+        // API REQUEST: Send the text to our Python server
+        const res = await fetch("/api/resume", {
+          method: "POST", // POST means we are sending data
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Email": email
+          },
+          body: JSON.stringify({ text, targetRole }) // Send the resume text and their dream job
+        });
+        
+        if (res.ok) {
+          // SUCCESS! The AI finished grading it.
+          const analysis = await res.json();
+          renderResults(analysis); // Put the grades on the screen!
+        } else {
+          alert("Failed to analyze resume.");
+        }
+      } catch (err) {
+        alert("Server connection failed.");
+      } finally {
+        // Hide the loading spinner
+        statusPanel.classList.add("hidden");
+      }
+    };
+
+    const renderResults = (ana) => {
+      document.getElementById("results-placeholder").classList.add("hidden");
+      document.getElementById("results-loaded").classList.remove("hidden");
+
+      document.getElementById("ats-friendly").innerText = ana.atsFriendly ? "YES" : "NO";
+      document.getElementById("ats-friendly").className = "font-body text-sm font-bold " + (ana.atsFriendly ? "text-green-500" : "text-[#e63329]");
+      document.getElementById("ats-reason").innerText = ana.atsReason || "";
+      document.getElementById("recruiter-difficulty").innerText = "Level " + (ana.suggestedDifficulty || 2) + " (Suggested)";
+      document.getElementById("recruiter-feedback").innerText = ana.feedback || "Brutal analysis complete.";
+
+      // populate lists
+      const missingList = document.getElementById("missing-skills-list");
+      missingList.innerHTML = "";
+      if (ana.missingSkills && ana.missingSkills.length > 0) {
+        ana.missingSkills.forEach(s => {
+          const li = document.createElement("li");
+          li.innerText = s;
+          missingList.appendChild(li);
+        });
+      } else {
+        const li = document.createElement("li");
+        li.innerText = "None detected.";
+        missingList.appendChild(li);
+      }
+
+      const impList = document.getElementById("improvements-list");
+      impList.innerHTML = "";
+      if (ana.improvements && ana.improvements.length > 0) {
+        ana.improvements.forEach(s => {
+          const li = document.createElement("li");
+          li.innerText = s;
+          impList.appendChild(li);
+        });
+      } else {
+        const li = document.createElement("li");
+        li.innerText = "None detected.";
+        impList.appendChild(li);
+      }
+    };
+
+    // Logout Action
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      localStorage.removeItem("skillviva_email");
+      localStorage.removeItem("skillviva_resume_context");
+      localStorage.removeItem("skillviva_interview_config");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

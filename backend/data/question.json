@@ -1,0 +1,4140 @@
+{
+  "degree_role_mapping": {
+    "BCA": [
+      "frontend_developer",
+      "backend_developer",
+      "qa_tester",
+      "it_support_technician",
+      "data_analyst",
+      "web_developer"
+    ],
+    "B.Tech": [
+      "sde",
+      "frontend_developer",
+      "backend_developer",
+      "cloud_engineer",
+      "ai_ml_engineer",
+      "devops_engineer",
+      "cybersecurity_analyst",
+      "data_analyst",
+      "product_manager",
+      "business_analyst"
+    ],
+    "MCA": [
+      "sde",
+      "full_stack_developer",
+      "cloud_engineer",
+      "ai_ml_engineer",
+      "devops_engineer",
+      "cybersecurity_analyst",
+      "data_scientist",
+      "database_administrator"
+    ],
+    "BBA": [
+      "business_development_executive",
+      "sales_executive",
+      "marketing_coordinator",
+      "hr_assistant",
+      "operations_coordinator",
+      "financial_analyst_junior",
+      "customer_success_manager"
+    ],
+    "MBA": [
+      "product_manager",
+      "marketing_manager",
+      "hr_generalist",
+      "financial_analyst",
+      "management_consultant",
+      "business_analyst",
+      "customer_success_manager",
+      "supply_chain_manager"
+    ]
+  },
+  "roles_data": {
+    "sde": {
+      "title": "Software Development Engineer (SDE)",
+      "category": "Tech",
+      "questions": [
+        {
+          "company": "Amazon",
+          "role": "SDE 1 (Fresher)",
+          "topic": "Data Structures",
+          "difficulty": "Level 2",
+          "text": "Given an array of integers, find the next greater element for every element."
+        },
+        {
+          "company": "Amazon",
+          "role": "SDE 1 (New Grad)",
+          "topic": "Stacks",
+          "difficulty": "Level 2",
+          "text": "Solve the Asteroid Collision problem using stacks."
+        },
+        {
+          "company": "Amazon",
+          "role": "SDE 1",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time when you disagreed with your manager."
+        },
+        {
+          "company": "Amazon",
+          "role": "SDE 1",
+          "topic": "OOP Design",
+          "difficulty": "Level 2",
+          "text": "Design an online bookstore system with classes and relationships."
+        },
+        {
+          "company": "Amazon",
+          "role": "SDE 1",
+          "topic": "Graphs",
+          "difficulty": "Level 3",
+          "text": "Find the shortest path in a weighted graph using Dijkstra’s algorithm."
+        },
+        {
+          "company": "Google",
+          "role": "Software Engineer (New Grad)",
+          "topic": "Graphs",
+          "difficulty": "Level 3",
+          "text": "Perform topological sorting on a directed acyclic graph."
+        },
+        {
+          "company": "Google",
+          "role": "Software Engineer (Fresher)",
+          "topic": "Arrays",
+          "difficulty": "Level 1",
+          "text": "Find the longest subarray with sum equal to K."
+        },
+        {
+          "company": "Google",
+          "role": "Software Engineer",
+          "topic": "System Design",
+          "difficulty": "Level 3",
+          "text": "Design a URL shortening service like TinyURL."
+        },
+        {
+          "company": "Google",
+          "role": "Software Engineer",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Why do you want to work at Google?"
+        },
+        {
+          "company": "Microsoft",
+          "role": "SDE 1",
+          "topic": "Linked Lists",
+          "difficulty": "Level 1",
+          "text": "Detect and remove a loop in a linked list."
+        },
+        {
+          "company": "Microsoft",
+          "role": "SDE 1",
+          "topic": "Dynamic Programming",
+          "difficulty": "Level 3",
+          "text": "Find the minimum number of coins required to make a target amount."
+        },
+        {
+          "company": "Microsoft",
+          "role": "SDE 1",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Describe a challenging project and how you handled it."
+        },
+        {
+          "company": "Atlassian",
+          "role": "Graduate Software Engineer",
+          "topic": "Machine Coding",
+          "difficulty": "Level 1",
+          "text": "Build an in-memory task management system supporting CRUD operations."
+        },
+        {
+          "company": "Atlassian",
+          "role": "Graduate Software Engineer",
+          "topic": "Low Level Design",
+          "difficulty": "Level 2",
+          "text": "Design a parking lot system using object-oriented principles."
+        },
+        {
+          "company": "Adobe",
+          "role": "Member of Technical Staff (Fresher)",
+          "topic": "Trees",
+          "difficulty": "Level 1",
+          "text": "Find the lowest common ancestor in a binary tree."
+        },
+        {
+          "company": "Adobe",
+          "role": "MTS",
+          "topic": "Operating Systems",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between processes and threads."
+        },
+        {
+          "company": "Flipkart",
+          "role": "SDE 1",
+          "topic": "Dynamic Programming",
+          "difficulty": "Level 3",
+          "text": "Solve a 2D dynamic programming problem with O(N^3) optimization."
+        },
+        {
+          "company": "Flipkart",
+          "role": "SDE 1",
+          "topic": "Graphs",
+          "difficulty": "Level 2",
+          "text": "Solve a graph traversal problem involving shortest transformation paths."
+        },
+        {
+          "company": "Flipkart",
+          "role": "SDE 1",
+          "topic": "Machine Coding",
+          "difficulty": "Level 2",
+          "text": "Implement a production-level food delivery management module."
+        },
+        {
+          "company": "Swiggy",
+          "role": "Software Engineer 1",
+          "topic": "System Design",
+          "difficulty": "Level 3",
+          "text": "Design a real-time food order tracking system."
+        },
+        {
+          "company": "Swiggy",
+          "role": "Software Engineer",
+          "topic": "SQL",
+          "difficulty": "Level 2",
+          "text": "Write a query to find the second highest salary from an employee table."
+        },
+        {
+          "company": "Zomato",
+          "role": "SDE 1",
+          "topic": "Hashing",
+          "difficulty": "Level 1",
+          "text": "Find duplicate elements in an array efficiently."
+        },
+        {
+          "company": "Cred",
+          "role": "Backend Engineer (Fresher)",
+          "topic": "System Design",
+          "difficulty": "Level 3",
+          "text": "Design a scalable credit card payment reminder service."
+        },
+        {
+          "company": "Zoho",
+          "role": "Software Developer",
+          "topic": "Strings",
+          "difficulty": "Level 2",
+          "text": "Check whether two strings are anagrams without using built-in sorting."
+        },
+        {
+          "company": "Zoho",
+          "role": "Software Developer",
+          "topic": "Programming Logic",
+          "difficulty": "Level 1",
+          "text": "Print a pyramid pattern using nested loops."
+        },
+        {
+          "company": "Razorpay",
+          "role": "SDE 1",
+          "topic": "Concurrency",
+          "difficulty": "Level 2",
+          "text": "Explain race conditions and how to prevent them in distributed systems."
+        },
+        {
+          "company": "Razorpay",
+          "role": "SDE 1",
+          "topic": "Low Level Design",
+          "difficulty": "Level 2",
+          "text": "Design a wallet payment system with transaction history."
+        },
+        {
+          "company": "TCS Digital",
+          "role": "Assistant System Engineer",
+          "topic": "OOPs",
+          "difficulty": "Level 1",
+          "text": "Explain the four pillars of Object-Oriented Programming with examples."
+        },
+        {
+          "company": "TCS Prime",
+          "role": "Software Engineer",
+          "topic": "DBMS",
+          "difficulty": "Level 1",
+          "text": "Explain normalization and its different forms."
+        },
+        {
+          "company": "Infosys Power Programmer",
+          "role": "Power Programmer",
+          "topic": "Coding",
+          "difficulty": "Level 1",
+          "text": "Reverse a linked list iteratively and recursively."
+        },
+        {
+          "company": "Infosys Power Programmer",
+          "role": "Power Programmer",
+          "topic": "Computer Networks",
+          "difficulty": "Level 1",
+          "text": "Explain the TCP three-way handshake."
+        },
+        {
+          "company": "Wipro",
+          "role": "Project Engineer",
+          "topic": "Arrays",
+          "difficulty": "Level 2",
+          "text": "Find the maximum element in an array without using sorting."
+        },
+        {
+          "company": "Wipro",
+          "role": "Project Engineer",
+          "topic": "HR",
+          "difficulty": "Level 1",
+          "text": "Tell me about yourself and your final year project."
+        },
+        {
+          "company": "Cognizant",
+          "role": "Programmer Analyst Trainee",
+          "topic": "Java",
+          "difficulty": "Level 1",
+          "text": "What is the difference between HashMap and Hashtable?"
+        },
+        {
+          "company": "Cognizant",
+          "role": "Programmer Analyst Trainee",
+          "topic": "DBMS",
+          "difficulty": "Level 1",
+          "text": "What is the difference between DELETE, TRUNCATE, and DROP?"
+        },
+        {
+          "company": "Accenture",
+          "role": "Associate Software Engineer",
+          "topic": "Puzzles",
+          "difficulty": "Level 2",
+          "text": "A train crosses a pole in 15 seconds and a platform in 25 seconds. Find the platform length."
+        },
+        {
+          "company": "Accenture",
+          "role": "Associate Software Engineer",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where you worked in a team under pressure."
+        }
+      ]
+    },
+    "frontend_developer": {
+      "title": "Frontend Developer",
+      "category": "Tech",
+      "questions": [
+        {
+          "company": "Google",
+          "role": "Frontend Engineer (New Grad)",
+          "topic": "JavaScript",
+          "difficulty": "Level 2",
+          "text": "Implement a polyfill for Promise.all in JavaScript."
+        },
+        {
+          "company": "Google",
+          "role": "Frontend Engineer",
+          "topic": "Web Performance",
+          "difficulty": "Level 3",
+          "text": "How would you optimize the Largest Contentful Paint (LCP) of a React application?"
+        },
+        {
+          "company": "Google",
+          "role": "Frontend Engineer",
+          "topic": "Machine Coding",
+          "difficulty": "Level 1",
+          "text": "Build a Google Docs-like collaborative text editor frontend."
+        },
+        {
+          "company": "Meta",
+          "role": "Frontend Engineer",
+          "topic": "React / Hooks",
+          "difficulty": "Level 1",
+          "text": "Build a custom usePrevious hook in React."
+        },
+        {
+          "company": "Meta",
+          "role": "Frontend Engineer (University Grad)",
+          "topic": "JavaScript",
+          "difficulty": "Level 2",
+          "text": "Explain the event loop and how microtasks differ from macrotasks."
+        },
+        {
+          "company": "Meta",
+          "role": "Frontend Engineer",
+          "topic": "Frontend System Design",
+          "difficulty": "Level 3",
+          "text": "Design the frontend architecture for a news feed application like Facebook."
+        },
+        {
+          "company": "Amazon",
+          "role": "Frontend Engineer",
+          "topic": "React",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between controlled and uncontrolled components in React."
+        },
+        {
+          "company": "Amazon",
+          "role": "Frontend Engineer",
+          "topic": "Machine Coding",
+          "difficulty": "Level 2",
+          "text": "Build a star rating widget using HTML, CSS, and JavaScript."
+        },
+        {
+          "company": "Amazon",
+          "role": "Frontend Engineer",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a time when you improved user experience in a project."
+        },
+        {
+          "company": "Microsoft",
+          "role": "Frontend Developer",
+          "topic": "HTML/CSS",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between position relative, absolute, fixed, and sticky in CSS."
+        },
+        {
+          "company": "Microsoft",
+          "role": "Frontend Engineer",
+          "topic": "JavaScript",
+          "difficulty": "Level 2",
+          "text": "Implement debounce and throttle functions in JavaScript."
+        },
+        {
+          "company": "Microsoft",
+          "role": "Frontend Engineer",
+          "topic": "Accessibility",
+          "difficulty": "Level 3",
+          "text": "How would you improve accessibility for a complex web form?"
+        },
+        {
+          "company": "Flipkart",
+          "role": "Frontend Engineer",
+          "topic": "React / State Management",
+          "difficulty": "Level 2",
+          "text": "Explain Redux middleware and implement async API handling using Redux Thunk."
+        },
+        {
+          "company": "Flipkart",
+          "role": "Frontend Engineer",
+          "topic": "Machine Coding",
+          "difficulty": "Level 1",
+          "text": "Build an autocomplete search component with debounced API calls."
+        },
+        {
+          "company": "Swiggy",
+          "role": "Frontend Engineer (Fresher)",
+          "topic": "React / Hooks",
+          "difficulty": "Level 1",
+          "text": "Build a custom useDebounce hook in React."
+        },
+        {
+          "company": "Swiggy",
+          "role": "Frontend Developer",
+          "topic": "Frontend System Design",
+          "difficulty": "Level 3",
+          "text": "Design the frontend architecture for a food delivery tracking dashboard."
+        },
+        {
+          "company": "Cred",
+          "role": "Frontend Engineer",
+          "topic": "JavaScript",
+          "difficulty": "Level 2",
+          "text": "Implement your own virtual DOM diffing logic conceptually."
+        },
+        {
+          "company": "Cred",
+          "role": "Frontend Engineer",
+          "topic": "Performance Optimization",
+          "difficulty": "Level 3",
+          "text": "How would you reduce unnecessary re-renders in a large React application?"
+        },
+        {
+          "company": "Zomato",
+          "role": "Frontend Developer",
+          "topic": "Machine Coding",
+          "difficulty": "Level 1",
+          "text": "Build an infinite scrolling restaurant listing page."
+        },
+        {
+          "company": "Razorpay",
+          "role": "Frontend Engineer",
+          "topic": "Security",
+          "difficulty": "Level 2",
+          "text": "What are XSS attacks and how can they be prevented in React applications?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Frontend Engineer",
+          "topic": "JavaScript",
+          "difficulty": "Level 2",
+          "text": "Implement a deep clone utility function in JavaScript."
+        },
+        {
+          "company": "Zepto",
+          "role": "Frontend Engineer",
+          "topic": "React",
+          "difficulty": "Level 1",
+          "text": "Explain React reconciliation and how keys affect rendering."
+        },
+        {
+          "company": "Zepto",
+          "role": "Frontend Engineer",
+          "topic": "Machine Coding",
+          "difficulty": "Level 1",
+          "text": "Build a dynamic Kanban board with drag-and-drop functionality."
+        },
+        {
+          "company": "TCS",
+          "role": "Frontend Developer",
+          "topic": "HTML/CSS",
+          "difficulty": "Level 1",
+          "text": "What is the difference between inline, block, and inline-block elements?"
+        },
+        {
+          "company": "Infosys",
+          "role": "Frontend Developer",
+          "topic": "JavaScript",
+          "difficulty": "Level 1",
+          "text": "Explain var, let, and const with scope differences."
+        },
+        {
+          "company": "Infosys",
+          "role": "Frontend Engineer",
+          "topic": "React",
+          "difficulty": "Level 1",
+          "text": "What is the difference between useEffect and useLayoutEffect?"
+        },
+        {
+          "company": "Cognizant",
+          "role": "Frontend Developer",
+          "topic": "DOM",
+          "difficulty": "Level 1",
+          "text": "Explain event bubbling and event capturing in JavaScript."
+        },
+        {
+          "company": "Wipro",
+          "role": "Frontend Developer",
+          "topic": "CSS",
+          "difficulty": "Level 1",
+          "text": "What is Flexbox and how does justify-content differ from align-items?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Frontend Engineer",
+          "topic": "Machine Coding",
+          "difficulty": "Level 1",
+          "text": "Build a nested comment system similar to Reddit."
+        },
+        {
+          "company": "Meta",
+          "role": "Frontend Engineer",
+          "topic": "JavaScript",
+          "difficulty": "Level 2",
+          "text": "Implement a flatten() function for nested arrays."
+        }
+      ]
+    },
+    "backend_developer": {
+      "title": "Backend Developer",
+      "category": "Tech",
+      "questions": [
+        {
+          "company": "Amazon",
+          "role": "Backend Engineer (New Grad)",
+          "topic": "REST APIs",
+          "difficulty": "Level 3",
+          "text": "Design a REST API for an e-commerce order management system."
+        },
+        {
+          "company": "Amazon",
+          "role": "SDE 1 Backend",
+          "topic": "Databases",
+          "difficulty": "Level 2",
+          "text": "Explain when you would choose SQL over NoSQL in a scalable application."
+        },
+        {
+          "company": "Amazon",
+          "role": "Backend Developer",
+          "topic": "Caching / Redis",
+          "difficulty": "Level 3",
+          "text": "How would you design a caching layer for a high-traffic product catalog?"
+        },
+        {
+          "company": "Google",
+          "role": "Backend Engineer",
+          "topic": "System Design",
+          "difficulty": "Level 3",
+          "text": "Design a URL shortening service like TinyURL with scalability considerations."
+        },
+        {
+          "company": "Google",
+          "role": "Software Engineer (Backend)",
+          "topic": "Concurrency",
+          "difficulty": "Level 2",
+          "text": "Explain race conditions and how mutexes and semaphores help prevent them."
+        },
+        {
+          "company": "Google",
+          "role": "Backend Engineer",
+          "topic": "Microservices",
+          "difficulty": "Level 2",
+          "text": "What challenges arise in microservices communication and how would you solve them?"
+        },
+        {
+          "company": "Microsoft",
+          "role": "Backend Engineer",
+          "topic": "Databases",
+          "difficulty": "Level 3",
+          "text": "How would you optimize a slow SQL query running on a large dataset?"
+        },
+        {
+          "company": "Microsoft",
+          "role": "Backend Developer",
+          "topic": "Node.js",
+          "difficulty": "Level 2",
+          "text": "Explain the event loop in Node.js and how asynchronous operations are handled."
+        },
+        {
+          "company": "Microsoft",
+          "role": "Backend Engineer",
+          "topic": "APIs",
+          "difficulty": "Level 2",
+          "text": "Compare REST APIs and GraphQL with real-world use cases."
+        },
+        {
+          "company": "Cred",
+          "role": "Backend Engineer (Fresher)",
+          "topic": "Concurrency / Payments",
+          "difficulty": "Level 2",
+          "text": "How would you ensure idempotency in a payment processing API?"
+        },
+        {
+          "company": "Cred",
+          "role": "Backend Engineer",
+          "topic": "Redis",
+          "difficulty": "Level 3",
+          "text": "How does Redis improve backend performance and where should it be used?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Backend Engineer (Fresher)",
+          "topic": "System Design / Concurrency",
+          "difficulty": "Level 3",
+          "text": "How do you prevent a double payment issue in a distributed payment system?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Backend Engineer",
+          "topic": "Microservices",
+          "difficulty": "Level 3",
+          "text": "How would you handle service discovery and communication in a microservices architecture?"
+        },
+        {
+          "company": "Zeta",
+          "role": "Backend Developer",
+          "topic": "Java",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between HashMap and ConcurrentHashMap."
+        },
+        {
+          "company": "PhonePe",
+          "role": "Backend Engineer",
+          "topic": "Distributed Systems",
+          "difficulty": "Level 3",
+          "text": "How would you design a backend system capable of handling millions of UPI transactions?"
+        },
+        {
+          "company": "PhonePe",
+          "role": "Backend Engineer",
+          "topic": "Databases",
+          "difficulty": "Level 2",
+          "text": "What are database indexes and how do they improve query performance?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Backend Developer",
+          "topic": "System Design",
+          "difficulty": "Level 3",
+          "text": "Design the backend architecture for a food delivery order tracking system."
+        },
+        {
+          "company": "Swiggy",
+          "role": "Backend Engineer",
+          "topic": "Python",
+          "difficulty": "Level 3",
+          "text": "How would you optimize a Python API handling high concurrent traffic?"
+        },
+        {
+          "company": "Zomato",
+          "role": "Backend Engineer",
+          "topic": "Databases",
+          "difficulty": "Level 1",
+          "text": "Explain database sharding and where it is useful."
+        },
+        {
+          "company": "Zomato",
+          "role": "Backend Developer",
+          "topic": "Caching",
+          "difficulty": "Level 2",
+          "text": "How would you reduce database load for frequently accessed restaurant data?"
+        },
+        {
+          "company": "Groww",
+          "role": "Backend Engineer",
+          "topic": "Security",
+          "difficulty": "Level 3",
+          "text": "How would you securely implement JWT authentication and refresh tokens?"
+        },
+        {
+          "company": "Groww",
+          "role": "Backend Developer",
+          "topic": "APIs",
+          "difficulty": "Level 2",
+          "text": "How do rate limiting and API throttling work in backend systems?"
+        },
+        {
+          "company": "TCS",
+          "role": "Backend Developer",
+          "topic": "OOPs",
+          "difficulty": "Level 1",
+          "text": "Explain the four pillars of Object-Oriented Programming with examples."
+        },
+        {
+          "company": "Infosys",
+          "role": "Backend Engineer",
+          "topic": "Java",
+          "difficulty": "Level 1",
+          "text": "What is the difference between ArrayList and LinkedList?"
+        },
+        {
+          "company": "Infosys",
+          "role": "Backend Developer",
+          "topic": "DBMS",
+          "difficulty": "Level 1",
+          "text": "Explain normalization and denormalization in databases."
+        },
+        {
+          "company": "Cognizant",
+          "role": "Backend Developer",
+          "topic": "Python",
+          "difficulty": "Level 1",
+          "text": "What is the difference between deep copy and shallow copy in Python?"
+        },
+        {
+          "company": "Wipro",
+          "role": "Backend Engineer",
+          "topic": "Operating Systems",
+          "difficulty": "Level 1",
+          "text": "What is the difference between processes and threads?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Backend Engineer",
+          "topic": "Machine Coding",
+          "difficulty": "Level 1",
+          "text": "Build a thread-safe in-memory key-value store."
+        },
+        {
+          "company": "Google",
+          "role": "Backend Engineer",
+          "topic": "Distributed Systems",
+          "difficulty": "Level 1",
+          "text": "Explain CAP theorem with practical backend engineering examples."
+        },
+        {
+          "company": "Cred",
+          "role": "Backend Engineer",
+          "topic": "Node.js",
+          "difficulty": "Level 2",
+          "text": "How would you manage connection pooling in a Node.js backend application?"
+        }
+      ]
+    },
+    "qa_tester": {
+      "title": "QA / Automation Tester",
+      "category": "Tech",
+      "questions": [
+        {
+          "topic": "Testing Basics",
+          "difficulty": "Level 1",
+          "text": "What is the difference between Regression testing and Smoke testing?"
+        },
+        {
+          "topic": "Automation",
+          "difficulty": "Level 3",
+          "text": "Explain the Page Object Model (POM) in Selenium and why it is useful."
+        },
+        {
+          "company": "Amazon",
+          "role": "QA Engineer (Fresher)",
+          "topic": "Manual Testing",
+          "difficulty": "Level 1",
+          "text": "What is the difference between severity and priority in bug tracking?"
+        },
+        {
+          "company": "Amazon",
+          "role": "QA Engineer",
+          "topic": "Automation Testing",
+          "difficulty": "Level 3",
+          "text": "Explain how Selenium WebDriver works and its advantages."
+        },
+        {
+          "company": "Amazon",
+          "role": "QA Engineer",
+          "topic": "API Testing",
+          "difficulty": "Level 2",
+          "text": "How would you test a REST API using Postman?"
+        },
+        {
+          "company": "Amazon",
+          "role": "QA Automation Engineer",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Tell me about a situation where you found a critical bug before release."
+        },
+        {
+          "company": "TCS",
+          "role": "QA Tester",
+          "topic": "Testing Basics",
+          "difficulty": "Level 1",
+          "text": "What is the difference between black-box testing and white-box testing?"
+        },
+        {
+          "company": "TCS",
+          "role": "Automation Tester",
+          "topic": "Selenium",
+          "difficulty": "Level 2",
+          "text": "How do you locate web elements using XPath in Selenium?"
+        },
+        {
+          "company": "TCS",
+          "role": "QA Engineer",
+          "topic": "SDLC/STLC",
+          "difficulty": "Level 1",
+          "text": "Explain the Software Testing Life Cycle (STLC)."
+        },
+        {
+          "company": "Infosys",
+          "role": "QA Tester",
+          "topic": "Manual Testing",
+          "difficulty": "Level 1",
+          "text": "What are test cases and test scenarios?"
+        },
+        {
+          "company": "Infosys",
+          "role": "Automation Tester",
+          "topic": "Java for Automation",
+          "difficulty": "Level 3",
+          "text": "Why is Java commonly used in Selenium automation testing?"
+        },
+        {
+          "company": "Infosys",
+          "role": "QA Engineer",
+          "topic": "Defect Tracking",
+          "difficulty": "Level 1",
+          "text": "Explain the defect life cycle with examples."
+        },
+        {
+          "company": "Cognizant",
+          "role": "QA Tester",
+          "topic": "Database Testing",
+          "difficulty": "Level 2",
+          "text": "How would you validate data integrity between frontend and database?"
+        },
+        {
+          "company": "Cognizant",
+          "role": "Automation Tester",
+          "topic": "Frameworks",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between data-driven and keyword-driven frameworks."
+        },
+        {
+          "company": "Cognizant",
+          "role": "QA Engineer",
+          "topic": "API Testing",
+          "difficulty": "Level 1",
+          "text": "What status codes are commonly checked during API testing?"
+        },
+        {
+          "company": "Wipro",
+          "role": "QA Tester",
+          "topic": "Testing Types",
+          "difficulty": "Level 1",
+          "text": "What is regression testing and when is it performed?"
+        },
+        {
+          "company": "Wipro",
+          "role": "Automation Tester",
+          "topic": "Selenium",
+          "difficulty": "Level 2",
+          "text": "How do implicit waits differ from explicit waits in Selenium?"
+        },
+        {
+          "company": "Wipro",
+          "role": "QA Engineer",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a challenging testing scenario you faced during a project."
+        },
+        {
+          "company": "Amazon",
+          "role": "QA Automation Engineer",
+          "topic": "Framework Design",
+          "difficulty": "Level 3",
+          "text": "How would you design a scalable automation testing framework?"
+        },
+        {
+          "company": "TCS",
+          "role": "QA Engineer",
+          "topic": "Performance Testing",
+          "difficulty": "Level 1",
+          "text": "What is load testing and how does it differ from stress testing?"
+        },
+        {
+          "company": "Infosys",
+          "role": "Automation Tester",
+          "topic": "CI/CD",
+          "difficulty": "Level 2",
+          "text": "How is automation testing integrated into CI/CD pipelines?"
+        },
+        {
+          "company": "Cognizant",
+          "role": "QA Engineer",
+          "topic": "Agile Testing",
+          "difficulty": "Level 1",
+          "text": "What is the role of a QA engineer in Agile methodology?"
+        },
+        {
+          "company": "General",
+          "role": "QA / Automation Tester",
+          "topic": "Test Strategy",
+          "difficulty": "Level 3",
+          "text": "A release must go live today but only 60% of regression tests passed. What factors determine your go-live recommendation?"
+        },
+        {
+          "company": "General",
+          "role": "QA / Automation Tester",
+          "topic": "Automation Framework",
+          "difficulty": "Level 3",
+          "text": "How would you redesign a flaky automation suite that fails randomly across environments?"
+        },
+        {
+          "company": "General",
+          "role": "QA / Automation Tester",
+          "topic": "API Testing",
+          "difficulty": "Level 2",
+          "text": "What test cases would you prioritize for a payment processing API?"
+        },
+        {
+          "company": "General",
+          "role": "QA / Automation Tester",
+          "topic": "Performance Testing",
+          "difficulty": "Level 3",
+          "text": "Users report slow response times only during peak traffic. How would you investigate and validate the issue?"
+        },
+        {
+          "company": "General",
+          "role": "QA / Automation Tester",
+          "topic": "Defect Analysis",
+          "difficulty": "Level 2",
+          "text": "How do you determine whether a defect is caused by data, code, environment, or test design?"
+        }
+      ]
+    },
+    "data_analyst": {
+      "title": "Data Analyst",
+      "category": "Tech / Business",
+      "questions": [
+        {
+          "company": "Amazon",
+          "role": "Data Analyst (New Grad)",
+          "topic": "SQL",
+          "difficulty": "Level 2",
+          "text": "Write a SQL query to find the second highest salary from an employee table."
+        },
+        {
+          "company": "Amazon",
+          "role": "Data Analyst (Fresher)",
+          "topic": "Statistics",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between Type I and Type II errors with real-world examples."
+        },
+        {
+          "company": "Amazon",
+          "role": "Business Analyst / Data Analyst",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time when you used data to influence a decision."
+        },
+        {
+          "company": "Google",
+          "role": "Data Analyst",
+          "topic": "SQL",
+          "difficulty": "Level 2",
+          "text": "Write a query to calculate rolling averages using window functions."
+        },
+        {
+          "company": "Google",
+          "role": "Data Analyst",
+          "topic": "Python/Pandas",
+          "difficulty": "Level 2",
+          "text": "How would you handle missing values and outliers in a dataset using Pandas?"
+        },
+        {
+          "company": "Google",
+          "role": "Data Analyst",
+          "topic": "Product Analytics",
+          "difficulty": "Level 3",
+          "text": "How would you measure the success of a new feature launched on YouTube?"
+        },
+        {
+          "company": "Meta",
+          "role": "Data Analyst (University Grad)",
+          "topic": "SQL",
+          "difficulty": "Level 3",
+          "text": "Write a SQL query to calculate Day-1, Day-7, and Day-30 user retention."
+        },
+        {
+          "company": "Meta",
+          "role": "Data Analyst",
+          "topic": "Statistics",
+          "difficulty": "Level 2",
+          "text": "Explain how A/B testing works and how you would interpret p-values."
+        },
+        {
+          "company": "Microsoft",
+          "role": "Data Analyst",
+          "topic": "Excel",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between VLOOKUP, INDEX MATCH, and XLOOKUP."
+        },
+        {
+          "company": "Microsoft",
+          "role": "Data Analyst",
+          "topic": "Power BI",
+          "difficulty": "Level 3",
+          "text": "How would you optimize a Power BI dashboard that is loading slowly?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Data Analyst (Fresher)",
+          "topic": "SQL",
+          "difficulty": "Level 2",
+          "text": "Write a SQL query to find the 3rd highest salary using Window Functions."
+        },
+        {
+          "company": "Deloitte",
+          "role": "Data Analyst",
+          "topic": "Excel",
+          "difficulty": "Level 2",
+          "text": "Explain Pivot Tables and how they are used in reporting."
+        },
+        {
+          "company": "EY",
+          "role": "Associate Data Analyst",
+          "topic": "Python",
+          "difficulty": "Level 2",
+          "text": "Write a Python program to remove duplicates from a dataset."
+        },
+        {
+          "company": "EY",
+          "role": "Data Analyst",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Describe a situation where you handled conflicting deadlines."
+        },
+        {
+          "company": "PwC",
+          "role": "Data Analyst",
+          "topic": "Tableau",
+          "difficulty": "Level 3",
+          "text": "How would you create a dynamic dashboard in Tableau with filters and parameters?"
+        },
+        {
+          "company": "KPMG",
+          "role": "Data Analyst",
+          "topic": "Statistics",
+          "difficulty": "Level 1",
+          "text": "What is the difference between correlation and causation?"
+        },
+        {
+          "company": "Goldman Sachs",
+          "role": "Analyst",
+          "topic": "SQL",
+          "difficulty": "Level 2",
+          "text": "Write a SQL query to identify duplicate transactions in a banking system."
+        },
+        {
+          "company": "Goldman Sachs",
+          "role": "Data Analyst",
+          "topic": "Business Analytics",
+          "difficulty": "Level 2",
+          "text": "How would you detect fraudulent transactions using analytical methods?"
+        },
+        {
+          "company": "JP Morgan",
+          "role": "Data Analyst",
+          "topic": "Python/Pandas",
+          "difficulty": "Level 2",
+          "text": "How do you merge multiple CSV files efficiently using Pandas?"
+        },
+        {
+          "company": "JP Morgan",
+          "role": "Data Analyst",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a project where you worked with large datasets."
+        },
+        {
+          "company": "Mu Sigma",
+          "role": "Decision Scientist",
+          "topic": "Probability",
+          "difficulty": "Level 1",
+          "text": "What is Bayes Theorem and where can it be applied in analytics?"
+        },
+        {
+          "company": "Mu Sigma",
+          "role": "Data Analyst",
+          "topic": "Case Study",
+          "difficulty": "Level 3",
+          "text": "How would you analyze declining sales for an e-commerce company?"
+        },
+        {
+          "company": "Fractal Analytics",
+          "role": "Analyst",
+          "topic": "Machine Learning Basics",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between supervised and unsupervised learning."
+        },
+        {
+          "company": "Fractal Analytics",
+          "role": "Data Analyst",
+          "topic": "Statistics",
+          "difficulty": "Level 1",
+          "text": "Explain Central Limit Theorem and its importance in analytics."
+        },
+        {
+          "company": "Flipkart",
+          "role": "Business Analyst",
+          "topic": "SQL",
+          "difficulty": "Level 1",
+          "text": "Write a query to calculate month-over-month growth percentage."
+        },
+        {
+          "company": "Flipkart",
+          "role": "Data Analyst",
+          "topic": "Product Metrics",
+          "difficulty": "Level 3",
+          "text": "Which KPIs would you track for an e-commerce recommendation engine?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Data Analyst",
+          "topic": "Business Analytics",
+          "difficulty": "Level 3",
+          "text": "How would you optimize delivery times using data analysis?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Data Analyst",
+          "topic": "SQL",
+          "difficulty": "Level 2",
+          "text": "Find the top 5 restaurants with the highest average order value."
+        },
+        {
+          "company": "Amazon",
+          "role": "Business Intelligence Engineer (New Grad)",
+          "topic": "Data Visualization",
+          "difficulty": "Level 3",
+          "text": "What makes a dashboard effective and how do you avoid misleading visualizations?"
+        },
+        {
+          "company": "Meta",
+          "role": "Data Analyst",
+          "topic": "Excel",
+          "difficulty": "Level 2",
+          "text": "How do you use conditional formatting to highlight anomalies in reports?"
+        }
+      ]
+    },
+    "business_analyst": {
+      "title": "Business Analyst",
+      "category": "Management",
+      "questions": [
+        {
+          "topic": "Requirements Gathering",
+          "difficulty": "Level 2",
+          "text": "How do you handle a situation where a stakeholder gives you very vague requirements for a new feature?"
+        },
+        {
+          "topic": "Problem Solving",
+          "difficulty": "Level 3",
+          "text": "A key metric for your product dropped by 20% overnight. Walk me through how you would investigate the root cause."
+        },
+        {
+          "company": "McKinsey",
+          "role": "Business Analyst (Fresher)",
+          "topic": "Case Study",
+          "difficulty": "Level 3",
+          "text": "A retail client’s profits have declined over the last two quarters. How would you identify the root cause?"
+        },
+        {
+          "company": "McKinsey",
+          "role": "Business Analyst",
+          "topic": "Guesstimates",
+          "difficulty": "Level 2",
+          "text": "Estimate the annual revenue generated by coffee shops in Mumbai."
+        },
+        {
+          "company": "McKinsey",
+          "role": "Business Analyst",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time when you led a team under pressure."
+        },
+        {
+          "company": "Deloitte",
+          "role": "Business Analyst",
+          "topic": "SQL",
+          "difficulty": "Level 2",
+          "text": "Write a SQL query to find duplicate customer records in a database."
+        },
+        {
+          "company": "Deloitte",
+          "role": "Business Analyst (Fresher)",
+          "topic": "Business Analysis",
+          "difficulty": "Level 2",
+          "text": "How would you gather requirements from stakeholders for a new project?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Business Analyst",
+          "topic": "Case Study",
+          "difficulty": "Level 3",
+          "text": "A client’s website traffic increased but conversions decreased. How would you analyze this?"
+        },
+        {
+          "company": "Flipkart",
+          "role": "Business Analyst",
+          "topic": "Product Metrics",
+          "difficulty": "Level 3",
+          "text": "Which KPIs would you track for an e-commerce recommendation engine?"
+        },
+        {
+          "company": "Flipkart",
+          "role": "Business Analyst",
+          "topic": "Analytics",
+          "difficulty": "Level 3",
+          "text": "Big Billion Days order completion rate dropped by 8%. How would you investigate?"
+        },
+        {
+          "company": "Flipkart",
+          "role": "Business Analyst",
+          "topic": "Excel",
+          "difficulty": "Level 1",
+          "text": "Explain how Pivot Tables are used in business reporting."
+        },
+        {
+          "company": "TCS",
+          "role": "Business Analyst",
+          "topic": "Requirement Gathering",
+          "difficulty": "Level 1",
+          "text": "What is the difference between functional and non-functional requirements?"
+        },
+        {
+          "company": "TCS",
+          "role": "Business Analyst",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about yourself and why you want to become a Business Analyst."
+        },
+        {
+          "company": "TCS",
+          "role": "Business Analyst",
+          "topic": "SDLC",
+          "difficulty": "Level 1",
+          "text": "Explain the phases of the Software Development Life Cycle."
+        },
+        {
+          "company": "Accenture",
+          "role": "Business Analyst",
+          "topic": "Case Study",
+          "difficulty": "Level 3",
+          "text": "A telecom company is facing high customer churn. How would you approach solving the issue?"
+        },
+        {
+          "company": "Accenture",
+          "role": "Business Analyst",
+          "topic": "Agile",
+          "difficulty": "Level 1",
+          "text": "What is the role of a Business Analyst in Agile methodology?"
+        },
+        {
+          "company": "Accenture",
+          "role": "Business Analyst",
+          "topic": "SQL",
+          "difficulty": "Level 2",
+          "text": "Write a query to find the second highest salary from an employee table."
+        },
+        {
+          "company": "McKinsey",
+          "role": "Business Analyst",
+          "topic": "Market Sizing",
+          "difficulty": "Level 1",
+          "text": "Estimate the number of smartphones sold annually in India."
+        },
+        {
+          "company": "Deloitte",
+          "role": "Business Analyst",
+          "topic": "Excel",
+          "difficulty": "Level 1",
+          "text": "Explain VLOOKUP and INDEX MATCH with examples."
+        },
+        {
+          "company": "Flipkart",
+          "role": "Business Analyst",
+          "topic": "A/B Testing",
+          "difficulty": "Level 2",
+          "text": "How would you measure the success of a new checkout flow?"
+        },
+        {
+          "company": "Accenture",
+          "role": "Business Analyst",
+          "topic": "Stakeholder Management",
+          "difficulty": "Level 2",
+          "text": "How would you handle conflicting requirements from two stakeholders?"
+        },
+        {
+          "company": "TCS",
+          "role": "Business Analyst",
+          "topic": "Documentation",
+          "difficulty": "Level 1",
+          "text": "What is the purpose of a BRD and FRD document?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Business Analyst",
+          "topic": "Data Interpretation",
+          "difficulty": "Level 3",
+          "text": "How would you analyze why food delivery orders dropped in a specific city?"
+        },
+        {
+          "company": "Paytm",
+          "role": "Business Analyst",
+          "topic": "KPIs",
+          "difficulty": "Level 3",
+          "text": "Which key metrics would you track for a digital wallet product?"
+        },
+        {
+          "company": "PhonePe",
+          "role": "Business Analyst",
+          "topic": "SQL Basics",
+          "difficulty": "Level 1",
+          "text": "Write a query to find the top 5 merchants by transaction volume."
+        },
+        {
+          "company": "Razorpay",
+          "role": "Business Analyst",
+          "topic": "Business Communication",
+          "difficulty": "Level 3",
+          "text": "How would you explain a technical dashboard insight to a non-technical stakeholder?"
+        },
+        {
+          "company": "Reliance Jio",
+          "role": "Business Analyst",
+          "topic": "Requirement Gathering",
+          "difficulty": "Level 3",
+          "text": "What questions would you ask while gathering requirements for a telecom analytics dashboard?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Senior Business Analyst",
+          "topic": "A/B Testing",
+          "difficulty": "Level 2",
+          "text": "How would you measure whether a new restaurant recommendation algorithm improved customer engagement?"
+        },
+        {
+          "company": "Paytm",
+          "role": "Business Analyst",
+          "topic": "Fraud Analytics",
+          "difficulty": "Level 3",
+          "text": "How would you identify suspicious transaction patterns in payment data?"
+        },
+        {
+          "company": "PhonePe",
+          "role": "Business Analyst",
+          "topic": "Product Analytics",
+          "difficulty": "Level 3",
+          "text": "What metrics would you use to evaluate UPI transaction success rates?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Business Analyst",
+          "topic": "Stakeholder Management",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where business requirements conflicted with engineering constraints. How would you handle it?"
+        },
+        {
+          "company": "Reliance Jio",
+          "role": "Business Analyst",
+          "topic": "Customer Retention",
+          "difficulty": "Level 3",
+          "text": "How would you analyze churn among prepaid mobile users?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Business Analyst",
+          "topic": "Root Cause Analysis",
+          "difficulty": "Level 3",
+          "text": "A sudden spike in delivery cancellations is observed. How would you investigate the issue?"
+        },
+        {
+          "company": "Paytm",
+          "role": "Lead Business Analyst",
+          "topic": "Strategic Insights",
+          "difficulty": "Level 3",
+          "text": "How would you design a business strategy to increase adoption of Paytm Soundbox among rural merchants?"
+        },
+        {
+          "company": "PhonePe",
+          "role": "Senior Business Analyst",
+          "topic": "Growth Analytics",
+          "difficulty": "Level 3",
+          "text": "How would you forecast transaction growth during a major festive sale?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Business Analyst",
+          "topic": "Revenue Optimization",
+          "difficulty": "Level 3",
+          "text": "How would you identify high-value enterprise clients likely to upgrade to premium payment solutions?"
+        },
+        {
+          "company": "Reliance Jio",
+          "role": "Business Analyst",
+          "topic": "Operational Analytics",
+          "difficulty": "Level 3",
+          "text": "How would you optimize telecom tower usage based on regional network traffic data?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Business Analyst",
+          "topic": "SQL Optimization",
+          "difficulty": "Level 3",
+          "text": "How would you optimize a slow-running analytics query on millions of delivery records?"
+        },
+        {
+          "company": "Paytm",
+          "role": "Business Analyst",
+          "topic": "Experimentation",
+          "difficulty": "Level 3",
+          "text": "Design an experiment to test whether cashback campaigns improve long-term customer retention."
+        },
+        {
+          "company": "PhonePe",
+          "role": "Business Analyst",
+          "topic": "Business Forecasting",
+          "difficulty": "Level 3",
+          "text": "How would you predict merchant dropout risk using transaction data?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Business Analyst",
+          "topic": "Dashboard Design",
+          "difficulty": "Level 3",
+          "text": "What KPIs would you include in an executive payments operations dashboard?"
+        },
+        {
+          "company": "Reliance Jio",
+          "role": "Business Analyst",
+          "topic": "Market Analysis",
+          "difficulty": "Level 3",
+          "text": "How would you analyze competitor pricing strategies in the telecom sector?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Business Analyst",
+          "topic": "Operational Metrics",
+          "difficulty": "Level 3",
+          "text": "Which metrics would you track to evaluate delivery partner efficiency?"
+        },
+        {
+          "company": "Paytm",
+          "role": "Business Analyst",
+          "topic": "Customer Analytics",
+          "difficulty": "Level 3",
+          "text": "How would you identify inactive users in a digital payments platform?"
+        },
+        {
+          "company": "PhonePe",
+          "role": "Business Analyst",
+          "topic": "SQL Queries",
+          "difficulty": "Level 2",
+          "text": "Write a SQL query to calculate daily transaction volume growth."
+        },
+        {
+          "company": "Razorpay",
+          "role": "Business Analyst",
+          "topic": "Stakeholder Communication",
+          "difficulty": "Level 2",
+          "text": "How would you explain a drop in payment success rate to business stakeholders?"
+        },
+        {
+          "company": "Reliance Jio",
+          "role": "Business Analyst",
+          "topic": "Requirement Analysis",
+          "difficulty": "Level 3",
+          "text": "How do you gather requirements for a telecom customer analytics dashboard?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Business Analyst",
+          "topic": "A/B Testing",
+          "difficulty": "Level 3",
+          "text": "How would you measure the impact of a new app homepage design on order conversions?"
+        },
+        {
+          "company": "Paytm",
+          "role": "Business Analyst",
+          "topic": "Fraud Detection",
+          "difficulty": "Level 2",
+          "text": "What indicators would you use to detect fraudulent wallet transactions?"
+        },
+        {
+          "company": "PhonePe",
+          "role": "Business Analyst",
+          "topic": "Product Metrics",
+          "difficulty": "Level 3",
+          "text": "Which KPIs would you track for monitoring UPI payment reliability?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Business Analyst",
+          "topic": "Data Visualization",
+          "difficulty": "Level 2",
+          "text": "What charts or dashboards would you build for executive-level payment insights?"
+        },
+        {
+          "company": "Reliance Jio",
+          "role": "Business Analyst",
+          "topic": "Customer Churn",
+          "difficulty": "Level 3",
+          "text": "How would you analyze why prepaid users are switching to competitors?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Senior Business Analyst",
+          "topic": "Root Cause Analysis",
+          "difficulty": "Level 3",
+          "text": "Food order cancellations increased suddenly in one city. How would you investigate the issue?"
+        },
+        {
+          "company": "Paytm",
+          "role": "Lead Business Analyst",
+          "topic": "Growth Strategy",
+          "difficulty": "Level 3",
+          "text": "How would you increase merchant adoption of Paytm devices in tier-2 cities?"
+        },
+        {
+          "company": "PhonePe",
+          "role": "Senior Business Analyst",
+          "topic": "Forecasting",
+          "difficulty": "Level 3",
+          "text": "How would you forecast transaction spikes during festive seasons?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Business Analyst",
+          "topic": "Revenue Analytics",
+          "difficulty": "Level 3",
+          "text": "How would you identify enterprise merchants most likely to upgrade to premium services?"
+        },
+        {
+          "company": "Reliance Jio",
+          "role": "Business Analyst",
+          "topic": "Network Analytics",
+          "difficulty": "Level 3",
+          "text": "How would you optimize bandwidth allocation using customer usage data?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Business Analyst",
+          "topic": "SQL Optimization",
+          "difficulty": "Level 3",
+          "text": "How would you optimize a query processing millions of delivery transactions daily?"
+        },
+        {
+          "company": "Paytm",
+          "role": "Business Analyst",
+          "topic": "Experiment Design",
+          "difficulty": "Level 3",
+          "text": "Design an experiment to evaluate whether cashback campaigns improve repeat usage."
+        },
+        {
+          "company": "PhonePe",
+          "role": "Business Analyst",
+          "topic": "Risk Analytics",
+          "difficulty": "Level 3",
+          "text": "How would you predict merchant churn using historical transaction patterns?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Business Analyst",
+          "topic": "Business Strategy",
+          "difficulty": "Level 3",
+          "text": "How would you prioritize product improvements for enterprise payment clients?"
+        },
+        {
+          "company": "Reliance Jio",
+          "role": "Business Analyst",
+          "topic": "Competitive Analysis",
+          "difficulty": "Level 3",
+          "text": "How would you benchmark Jio's telecom pricing strategy against competitors?"
+        }
+      ]
+    },
+    "product_manager": {
+      "title": "Product Manager",
+      "category": "Management",
+      "questions": [
+        {
+          "company": "SkillViva (Special)",
+          "role": "Project Manager",
+          "topic": "Resume Review",
+          "difficulty": "Level 3",
+          "text": "In your role at Sitekraft.dev, you translated product requirements into backend behavior. Could you walk me through a specific instance where an automation workflow you designed failed, and how you resolved the alert logic?"
+        },
+        {
+          "company": "SkillViva (Special)",
+          "role": "Project Manager",
+          "topic": "Resume Review",
+          "difficulty": "Level 2",
+          "text": "You mentioned deploying a health tracking app, Caloriv. What were the specific challenges in ensuring persistent data handling for BMR/TDEE calculations?"
+        },
+        {
+          "company": "SkillViva (Special)",
+          "role": "Project Manager",
+          "topic": "Resume Review",
+          "difficulty": "Level 1",
+          "text": "Sarthak, I see you built the Al-Assisted Market Intelligence System. Can you explain the OCR-backed enrichment and billing logic you implemented?"
+        },
+        {
+          "company": "SkillViva (Special)",
+          "role": "Project Manager",
+          "topic": "Resume Review",
+          "difficulty": "Level 3",
+          "text": "In your role at Sitekraft.dev, you translated product requirements into backend behavior. Could you walk me through a specific instance where an automation workflow you designed failed, and how you resolved the alert logic?"
+        },
+        {
+          "company": "SkillViva (Special)",
+          "role": "Project Manager",
+          "topic": "Resume Review",
+          "difficulty": "Level 2",
+          "text": "You mentioned deploying a health tracking app, Caloriv. What were the specific challenges in ensuring persistent data handling for BMR/TDEE calculations?"
+        },
+        {
+          "company": "SkillViva (Special)",
+          "role": "Project Manager",
+          "topic": "Resume Review",
+          "difficulty": "Level 1",
+          "text": "Sarthak, I see you built the Al-Assisted Market Intelligence System. Can you explain the OCR-backed enrichment and billing logic you implemented?"
+        },
+        {
+          "company": "Google",
+          "role": "APM",
+          "topic": "Product Design",
+          "difficulty": "Level 2",
+          "text": "Design a fire alarm for the deaf community."
+        },
+        {
+          "company": "Google",
+          "role": "APM",
+          "topic": "Product Sense",
+          "difficulty": "Level 2",
+          "text": "What is your favorite product and how would you improve it?"
+        },
+        {
+          "company": "Google",
+          "role": "APM",
+          "topic": "Guesstimates",
+          "difficulty": "Level 1",
+          "text": "Estimate the number of flights currently above India."
+        },
+        {
+          "company": "Google",
+          "role": "Associate Product Manager",
+          "topic": "Root Cause Analysis",
+          "difficulty": "Level 3",
+          "text": "YouTube watch time dropped by 10% overnight. How would you investigate the issue?"
+        },
+        {
+          "company": "Google",
+          "role": "APM",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time you handled ambiguity in a project."
+        },
+        {
+          "company": "Meta",
+          "role": "RPM (Rotational Product Manager)",
+          "topic": "Product Design",
+          "difficulty": "Level 3",
+          "text": "Design a product for elderly users who struggle with social isolation."
+        },
+        {
+          "company": "Meta",
+          "role": "RPM",
+          "topic": "Metrics",
+          "difficulty": "Level 2",
+          "text": "What metrics would you track for Instagram Reels success?"
+        },
+        {
+          "company": "Meta",
+          "role": "RPM",
+          "topic": "Execution",
+          "difficulty": "Level 2",
+          "text": "Facebook Groups engagement has declined by 15%. How would you diagnose the problem?"
+        },
+        {
+          "company": "Amazon",
+          "role": "PMT Intern / New Grad",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time when you disagreed with your team and how you resolved it."
+        },
+        {
+          "company": "Amazon",
+          "role": "Product Manager",
+          "topic": "Product Strategy",
+          "difficulty": "Level 3",
+          "text": "How would you improve the Amazon Prime experience for college students?"
+        },
+        {
+          "company": "Amazon",
+          "role": "PMT",
+          "topic": "Analytics",
+          "difficulty": "Level 3",
+          "text": "Which metrics would you track for a newly launched Amazon feature?"
+        },
+        {
+          "company": "Microsoft",
+          "role": "Associate Product Manager",
+          "topic": "Product Design",
+          "difficulty": "Level 2",
+          "text": "Design a productivity tool for remote workers."
+        },
+        {
+          "company": "Microsoft",
+          "role": "Product Manager",
+          "topic": "Root Cause Analysis",
+          "difficulty": "Level 3",
+          "text": "Microsoft Teams daily active users dropped by 20%. What could be the reasons?"
+        },
+        {
+          "company": "Flipkart",
+          "role": "APM",
+          "topic": "E-commerce Product Thinking",
+          "difficulty": "Level 3",
+          "text": "How would you improve Flipkart's cart abandonment rate?"
+        },
+        {
+          "company": "Flipkart",
+          "role": "Associate Product Manager",
+          "topic": "Guesstimates",
+          "difficulty": "Level 2",
+          "text": "Estimate how many orders Flipkart processes during Big Billion Days."
+        },
+        {
+          "company": "Swiggy",
+          "role": "Product Manager",
+          "topic": "Execution",
+          "difficulty": "Level 3",
+          "text": "Food delivery times increased by 12% in Bangalore. How would you analyze the issue?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "APM",
+          "topic": "Metrics",
+          "difficulty": "Level 2",
+          "text": "What KPIs would you track for Swiggy Instamart?"
+        },
+        {
+          "company": "Zomato",
+          "role": "Associate Product Manager",
+          "topic": "Product Strategy",
+          "difficulty": "Level 3",
+          "text": "How would you increase customer retention for Zomato Gold?"
+        },
+        {
+          "company": "Cred",
+          "role": "Product Manager",
+          "topic": "Product Design",
+          "difficulty": "Level 3",
+          "text": "Design a feature to improve credit card bill payment completion rates."
+        },
+        {
+          "company": "Razorpay",
+          "role": "APM",
+          "topic": "Payments / Metrics",
+          "difficulty": "Level 3",
+          "text": "Payment success rate suddenly dropped by 8%. How would you debug this issue?"
+        },
+        {
+          "company": "Ola",
+          "role": "Product Manager",
+          "topic": "Root Cause Analysis",
+          "difficulty": "Level 3",
+          "text": "Ride cancellations increased significantly in one city. What steps would you take?"
+        },
+        {
+          "company": "Zoho",
+          "role": "Product Analyst / PM",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a product you use daily and what frustrates you about it."
+        },
+        {
+          "company": "Freshworks",
+          "role": "Associate Product Manager",
+          "topic": "SaaS Metrics",
+          "difficulty": "Level 3",
+          "text": "Which metrics are most important for a SaaS customer support product?"
+        },
+        {
+          "company": "Postman",
+          "role": "APM",
+          "topic": "Developer Products",
+          "difficulty": "Level 3",
+          "text": "How would you improve onboarding for first-time Postman users?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Business Technology Analyst / PM",
+          "topic": "Case Study",
+          "difficulty": "Level 3",
+          "text": "A client’s mobile app retention has dropped over the last quarter. How would you approach solving it?"
+        },
+        {
+          "company": "Google",
+          "role": "APM",
+          "topic": "Estimation",
+          "difficulty": "Level 2",
+          "text": "Estimate the number of Google searches happening every minute in India."
+        },
+        {
+          "company": "Meta",
+          "role": "RPM",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time when you influenced people without authority."
+        },
+        {
+          "company": "Amazon",
+          "role": "PMT",
+          "topic": "Leadership Principles",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where you took ownership beyond your responsibilities."
+        },
+        {
+          "company": "Flipkart",
+          "role": "APM",
+          "topic": "Product Metrics",
+          "difficulty": "Level 3",
+          "text": "How would you measure the success of a new recommendation engine on Flipkart?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Product Manager",
+          "topic": "Product Design",
+          "difficulty": "Level 3",
+          "text": "Design a solution for users who struggle to discover healthy food options."
+        }
+      ]
+    },
+    "hr_generalist": {
+      "title": "HR Generalist",
+      "category": "Management",
+      "questions": [
+        {
+          "company": "Amazon",
+          "role": "HR Generalist (Fresher)",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time when you handled conflict between two team members."
+        },
+        {
+          "company": "Amazon",
+          "role": "HR Generalist",
+          "topic": "Recruitment",
+          "difficulty": "Level 3",
+          "text": "How would you handle a situation where a candidate rejects an offer at the last moment?"
+        },
+        {
+          "company": "Amazon",
+          "role": "HR Generalist",
+          "topic": "Leadership Principles",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where you took ownership beyond your responsibilities."
+        },
+        {
+          "company": "Deloitte",
+          "role": "HR Analyst / HR Generalist",
+          "topic": "HR Operations",
+          "difficulty": "Level 2",
+          "text": "What steps are involved in the employee onboarding process?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "HR Generalist",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Why do you want to work in Human Resources?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "HR Generalist",
+          "topic": "Employee Relations",
+          "difficulty": "Level 3",
+          "text": "How would you resolve a dispute between an employee and a manager?"
+        },
+        {
+          "company": "TCS",
+          "role": "HR Executive / HR Generalist",
+          "topic": "HR Basics",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between recruitment and selection."
+        },
+        {
+          "company": "TCS",
+          "role": "HR Generalist",
+          "topic": "Payroll",
+          "difficulty": "Level 2",
+          "text": "What components are included in salary structure and payroll processing?"
+        },
+        {
+          "company": "TCS",
+          "role": "HR Generalist",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about yourself and your strengths."
+        },
+        {
+          "company": "Infosys",
+          "role": "HR Generalist",
+          "topic": "Recruitment",
+          "difficulty": "Level 3",
+          "text": "How would you source candidates for a difficult-to-fill technical role?"
+        },
+        {
+          "company": "Infosys",
+          "role": "HR Generalist",
+          "topic": "HR Policies",
+          "difficulty": "Level 1",
+          "text": "What is the importance of an employee code of conduct?"
+        },
+        {
+          "company": "Infosys",
+          "role": "HR Generalist",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where you handled pressure during college or internships."
+        },
+        {
+          "company": "Amazon",
+          "role": "HR Associate",
+          "topic": "Employee Engagement",
+          "difficulty": "Level 3",
+          "text": "How would you improve employee engagement in a large organization?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "HR Generalist",
+          "topic": "Labor Laws",
+          "difficulty": "Level 3",
+          "text": "What do you know about labor compliance and statutory requirements?"
+        },
+        {
+          "company": "TCS",
+          "role": "HR Generalist",
+          "topic": "Performance Management",
+          "difficulty": "Level 1",
+          "text": "What is the purpose of performance appraisal systems?"
+        },
+        {
+          "company": "Infosys",
+          "role": "HR Executive",
+          "topic": "Training & Development",
+          "difficulty": "Level 2",
+          "text": "How would you identify training needs for employees?"
+        },
+        {
+          "company": "Amazon",
+          "role": "HR Generalist",
+          "topic": "Situational",
+          "difficulty": "Level 3",
+          "text": "An employee complains about unfair treatment by a supervisor. How would you handle the situation?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "HR Analyst",
+          "topic": "Excel / Reporting",
+          "difficulty": "Level 2",
+          "text": "How would you use Excel to maintain employee attendance and performance records?"
+        },
+        {
+          "company": "Infosys",
+          "role": "HR Generalist",
+          "topic": "Communication",
+          "difficulty": "Level 1",
+          "text": "Why are communication skills important in HR roles?"
+        },
+        {
+          "company": "TCS",
+          "role": "HR Generalist",
+          "topic": "Conflict Management",
+          "difficulty": "Level 2",
+          "text": "Describe how you would manage conflict between employees in a team."
+        },
+        {
+          "company": "TCS",
+          "role": "HR Generalist",
+          "topic": "Employee Relations",
+          "difficulty": "Level 2",
+          "text": "How would you handle a conflict between two employees in the workplace?"
+        },
+        {
+          "company": "Infosys",
+          "role": "HR Executive",
+          "topic": "Recruitment",
+          "difficulty": "Level 2",
+          "text": "Walk me through your process for screening candidates for a fresher hiring drive."
+        },
+        {
+          "company": "Wipro",
+          "role": "HR Generalist",
+          "topic": "HR Basics",
+          "difficulty": "Level 1",
+          "text": "What is the difference between recruitment and talent acquisition?"
+        },
+        {
+          "company": "Accenture",
+          "role": "HR Associate",
+          "topic": "Payroll & Compliance",
+          "difficulty": "Level 3",
+          "text": "How would you respond if an employee reports an incorrect salary credit?"
+        },
+        {
+          "company": "HCL",
+          "role": "HR Business Partner",
+          "topic": "Performance Management",
+          "difficulty": "Level 1",
+          "text": "How do you deal with an underperforming employee?"
+        },
+        {
+          "company": "BYJU'S",
+          "role": "HR Recruiter",
+          "topic": "Mass Hiring",
+          "difficulty": "Level 2",
+          "text": "How would you manage hiring targets for multiple sales positions within a short deadline?"
+        },
+        {
+          "company": "Amazon India",
+          "role": "HR Manager",
+          "topic": "Behavioral HR",
+          "difficulty": "Level 2",
+          "text": "Describe a time when you had to terminate an employee. How did you handle the situation?"
+        },
+        {
+          "company": "Flipkart",
+          "role": "Senior HR Generalist",
+          "topic": "Policy Handling",
+          "difficulty": "Level 2",
+          "text": "What would you do if a high-performing employee repeatedly violated company policies?"
+        },
+        {
+          "company": "TCS",
+          "role": "HR Generalist",
+          "topic": "Recruitment Process",
+          "difficulty": "Level 2",
+          "text": "How do you shortlist candidates for an entry-level IT hiring drive?"
+        },
+        {
+          "company": "Infosys",
+          "role": "HR Executive",
+          "topic": "Employee Engagement",
+          "difficulty": "Level 3",
+          "text": "What steps would you take to improve employee engagement in a team?"
+        },
+        {
+          "company": "Wipro",
+          "role": "HR Associate",
+          "topic": "HR Basics",
+          "difficulty": "Level 1",
+          "text": "What is the difference between onboarding and orientation?"
+        },
+        {
+          "company": "Flipkart",
+          "role": "HR Generalist",
+          "topic": "Conflict Resolution",
+          "difficulty": "Level 2",
+          "text": "How would you handle a disagreement between a manager and a team member?"
+        },
+        {
+          "company": "TCS",
+          "role": "HR Business Partner",
+          "topic": "Performance Management",
+          "difficulty": "Level 2",
+          "text": "How would you address repeated performance issues with an employee?"
+        },
+        {
+          "company": "Infosys",
+          "role": "Talent Acquisition Specialist",
+          "topic": "Mass Hiring",
+          "difficulty": "Level 2",
+          "text": "How do you manage walk-in recruitment drives with a large number of applicants?"
+        },
+        {
+          "company": "Wipro",
+          "role": "HR Generalist",
+          "topic": "Policy Implementation",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where you had to enforce an unpopular HR policy."
+        },
+        {
+          "company": "Flipkart",
+          "role": "HR Manager",
+          "topic": "Retention Strategy",
+          "difficulty": "Level 3",
+          "text": "How would you reduce attrition in a high-pressure operations team?"
+        },
+        {
+          "company": "TCS",
+          "role": "Senior HR Executive",
+          "topic": "Payroll & Compliance",
+          "difficulty": "Level 3",
+          "text": "How would you handle a complaint regarding incorrect salary processing?"
+        },
+        {
+          "company": "Infosys",
+          "role": "HR Business Partner",
+          "topic": "Behavioral Interviewing",
+          "difficulty": "Level 1",
+          "text": "What behavioral questions do you ask while hiring for leadership roles?"
+        },
+        {
+          "company": "Wipro",
+          "role": "HR Operations Lead",
+          "topic": "Employee Relations",
+          "difficulty": "Level 2",
+          "text": "How would you handle allegations of workplace harassment against a high-performing employee?"
+        },
+        {
+          "company": "Flipkart",
+          "role": "Senior HRBP",
+          "topic": "Crisis Management",
+          "difficulty": "Level 2",
+          "text": "Describe how you would manage layoffs while maintaining employee morale."
+        },
+        {
+          "company": "TCS",
+          "role": "HR Manager",
+          "topic": "Labor Compliance",
+          "difficulty": "Level 3",
+          "text": "What steps would you take if an audit revealed non-compliance with labor laws?"
+        },
+        {
+          "company": "Infosys",
+          "role": "HR Director",
+          "topic": "Strategic HR",
+          "difficulty": "Level 2",
+          "text": "How would you align HR strategies with rapid organizational growth?"
+        },
+        {
+          "company": "Wipro",
+          "role": "HR Business Partner",
+          "topic": "Difficult Conversations",
+          "difficulty": "Level 2",
+          "text": "How would you communicate a promotion rejection to an employee who strongly expected it?"
+        }
+      ]
+    },
+    "marketing_manager": {
+      "title": "Marketing Manager",
+      "category": "Management",
+      "questions": [
+        {
+          "topic": "Digital Marketing",
+          "difficulty": "Level 1",
+          "text": "What is the difference between SEO and SEM?"
+        },
+        {
+          "topic": "Campaign Strategy",
+          "difficulty": "Level 3",
+          "text": "Design a brief go-to-market strategy for a new EdTech platform launching in Tier-2 cities in India."
+        },
+        {
+          "company": "Amazon",
+          "role": "Marketing Manager (Fresher)",
+          "topic": "Marketing Strategy",
+          "difficulty": "Level 3",
+          "text": "How would you launch a new product on Amazon for Gen Z customers?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Marketing Manager",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Tell me about a marketing campaign where you used customer insights to improve engagement."
+        },
+        {
+          "company": "Amazon",
+          "role": "Marketing Manager",
+          "topic": "Metrics",
+          "difficulty": "Level 3",
+          "text": "Which KPIs would you track for a Prime Day marketing campaign?"
+        },
+        {
+          "company": "HUL",
+          "role": "Management Trainee - Marketing",
+          "topic": "Brand Management",
+          "difficulty": "Level 2",
+          "text": "How would you reposition an underperforming FMCG product in rural India?"
+        },
+        {
+          "company": "HUL",
+          "role": "Marketing Fresher",
+          "topic": "Consumer Behavior",
+          "difficulty": "Level 1",
+          "text": "Why do consumers prefer one toothpaste brand over another?"
+        },
+        {
+          "company": "HUL",
+          "role": "Marketing Trainee",
+          "topic": "Case Study",
+          "difficulty": "Level 3",
+          "text": "Sales of a soap brand dropped by 15%. How would you analyze the issue?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Marketing Associate",
+          "topic": "Growth Marketing",
+          "difficulty": "Level 2",
+          "text": "How would you increase Swiggy Instamart adoption among college students?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Marketing Manager",
+          "topic": "Performance Marketing",
+          "difficulty": "Level 2",
+          "text": "CAC increased significantly over the last quarter. How would you investigate?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Marketing Fresher",
+          "topic": "Behavioral",
+          "difficulty": "Level 3",
+          "text": "Describe a campaign you personally liked and explain why it worked."
+        },
+        {
+          "company": "Deloitte",
+          "role": "Marketing Analyst",
+          "topic": "Digital Marketing",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between SEO and SEM with examples."
+        },
+        {
+          "company": "Deloitte",
+          "role": "Marketing Consultant",
+          "topic": "Analytics",
+          "difficulty": "Level 3",
+          "text": "How would you measure ROI for a digital ad campaign?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Marketing Associate",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time when you worked under tight deadlines."
+        },
+        {
+          "company": "Amazon",
+          "role": "Marketing Manager",
+          "topic": "Product Marketing",
+          "difficulty": "Level 2",
+          "text": "How would you market Amazon Pay in Tier-2 cities?"
+        },
+        {
+          "company": "HUL",
+          "role": "Brand Management Intern",
+          "topic": "Market Research",
+          "difficulty": "Level 2",
+          "text": "How would you conduct market research before launching a shampoo brand?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Growth Marketing Associate",
+          "topic": "Metrics",
+          "difficulty": "Level 3",
+          "text": "What metrics would you track for a food delivery referral program?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Marketing Analyst",
+          "topic": "Case Study",
+          "difficulty": "Level 2",
+          "text": "Website traffic increased but conversions dropped. What could be the reasons?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Marketing Fresher",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Why do you want to work in marketing at Amazon?"
+        },
+        {
+          "company": "HUL",
+          "role": "Marketing Trainee",
+          "topic": "Advertising",
+          "difficulty": "Level 2",
+          "text": "Which advertising campaign do you admire most and why?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Marketing Manager",
+          "topic": "Brand Strategy",
+          "difficulty": "Level 3",
+          "text": "How would you improve Swiggy's brand recall among working professionals?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Marketing Associate",
+          "topic": "Social Media Marketing",
+          "difficulty": "Level 2",
+          "text": "How would you increase LinkedIn engagement for a consulting brand?"
+        },
+        {
+          "company": "General",
+          "role": "Marketing Manager",
+          "topic": "Growth Strategy",
+          "difficulty": "Level 3",
+          "text": "A product has strong retention but weak acquisition. How would you diagnose and fix growth in 90 days?"
+        },
+        {
+          "company": "General",
+          "role": "Marketing Manager",
+          "topic": "Attribution",
+          "difficulty": "Level 3",
+          "text": "How would you measure marketing ROI when customers interact across five channels before converting?"
+        },
+        {
+          "company": "General",
+          "role": "Marketing Manager",
+          "topic": "Campaign Optimization",
+          "difficulty": "Level 2",
+          "text": "A campaign CTR is high but conversions are low. What would you investigate first?"
+        },
+        {
+          "company": "General",
+          "role": "Marketing Manager",
+          "topic": "Market Entry",
+          "difficulty": "Level 3",
+          "text": "Design a go-to-market strategy for launching a new SaaS product in a saturated market."
+        },
+        {
+          "company": "General",
+          "role": "Marketing Manager",
+          "topic": "Customer Segmentation",
+          "difficulty": "Level 2",
+          "text": "How would you identify and prioritize customer segments with limited historical data?"
+        }
+      ]
+    },
+    "cloud_engineer": {
+      "title": "Cloud Engineer / Support Associate",
+      "category": "Tech",
+      "questions": [
+        {
+          "topic": "Cloud Basics",
+          "difficulty": "Level 1",
+          "text": "What is the difference between IaaS, PaaS, and SaaS?"
+        },
+        {
+          "topic": "AWS / Azure",
+          "difficulty": "Level 2",
+          "text": "Explain the concept of an Availability Zone. Why is it important for disaster recovery?"
+        },
+        {
+          "company": "AWS",
+          "role": "Cloud Support Associate (Fresher)",
+          "topic": "AWS Services",
+          "difficulty": "Level 1",
+          "text": "What is the difference between EC2 and Lambda in AWS?"
+        },
+        {
+          "company": "AWS",
+          "role": "Cloud Engineer",
+          "topic": "Networking",
+          "difficulty": "Level 1",
+          "text": "Explain the purpose of a VPC and how subnets work in AWS."
+        },
+        {
+          "company": "AWS",
+          "role": "Cloud Engineer",
+          "topic": "Scalability",
+          "difficulty": "Level 3",
+          "text": "How would you design a highly available architecture on AWS?"
+        },
+        {
+          "company": "Google Cloud",
+          "role": "Cloud Engineer",
+          "topic": "GCP Basics",
+          "difficulty": "Level 1",
+          "text": "What is the difference between Compute Engine and Kubernetes Engine?"
+        },
+        {
+          "company": "Google Cloud",
+          "role": "Associate Cloud Engineer",
+          "topic": "Containers",
+          "difficulty": "Level 1",
+          "text": "Explain how Docker containers differ from virtual machines."
+        },
+        {
+          "company": "Google Cloud",
+          "role": "Cloud Engineer",
+          "topic": "System Design",
+          "difficulty": "Level 3",
+          "text": "How would you migrate an on-premise application to Google Cloud?"
+        },
+        {
+          "company": "Microsoft Azure",
+          "role": "Azure Cloud Engineer",
+          "topic": "Azure Services",
+          "difficulty": "Level 1",
+          "text": "What is the purpose of Azure Virtual Machines and Azure App Services?"
+        },
+        {
+          "company": "Microsoft Azure",
+          "role": "Cloud Engineer",
+          "topic": "Identity & Access",
+          "difficulty": "Level 1",
+          "text": "Explain Role-Based Access Control (RBAC) in Azure."
+        },
+        {
+          "company": "Microsoft Azure",
+          "role": "Cloud Engineer",
+          "topic": "Disaster Recovery",
+          "difficulty": "Level 3",
+          "text": "How would you design a disaster recovery strategy for a cloud application?"
+        },
+        {
+          "company": "Infosys",
+          "role": "Cloud Engineer",
+          "topic": "Linux",
+          "difficulty": "Level 1",
+          "text": "What are the basic Linux commands used for server administration?"
+        },
+        {
+          "company": "Infosys",
+          "role": "Cloud Support Associate",
+          "topic": "DevOps",
+          "difficulty": "Level 1",
+          "text": "Explain CI/CD pipelines and their importance in cloud deployments."
+        },
+        {
+          "company": "Infosys",
+          "role": "Cloud Engineer",
+          "topic": "Databases",
+          "difficulty": "Level 1",
+          "text": "What is the difference between SQL and NoSQL databases in cloud environments?"
+        },
+        {
+          "company": "TCS",
+          "role": "Cloud Engineer",
+          "topic": "Cloud Basics",
+          "difficulty": "Level 1",
+          "text": "What are the advantages of cloud computing over on-premise infrastructure?"
+        },
+        {
+          "company": "TCS",
+          "role": "Cloud Support Engineer",
+          "topic": "Networking",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between public IP and private IP."
+        },
+        {
+          "company": "TCS",
+          "role": "Cloud Engineer",
+          "topic": "Security",
+          "difficulty": "Level 3",
+          "text": "How would you secure sensitive data stored in the cloud?"
+        },
+        {
+          "company": "AWS",
+          "role": "Cloud Engineer",
+          "topic": "Storage",
+          "difficulty": "Level 1",
+          "text": "What is the difference between S3, EBS, and EFS?"
+        },
+        {
+          "company": "Google Cloud",
+          "role": "Cloud Engineer",
+          "topic": "Kubernetes",
+          "difficulty": "Level 1",
+          "text": "Explain how Kubernetes handles scaling and orchestration of containers."
+        },
+        {
+          "company": "Microsoft Azure",
+          "role": "Cloud Engineer",
+          "topic": "Monitoring",
+          "difficulty": "Level 2",
+          "text": "How would you monitor application performance in Azure?"
+        },
+        {
+          "company": "Infosys",
+          "role": "Cloud Engineer",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a technical challenge you faced during a project or internship."
+        },
+        {
+          "company": "TCS",
+          "role": "Cloud Engineer",
+          "topic": "Virtualization",
+          "difficulty": "Level 1",
+          "text": "What is virtualization and how does it enable cloud computing?"
+        },
+        {
+          "company": "General",
+          "role": "Cloud Engineer / Support Associate",
+          "topic": "High Availability",
+          "difficulty": "Level 3",
+          "text": "Design a multi-region architecture that survives a complete region outage with minimal downtime."
+        },
+        {
+          "company": "General",
+          "role": "Cloud Engineer / Support Associate",
+          "topic": "Cost Optimization",
+          "difficulty": "Level 2",
+          "text": "A cloud bill increased by 60% in one month. How would you identify the root cause?"
+        },
+        {
+          "company": "General",
+          "role": "Cloud Engineer / Support Associate",
+          "topic": "Incident Response",
+          "difficulty": "Level 3",
+          "text": "Production latency suddenly doubles after deployment. Describe your investigation process."
+        },
+        {
+          "company": "General",
+          "role": "Cloud Engineer / Support Associate",
+          "topic": "Security",
+          "difficulty": "Level 3",
+          "text": "How would you secure secrets management across hundreds of cloud workloads?"
+        },
+        {
+          "company": "General",
+          "role": "Cloud Engineer / Support Associate",
+          "topic": "Networking",
+          "difficulty": "Level 2",
+          "text": "Explain how you would troubleshoot intermittent connectivity between two VPCs."
+        }
+      ]
+    },
+    "devops_engineer": {
+      "title": "DevOps / Reliability Engineer",
+      "category": "Tech",
+      "questions": [
+        {
+          "topic": "CI/CD",
+          "difficulty": "Level 2",
+          "text": "What is the purpose of a CI/CD pipeline, and what tools have you used for it?"
+        },
+        {
+          "topic": "Containerization",
+          "difficulty": "Level 1",
+          "text": "How does Docker differ from a traditional Virtual Machine?"
+        },
+        {
+          "company": "Amazon",
+          "role": "DevOps Engineer (Fresher)",
+          "topic": "CI/CD",
+          "difficulty": "Level 3",
+          "text": "Explain how a CI/CD pipeline works and its benefits in software deployment."
+        },
+        {
+          "company": "Amazon",
+          "role": "DevOps Engineer",
+          "topic": "AWS",
+          "difficulty": "Level 1",
+          "text": "What is the difference between EC2 Auto Scaling and Load Balancers?"
+        },
+        {
+          "company": "Amazon",
+          "role": "DevOps Engineer",
+          "topic": "Containers",
+          "difficulty": "Level 3",
+          "text": "How would you deploy and scale Docker containers using Kubernetes?"
+        },
+        {
+          "company": "Google",
+          "role": "Site Reliability Engineer (New Grad)",
+          "topic": "Linux",
+          "difficulty": "Level 2",
+          "text": "What Linux commands are commonly used for monitoring server performance?"
+        },
+        {
+          "company": "Google",
+          "role": "DevOps Engineer",
+          "topic": "Kubernetes",
+          "difficulty": "Level 1",
+          "text": "Explain how Kubernetes handles pod scaling and self-healing."
+        },
+        {
+          "company": "Google",
+          "role": "SRE / DevOps Engineer",
+          "topic": "Monitoring",
+          "difficulty": "Level 2",
+          "text": "How would you monitor application uptime and system health?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "DevOps Engineer",
+          "topic": "Cloud Infrastructure",
+          "difficulty": "Level 3",
+          "text": "How would you design infrastructure for handling traffic spikes during peak food ordering hours?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "DevOps Engineer",
+          "topic": "Docker",
+          "difficulty": "Level 1",
+          "text": "What is the difference between Docker images and containers?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "DevOps Engineer",
+          "topic": "Incident Handling",
+          "difficulty": "Level 3",
+          "text": "A production deployment caused downtime. How would you troubleshoot and recover the system?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "DevOps Engineer",
+          "topic": "Security",
+          "difficulty": "Level 3",
+          "text": "How would you securely manage secrets and API keys in a CI/CD pipeline?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "DevOps Engineer",
+          "topic": "Infrastructure as Code",
+          "difficulty": "Level 1",
+          "text": "What are the advantages of Terraform over manual cloud provisioning?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "DevOps Engineer",
+          "topic": "Microservices",
+          "difficulty": "Level 2",
+          "text": "How would you manage deployments for multiple microservices efficiently?"
+        },
+        {
+          "company": "TCS",
+          "role": "DevOps Engineer",
+          "topic": "DevOps Basics",
+          "difficulty": "Level 1",
+          "text": "What is DevOps and how does it differ from traditional software development?"
+        },
+        {
+          "company": "TCS",
+          "role": "DevOps Engineer",
+          "topic": "Version Control",
+          "difficulty": "Level 1",
+          "text": "Explain the purpose of Git and common Git commands."
+        },
+        {
+          "company": "TCS",
+          "role": "DevOps Engineer",
+          "topic": "Jenkins",
+          "difficulty": "Level 2",
+          "text": "How is Jenkins used in automation pipelines?"
+        },
+        {
+          "company": "Amazon",
+          "role": "DevOps Engineer",
+          "topic": "Networking",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between public and private subnets in AWS."
+        },
+        {
+          "company": "Google",
+          "role": "DevOps Engineer",
+          "topic": "Reliability",
+          "difficulty": "Level 1",
+          "text": "What is the purpose of Site Reliability Engineering (SRE)?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "DevOps Engineer",
+          "topic": "Logging",
+          "difficulty": "Level 3",
+          "text": "How would you centralize and analyze logs from multiple services?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "DevOps Engineer",
+          "topic": "Caching",
+          "difficulty": "Level 2",
+          "text": "How does Redis improve system performance in distributed systems?"
+        },
+        {
+          "company": "TCS",
+          "role": "DevOps Engineer",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a technical challenge you faced during a project and how you solved it."
+        },
+        {
+          "company": "General",
+          "role": "DevOps / Reliability Engineer",
+          "topic": "Kubernetes",
+          "difficulty": "Level 3",
+          "text": "A Kubernetes cluster experiences random pod restarts under load. How would you isolate the cause?"
+        },
+        {
+          "company": "General",
+          "role": "DevOps / Reliability Engineer",
+          "topic": "CI/CD",
+          "difficulty": "Level 2",
+          "text": "What safeguards would you add before enabling automatic production deployments?"
+        },
+        {
+          "company": "General",
+          "role": "DevOps / Reliability Engineer",
+          "topic": "Site Reliability",
+          "difficulty": "Level 3",
+          "text": "Define SLI, SLO, and error budget for a payment API handling millions of requests daily."
+        },
+        {
+          "company": "General",
+          "role": "DevOps / Reliability Engineer",
+          "topic": "Disaster Recovery",
+          "difficulty": "Level 3",
+          "text": "Design a disaster recovery strategy for a business-critical application with a 15-minute RPO."
+        },
+        {
+          "company": "General",
+          "role": "DevOps / Reliability Engineer",
+          "topic": "Observability",
+          "difficulty": "Level 2",
+          "text": "How would you distinguish between an application issue and an infrastructure issue during an outage?"
+        }
+      ]
+    },
+    "ai_ml_engineer": {
+      "title": "AI/ML Engineer / Data Scientist",
+      "category": "Tech",
+      "questions": [
+        {
+          "topic": "Machine Learning",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between supervised and unsupervised learning."
+        },
+        {
+          "topic": "Model Evaluation",
+          "difficulty": "Level 3",
+          "text": "What is the difference between Precision and Recall? When would you optimize for Recall?"
+        },
+        {
+          "company": "Google",
+          "role": "AI/ML Engineer (New Grad)",
+          "topic": "Machine Learning",
+          "difficulty": "Level 2",
+          "text": "Explain the bias-variance tradeoff with practical examples."
+        },
+        {
+          "company": "Google",
+          "role": "Data Scientist",
+          "topic": "Statistics",
+          "difficulty": "Level 2",
+          "text": "How would you detect and handle multicollinearity in a dataset?"
+        },
+        {
+          "company": "Google",
+          "role": "ML Engineer",
+          "topic": "Deep Learning",
+          "difficulty": "Level 1",
+          "text": "Explain how backpropagation works in neural networks."
+        },
+        {
+          "company": "Google",
+          "role": "AI Engineer",
+          "topic": "Python",
+          "difficulty": "Level 2",
+          "text": "How do NumPy arrays differ from Python lists in terms of performance?"
+        },
+        {
+          "company": "Microsoft",
+          "role": "AI/ML Engineer",
+          "topic": "Machine Learning",
+          "difficulty": "Level 1",
+          "text": "What is the difference between supervised and unsupervised learning?"
+        },
+        {
+          "company": "Microsoft",
+          "role": "Data Scientist",
+          "topic": "Model Evaluation",
+          "difficulty": "Level 3",
+          "text": "Explain precision, recall, F1-score, and when each metric is important."
+        },
+        {
+          "company": "Microsoft",
+          "role": "ML Engineer",
+          "topic": "Deep Learning",
+          "difficulty": "Level 1",
+          "text": "What is overfitting in deep learning and how can it be prevented?"
+        },
+        {
+          "company": "Microsoft",
+          "role": "AI Engineer",
+          "topic": "NLP",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between stemming and lemmatization."
+        },
+        {
+          "company": "Fractal Analytics",
+          "role": "Analyst / Data Scientist",
+          "topic": "Statistics",
+          "difficulty": "Level 1",
+          "text": "Explain Central Limit Theorem and its significance in analytics."
+        },
+        {
+          "company": "Fractal Analytics",
+          "role": "Data Scientist",
+          "topic": "Case Study",
+          "difficulty": "Level 3",
+          "text": "How would you predict customer churn for a telecom company?"
+        },
+        {
+          "company": "Fractal Analytics",
+          "role": "AI/ML Engineer",
+          "topic": "Python/Pandas",
+          "difficulty": "Level 2",
+          "text": "How would you handle missing values and outliers in a dataset?"
+        },
+        {
+          "company": "Fractal Analytics",
+          "role": "Data Scientist",
+          "topic": "Probability",
+          "difficulty": "Level 1",
+          "text": "What is Bayes Theorem and where can it be applied?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Applied Scientist (Fresher)",
+          "topic": "Machine Learning",
+          "difficulty": "Level 3",
+          "text": "How would you handle imbalanced datasets in a classification problem?"
+        },
+        {
+          "company": "Amazon",
+          "role": "ML Engineer",
+          "topic": "System Design",
+          "difficulty": "Level 3",
+          "text": "How would you deploy a machine learning model to production?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Data Scientist",
+          "topic": "SQL",
+          "difficulty": "Level 2",
+          "text": "Write a SQL query to find the top-selling product category by month."
+        },
+        {
+          "company": "Amazon",
+          "role": "AI Engineer",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Tell me about a project where you used data to solve a business problem."
+        },
+        {
+          "company": "Google",
+          "role": "Data Scientist",
+          "topic": "A/B Testing",
+          "difficulty": "Level 3",
+          "text": "How would you design and analyze an A/B test for a new Google Search feature?"
+        },
+        {
+          "company": "Microsoft",
+          "role": "AI Engineer",
+          "topic": "Computer Vision",
+          "difficulty": "Level 1",
+          "text": "Explain convolution operations in CNNs."
+        },
+        {
+          "company": "Fractal Analytics",
+          "role": "Data Scientist",
+          "topic": "Business Analytics",
+          "difficulty": "Level 2",
+          "text": "Which KPIs would you track for an e-commerce recommendation engine?"
+        },
+        {
+          "company": "Amazon",
+          "role": "ML Engineer",
+          "topic": "Feature Engineering",
+          "difficulty": "Level 2",
+          "text": "What techniques would you use for feature selection in machine learning?"
+        },
+        {
+          "company": "General",
+          "role": "AI/ML Engineer / Data Scientist",
+          "topic": "Model Drift",
+          "difficulty": "Level 3",
+          "text": "A production model's accuracy drops 20% over three months. How would you identify and address model drift?"
+        },
+        {
+          "company": "General",
+          "role": "AI/ML Engineer / Data Scientist",
+          "topic": "LLM Systems",
+          "difficulty": "Level 3",
+          "text": "How would you evaluate whether a RAG system is failing because of retrieval quality or generation quality?"
+        },
+        {
+          "company": "General",
+          "role": "AI/ML Engineer / Data Scientist",
+          "topic": "Feature Engineering",
+          "difficulty": "Level 2",
+          "text": "How do you decide whether a new feature is actually improving a model?"
+        },
+        {
+          "company": "General",
+          "role": "AI/ML Engineer / Data Scientist",
+          "topic": "MLOps",
+          "difficulty": "Level 3",
+          "text": "Design an end-to-end pipeline for monitoring, retraining, and safely deploying ML models."
+        },
+        {
+          "company": "General",
+          "role": "AI/ML Engineer / Data Scientist",
+          "topic": "Experimentation",
+          "difficulty": "Level 2",
+          "text": "When would you choose offline evaluation metrics over A/B testing results?"
+        }
+      ]
+    },
+    "cybersecurity_analyst": {
+      "title": "Cybersecurity / SOC Analyst",
+      "category": "Tech",
+      "questions": [
+        {
+          "topic": "Networking",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between TCP and UDP protocols."
+        },
+        {
+          "topic": "Security Operations",
+          "difficulty": "Level 3",
+          "text": "If you notice an unusual spike in outbound traffic from a server, what steps would you take to investigate?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Cybersecurity Analyst (Fresher)",
+          "topic": "Networking",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between TCP and UDP protocols."
+        },
+        {
+          "company": "Deloitte",
+          "role": "SOC Analyst",
+          "topic": "Incident Response",
+          "difficulty": "Level 3",
+          "text": "What steps would you take after detecting a phishing attack?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Cybersecurity Analyst",
+          "topic": "SIEM",
+          "difficulty": "Level 1",
+          "text": "How do SIEM tools help in monitoring security incidents?"
+        },
+        {
+          "company": "IBM",
+          "role": "SOC Analyst",
+          "topic": "Security Operations",
+          "difficulty": "Level 3",
+          "text": "What is the role of a SOC analyst in incident management?"
+        },
+        {
+          "company": "IBM",
+          "role": "Cybersecurity Analyst",
+          "topic": "Threat Detection",
+          "difficulty": "Level 3",
+          "text": "How would you investigate suspicious login attempts from multiple countries?"
+        },
+        {
+          "company": "IBM",
+          "role": "SOC Analyst",
+          "topic": "Linux Security",
+          "difficulty": "Level 2",
+          "text": "What Linux commands are useful during security investigations?"
+        },
+        {
+          "company": "Wipro",
+          "role": "Cybersecurity Analyst",
+          "topic": "Cybersecurity Basics",
+          "difficulty": "Level 1",
+          "text": "What is the difference between a virus, worm, and trojan?"
+        },
+        {
+          "company": "Wipro",
+          "role": "SOC Analyst",
+          "topic": "Network Security",
+          "difficulty": "Level 2",
+          "text": "Explain how firewalls help secure enterprise networks."
+        },
+        {
+          "company": "Wipro",
+          "role": "Cybersecurity Analyst",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Why are you interested in cybersecurity as a career?"
+        },
+        {
+          "company": "TCS",
+          "role": "SOC Analyst",
+          "topic": "Incident Management",
+          "difficulty": "Level 3",
+          "text": "How would you respond to a ransomware attack in an organization?"
+        },
+        {
+          "company": "TCS",
+          "role": "Cybersecurity Analyst",
+          "topic": "Authentication",
+          "difficulty": "Level 1",
+          "text": "Explain multi-factor authentication and why it is important."
+        },
+        {
+          "company": "TCS",
+          "role": "SOC Analyst",
+          "topic": "Monitoring",
+          "difficulty": "Level 2",
+          "text": "What types of logs are analyzed in a SOC environment?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Cybersecurity Analyst",
+          "topic": "Vulnerability Assessment",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between vulnerability assessment and penetration testing."
+        },
+        {
+          "company": "IBM",
+          "role": "Cybersecurity Analyst",
+          "topic": "OWASP",
+          "difficulty": "Level 1",
+          "text": "What is SQL Injection and how can it be prevented?"
+        },
+        {
+          "company": "Wipro",
+          "role": "SOC Analyst",
+          "topic": "SIEM",
+          "difficulty": "Level 1",
+          "text": "Explain the purpose of Splunk or QRadar in cybersecurity monitoring."
+        },
+        {
+          "company": "TCS",
+          "role": "Cybersecurity Analyst",
+          "topic": "Email Security",
+          "difficulty": "Level 3",
+          "text": "How would you identify whether an email is phishing or legitimate?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "SOC Analyst",
+          "topic": "Cloud Security",
+          "difficulty": "Level 1",
+          "text": "What are the major security risks in cloud computing?"
+        },
+        {
+          "company": "IBM",
+          "role": "Cybersecurity Analyst",
+          "topic": "Cryptography",
+          "difficulty": "Level 1",
+          "text": "Explain symmetric vs asymmetric encryption with examples."
+        },
+        {
+          "company": "Wipro",
+          "role": "Cybersecurity Analyst",
+          "topic": "Network Protocols",
+          "difficulty": "Level 1",
+          "text": "What is DNS and how can DNS attacks occur?"
+        },
+        {
+          "company": "TCS",
+          "role": "SOC Analyst",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where you solved a technical problem under pressure."
+        },
+        {
+          "company": "General",
+          "role": "Cybersecurity / SOC Analyst",
+          "topic": "Incident Response",
+          "difficulty": "Level 3",
+          "text": "A privileged account starts accessing sensitive systems at unusual hours. What is your investigation process?"
+        },
+        {
+          "company": "General",
+          "role": "Cybersecurity / SOC Analyst",
+          "topic": "Threat Detection",
+          "difficulty": "Level 3",
+          "text": "How would you detect a slow-moving attacker who avoids triggering standard alerts?"
+        },
+        {
+          "company": "General",
+          "role": "Cybersecurity / SOC Analyst",
+          "topic": "Network Security",
+          "difficulty": "Level 2",
+          "text": "What indicators would suggest lateral movement inside a corporate network?"
+        },
+        {
+          "company": "General",
+          "role": "Cybersecurity / SOC Analyst",
+          "topic": "Cloud Security",
+          "difficulty": "Level 3",
+          "text": "A public cloud storage bucket exposed customer data. What are your immediate response steps?"
+        },
+        {
+          "company": "General",
+          "role": "Cybersecurity / SOC Analyst",
+          "topic": "SOC Operations",
+          "difficulty": "Level 2",
+          "text": "How would you reduce false positives without increasing security risk?"
+        }
+      ]
+    },
+    "financial_analyst": {
+      "title": "Financial Analyst",
+      "category": "Management",
+      "questions": [
+        {
+          "topic": "Accounting Basics",
+          "difficulty": "Level 1",
+          "text": "Walk me through the three main financial statements and how they are linked."
+        },
+        {
+          "topic": "Valuation",
+          "difficulty": "Level 1",
+          "text": "What is EBITDA, and why is it often used instead of Net Income for comparing companies?"
+        },
+        {
+          "company": "Goldman Sachs",
+          "role": "Financial Analyst (Fresher)",
+          "topic": "Accounting",
+          "difficulty": "Level 2",
+          "text": "Walk me through the three financial statements and how they are connected."
+        },
+        {
+          "company": "Goldman Sachs",
+          "role": "Financial Analyst",
+          "topic": "Valuation",
+          "difficulty": "Level 2",
+          "text": "How would you value a company using Discounted Cash Flow (DCF) analysis?"
+        },
+        {
+          "company": "Goldman Sachs",
+          "role": "Financial Analyst",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Why do you want to work in investment banking and finance?"
+        },
+        {
+          "company": "JP Morgan",
+          "role": "Financial Analyst",
+          "topic": "Excel",
+          "difficulty": "Level 1",
+          "text": "What are Pivot Tables and how are they used in financial reporting?"
+        },
+        {
+          "company": "JP Morgan",
+          "role": "Financial Analyst",
+          "topic": "Financial Ratios",
+          "difficulty": "Level 1",
+          "text": "Explain liquidity ratios and why they are important."
+        },
+        {
+          "company": "JP Morgan",
+          "role": "Analyst",
+          "topic": "Markets",
+          "difficulty": "Level 2",
+          "text": "What factors can affect stock market movements in the short term?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Financial Analyst",
+          "topic": "Financial Modeling",
+          "difficulty": "Level 3",
+          "text": "How would you build a revenue forecasting model for a company?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Financial Analyst",
+          "topic": "Accounting",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between EBITDA and Net Profit."
+        },
+        {
+          "company": "Deloitte",
+          "role": "Financial Analyst",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time you handled multiple deadlines simultaneously."
+        },
+        {
+          "company": "EY",
+          "role": "Financial Analyst",
+          "topic": "Auditing",
+          "difficulty": "Level 1",
+          "text": "What is the purpose of an audit in financial reporting?"
+        },
+        {
+          "company": "EY",
+          "role": "Financial Analyst",
+          "topic": "Excel",
+          "difficulty": "Level 1",
+          "text": "Explain VLOOKUP and INDEX MATCH with practical examples."
+        },
+        {
+          "company": "EY",
+          "role": "Financial Analyst",
+          "topic": "Case Study",
+          "difficulty": "Level 3",
+          "text": "A company’s profits declined despite increased sales. How would you analyze the issue?"
+        },
+        {
+          "company": "KPMG",
+          "role": "Financial Analyst",
+          "topic": "Financial Statements",
+          "difficulty": "Level 1",
+          "text": "What is the difference between cash flow and profit?"
+        },
+        {
+          "company": "KPMG",
+          "role": "Financial Analyst",
+          "topic": "Budgeting",
+          "difficulty": "Level 2",
+          "text": "How would you prepare an annual budget for a business unit?"
+        },
+        {
+          "company": "KPMG",
+          "role": "Financial Analyst",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where you worked under pressure during a project."
+        },
+        {
+          "company": "Goldman Sachs",
+          "role": "Analyst",
+          "topic": "Economics",
+          "difficulty": "Level 1",
+          "text": "How do inflation and interest rates impact financial markets?"
+        },
+        {
+          "company": "JP Morgan",
+          "role": "Financial Analyst",
+          "topic": "SQL / Analytics",
+          "difficulty": "Level 3",
+          "text": "How would you analyze customer transaction data to identify spending trends?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Financial Analyst",
+          "topic": "Risk Analysis",
+          "difficulty": "Level 3",
+          "text": "How would you identify financial risks in a company’s annual report?"
+        },
+        {
+          "company": "EY",
+          "role": "Financial Analyst",
+          "topic": "Corporate Finance",
+          "difficulty": "Level 1",
+          "text": "What is working capital and why is it important?"
+        },
+        {
+          "company": "KPMG",
+          "role": "Financial Analyst",
+          "topic": "Financial Metrics",
+          "difficulty": "Level 3",
+          "text": "Which KPIs are most important for evaluating a company’s financial health?"
+        },
+        {
+          "company": "General",
+          "role": "Financial Analyst",
+          "topic": "Valuation",
+          "difficulty": "Level 3",
+          "text": "Two companies have identical earnings but vastly different valuations. How would you explain the difference?"
+        },
+        {
+          "company": "General",
+          "role": "Financial Analyst",
+          "topic": "Forecasting",
+          "difficulty": "Level 3",
+          "text": "Revenue is growing while cash flow is declining. What would you investigate?"
+        },
+        {
+          "company": "General",
+          "role": "Financial Analyst",
+          "topic": "Financial Modeling",
+          "difficulty": "Level 2",
+          "text": "Which assumptions have the greatest impact on a discounted cash flow model?"
+        },
+        {
+          "company": "General",
+          "role": "Financial Analyst",
+          "topic": "Risk Analysis",
+          "difficulty": "Level 3",
+          "text": "How would rising interest rates affect valuation, profitability, and investment decisions?"
+        },
+        {
+          "company": "General",
+          "role": "Financial Analyst",
+          "topic": "Variance Analysis",
+          "difficulty": "Level 2",
+          "text": "Actual profit missed forecast by 15%. How would you perform root-cause analysis?"
+        }
+      ]
+    },
+    "business_development_executive": {
+      "title": "Business Development / Sales Executive",
+      "category": "Management",
+      "questions": [
+        {
+          "topic": "Prospecting",
+          "difficulty": "Level 2",
+          "text": "How would you structure a cold email to a potential client who has never heard of our company?"
+        },
+        {
+          "topic": "Objection Handling",
+          "difficulty": "Level 2",
+          "text": "If a prospect says 'We don't have the budget right now', how do you respond?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Sales Development Representative (Fresher)",
+          "topic": "Sales Pitch",
+          "difficulty": "Level 2",
+          "text": "How would you convince a seller to join Amazon Marketplace?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Business Development Associate",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time when you persuaded someone successfully."
+        },
+        {
+          "company": "Amazon",
+          "role": "Sales Executive",
+          "topic": "Customer Handling",
+          "difficulty": "Level 2",
+          "text": "How would you handle an angry client refusing to continue business?"
+        },
+        {
+          "company": "HubSpot",
+          "role": "Sales Development Representative",
+          "topic": "Inbound Sales",
+          "difficulty": "Level 2",
+          "text": "How would you qualify a lead before scheduling a demo?"
+        },
+        {
+          "company": "HubSpot",
+          "role": "SDR",
+          "topic": "CRM",
+          "difficulty": "Level 1",
+          "text": "What is the importance of CRM tools in sales processes?"
+        },
+        {
+          "company": "HubSpot",
+          "role": "Business Development Representative",
+          "topic": "Cold Outreach",
+          "difficulty": "Level 2",
+          "text": "How would you write a cold email to a potential SaaS customer?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Business Development Executive",
+          "topic": "Partnerships",
+          "difficulty": "Level 2",
+          "text": "How would you onboard restaurants to Swiggy in a competitive market?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Sales Associate",
+          "topic": "Negotiation",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where you negotiated successfully."
+        },
+        {
+          "company": "Swiggy",
+          "role": "Business Development Executive",
+          "topic": "Metrics",
+          "difficulty": "Level 2",
+          "text": "Which KPIs would you track for restaurant partner growth?"
+        },
+        {
+          "company": "Zomato",
+          "role": "Business Development Associate",
+          "topic": "Sales Strategy",
+          "difficulty": "Level 3",
+          "text": "How would you increase restaurant retention on Zomato?"
+        },
+        {
+          "company": "Zomato",
+          "role": "Sales Executive",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Why do you want to work in business development?"
+        },
+        {
+          "company": "Zomato",
+          "role": "Business Development Executive",
+          "topic": "Market Expansion",
+          "difficulty": "Level 2",
+          "text": "How would you expand Zomato’s restaurant network in Tier-2 cities?"
+        },
+        {
+          "company": "TCS",
+          "role": "Business Development Executive",
+          "topic": "Communication",
+          "difficulty": "Level 1",
+          "text": "How do effective communication skills help in sales and business development?"
+        },
+        {
+          "company": "TCS",
+          "role": "Sales Associate",
+          "topic": "Client Management",
+          "difficulty": "Level 2",
+          "text": "How would you maintain long-term relationships with clients?"
+        },
+        {
+          "company": "TCS",
+          "role": "Business Development Executive",
+          "topic": "Lead Generation",
+          "difficulty": "Level 2",
+          "text": "What methods would you use to generate new business leads?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Sales Development Representative",
+          "topic": "Situational",
+          "difficulty": "Level 3",
+          "text": "A major client is considering switching to a competitor. How would you retain them?"
+        },
+        {
+          "company": "HubSpot",
+          "role": "SDR",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time when you achieved a difficult target."
+        },
+        {
+          "company": "Swiggy",
+          "role": "Business Development Associate",
+          "topic": "Problem Solving",
+          "difficulty": "Level 3",
+          "text": "Restaurant orders have dropped in one region. How would you analyze the issue?"
+        },
+        {
+          "company": "Zomato",
+          "role": "Business Development Executive",
+          "topic": "Sales Metrics",
+          "difficulty": "Level 2",
+          "text": "What metrics are important for evaluating sales performance?"
+        },
+        {
+          "company": "TCS",
+          "role": "Business Development Executive",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where you worked under pressure to meet deadlines."
+        },
+        {
+          "company": "BYJU'S",
+          "role": "Business Development Associate",
+          "topic": "Sales Pitching",
+          "difficulty": "Level 2",
+          "text": "Sell me this pen as if I am a parent considering an online learning subscription."
+        },
+        {
+          "company": "Zomato",
+          "role": "Sales Executive",
+          "topic": "Client Acquisition",
+          "difficulty": "Level 2",
+          "text": "How would you convince a restaurant owner to partner with Zomato?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Business Development Executive",
+          "topic": "Communication Skills",
+          "difficulty": "Level 1",
+          "text": "What would you say during the first 30 seconds of a cold call to a potential client?"
+        },
+        {
+          "company": "Paytm",
+          "role": "Field Sales Executive",
+          "topic": "Digital Payments",
+          "difficulty": "Level 2",
+          "text": "How would you explain the benefits of Paytm QR to a small shopkeeper?"
+        },
+        {
+          "company": "PhonePe",
+          "role": "Business Development Associate",
+          "topic": "Objection Handling",
+          "difficulty": "Level 2",
+          "text": "A merchant says digital payments are unsafe. How would you respond?"
+        },
+        {
+          "company": "HDFC Bank",
+          "role": "Sales Officer",
+          "topic": "Relationship Building",
+          "difficulty": "Level 2",
+          "text": "How would you maintain long-term relationships with high-value customers?"
+        },
+        {
+          "company": "BYJU'S",
+          "role": "Senior BDA",
+          "topic": "Target Pressure",
+          "difficulty": "Level 2",
+          "text": "What would you do if you were consistently missing your weekly sales targets?"
+        },
+        {
+          "company": "Zomato",
+          "role": "Enterprise Sales Associate",
+          "topic": "Negotiation",
+          "difficulty": "Level 2",
+          "text": "A restaurant partner demands lower commission rates. How would you negotiate?"
+        },
+        {
+          "company": "Swiggy",
+          "role": "Area Sales Manager",
+          "topic": "CRM Tools",
+          "difficulty": "Level 3",
+          "text": "Which CRM metrics do you track regularly to improve sales performance?"
+        },
+        {
+          "company": "Paytm",
+          "role": "Business Development Manager",
+          "topic": "Client Retention",
+          "difficulty": "Level 3",
+          "text": "How would you handle a merchant threatening to switch to a competitor platform?"
+        },
+        {
+          "company": "PhonePe",
+          "role": "Sales Specialist",
+          "topic": "Upselling",
+          "difficulty": "Level 2",
+          "text": "How would you upsell additional financial products to an existing merchant?"
+        },
+        {
+          "company": "HDFC Bank",
+          "role": "Relationship Manager",
+          "topic": "Cross Selling",
+          "difficulty": "Level 3",
+          "text": "Explain a strategy to cross-sell insurance or loan products to existing customers."
+        },
+        {
+          "company": "BYJU'S",
+          "role": "Business Development Manager",
+          "topic": "High Pressure Sales",
+          "difficulty": "Level 2",
+          "text": "A parent is interested but says the course fee is too expensive. How would you close the sale without offering discounts?"
+        },
+        {
+          "company": "Zomato",
+          "role": "Strategic Partnerships Executive",
+          "topic": "B2B Deal Structuring",
+          "difficulty": "Level 2",
+          "text": "How would you structure a partnership deal with a restaurant chain operating across multiple cities?"
+        },
+        {
+          "company": "PhonePe",
+          "role": "Enterprise Sales Manager",
+          "topic": "Competitive Strategy",
+          "difficulty": "Level 3",
+          "text": "How would you convince a large retailer to switch from a competitor's payment gateway to PhonePe?"
+        }
+      ]
+    },
+    "customer_success_manager": {
+      "title": "Customer Success Manager",
+      "category": "Management",
+      "questions": [
+        {
+          "topic": "Onboarding",
+          "difficulty": "Level 2",
+          "text": "What steps would you take in the first 30 days to ensure a new client successfully adopts our software?"
+        },
+        {
+          "topic": "Retention",
+          "difficulty": "Level 2",
+          "text": "You notice a client hasn't logged into the platform for 3 weeks. What is your action plan?"
+        },
+        {
+          "company": "Freshworks",
+          "role": "Customer Success Manager (Fresher)",
+          "topic": "Customer Handling",
+          "difficulty": "Level 2",
+          "text": "How would you handle a frustrated customer who wants to cancel their subscription?"
+        },
+        {
+          "company": "Freshworks",
+          "role": "Customer Success Associate",
+          "topic": "SaaS Metrics",
+          "difficulty": "Level 3",
+          "text": "What metrics would you track to measure customer success in a SaaS product?"
+        },
+        {
+          "company": "Freshworks",
+          "role": "Customer Success Manager",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time when you resolved a customer issue successfully."
+        },
+        {
+          "company": "Zoho",
+          "role": "Customer Success Executive",
+          "topic": "Product Knowledge",
+          "difficulty": "Level 2",
+          "text": "How would you explain a technical SaaS product to a non-technical customer?"
+        },
+        {
+          "company": "Zoho",
+          "role": "Customer Success Associate",
+          "topic": "Communication",
+          "difficulty": "Level 1",
+          "text": "Why are communication skills important in customer success roles?"
+        },
+        {
+          "company": "Zoho",
+          "role": "Customer Success Manager",
+          "topic": "Problem Solving",
+          "difficulty": "Level 2",
+          "text": "A client is not actively using the product after onboarding. What would you do?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Customer Success Manager",
+          "topic": "Payments",
+          "difficulty": "Level 2",
+          "text": "A merchant reports repeated payment failures. How would you investigate the issue?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Customer Success Executive",
+          "topic": "Escalation Handling",
+          "difficulty": "Level 2",
+          "text": "How would you handle an escalated complaint from an enterprise customer?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Customer Success Manager",
+          "topic": "Customer Retention",
+          "difficulty": "Level 3",
+          "text": "How would you reduce churn among Razorpay merchants?"
+        },
+        {
+          "company": "Salesforce",
+          "role": "Customer Success Associate",
+          "topic": "CRM",
+          "difficulty": "Level 1",
+          "text": "What is the role of CRM systems in customer success management?"
+        },
+        {
+          "company": "Salesforce",
+          "role": "Customer Success Manager",
+          "topic": "Customer Onboarding",
+          "difficulty": "Level 2",
+          "text": "How would you onboard a new enterprise customer to Salesforce products?"
+        },
+        {
+          "company": "Salesforce",
+          "role": "Customer Success Executive",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where you handled multiple customer priorities simultaneously."
+        },
+        {
+          "company": "Freshworks",
+          "role": "Customer Success Associate",
+          "topic": "Customer Engagement",
+          "difficulty": "Level 3",
+          "text": "How would you improve user adoption for a newly launched feature?"
+        },
+        {
+          "company": "Zoho",
+          "role": "Customer Success Manager",
+          "topic": "SaaS Support",
+          "difficulty": "Level 3",
+          "text": "How would you prioritize support tickets from multiple customers?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Customer Success Associate",
+          "topic": "Analytics",
+          "difficulty": "Level 2",
+          "text": "Which KPIs are important for measuring customer satisfaction?"
+        },
+        {
+          "company": "Salesforce",
+          "role": "Customer Success Manager",
+          "topic": "Relationship Management",
+          "difficulty": "Level 2",
+          "text": "How would you build long-term relationships with enterprise clients?"
+        },
+        {
+          "company": "Freshworks",
+          "role": "Customer Success Executive",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Why do you want to work in customer success?"
+        },
+        {
+          "company": "Zoho",
+          "role": "Customer Success Associate",
+          "topic": "Troubleshooting",
+          "difficulty": "Level 2",
+          "text": "How would you assist a customer facing repeated software issues?"
+        },
+        {
+          "company": "Razorpay",
+          "role": "Customer Success Manager",
+          "topic": "Conflict Resolution",
+          "difficulty": "Level 2",
+          "text": "How would you handle a customer threatening to move to a competitor?"
+        },
+        {
+          "company": "Salesforce",
+          "role": "Customer Success Associate",
+          "topic": "Customer Experience",
+          "difficulty": "Level 3",
+          "text": "What steps would you take to improve customer satisfaction scores?"
+        },
+        {
+          "company": "General",
+          "role": "Customer Success Manager",
+          "topic": "Churn Prevention",
+          "difficulty": "Level 3",
+          "text": "A strategic customer signals they may leave at renewal. How would you build a recovery plan?"
+        },
+        {
+          "company": "General",
+          "role": "Customer Success Manager",
+          "topic": "Stakeholder Management",
+          "difficulty": "Level 3",
+          "text": "Your executive sponsor loves the product but end users hate it. What would you do?"
+        },
+        {
+          "company": "General",
+          "role": "Customer Success Manager",
+          "topic": "Customer Health",
+          "difficulty": "Level 2",
+          "text": "Which metrics would you use to predict customer churn?"
+        },
+        {
+          "company": "General",
+          "role": "Customer Success Manager",
+          "topic": "Escalation Management",
+          "difficulty": "Level 3",
+          "text": "A major outage impacts your largest customer. How do you manage communication and trust?"
+        },
+        {
+          "company": "General",
+          "role": "Customer Success Manager",
+          "topic": "Adoption Strategy",
+          "difficulty": "Level 2",
+          "text": "How would you increase feature adoption among inactive users?"
+        }
+      ]
+    },
+    "operations_coordinator": {
+      "title": "Operations / Supply Chain Coordinator",
+      "category": "Management",
+      "questions": [
+        {
+          "topic": "Process Improvement",
+          "difficulty": "Level 2",
+          "text": "Describe a time you identified an inefficiency in a process and how you fixed it."
+        },
+        {
+          "topic": "Logistics",
+          "difficulty": "Level 2",
+          "text": "If a key supplier suddenly goes bankrupt, how do you manage the disruption to your supply chain?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Operations Coordinator (Fresher)",
+          "topic": "Supply Chain",
+          "difficulty": "Level 2",
+          "text": "How would you manage delayed shipments in a warehouse operation?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Operations Analyst",
+          "topic": "Process Optimization",
+          "difficulty": "Level 3",
+          "text": "A fulfillment center’s delivery time increased by 15%. How would you identify the root cause?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Operations Executive",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where you handled multiple operational tasks under pressure."
+        },
+        {
+          "company": "Flipkart",
+          "role": "Operations Coordinator",
+          "topic": "Logistics",
+          "difficulty": "Level 3",
+          "text": "How would you improve last-mile delivery efficiency during Big Billion Days?"
+        },
+        {
+          "company": "Flipkart",
+          "role": "Supply Chain Associate",
+          "topic": "Inventory Management",
+          "difficulty": "Level 2",
+          "text": "What methods would you use to reduce inventory shortages?"
+        },
+        {
+          "company": "Flipkart",
+          "role": "Operations Analyst",
+          "topic": "Metrics",
+          "difficulty": "Level 2",
+          "text": "Which KPIs are most important for evaluating warehouse performance?"
+        },
+        {
+          "company": "HUL",
+          "role": "Supply Chain Coordinator",
+          "topic": "Demand Forecasting",
+          "difficulty": "Level 3",
+          "text": "How would you forecast product demand for a seasonal FMCG product?"
+        },
+        {
+          "company": "HUL",
+          "role": "Operations Executive",
+          "topic": "Procurement",
+          "difficulty": "Level 1",
+          "text": "Explain the importance of vendor management in supply chain operations."
+        },
+        {
+          "company": "HUL",
+          "role": "Supply Chain Analyst",
+          "topic": "Case Study",
+          "difficulty": "Level 3",
+          "text": "Raw material costs increased significantly. How would you optimize supply chain costs?"
+        },
+        {
+          "company": "TCS",
+          "role": "Operations Coordinator",
+          "topic": "Operations Management",
+          "difficulty": "Level 1",
+          "text": "What is the role of an Operations Coordinator in an organization?"
+        },
+        {
+          "company": "TCS",
+          "role": "Supply Chain Associate",
+          "topic": "Excel",
+          "difficulty": "Level 1",
+          "text": "How are Pivot Tables used in operational reporting?"
+        },
+        {
+          "company": "TCS",
+          "role": "Operations Executive",
+          "topic": "Process Improvement",
+          "difficulty": "Level 3",
+          "text": "What steps would you take to improve operational efficiency in a team?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Operations Analyst",
+          "topic": "Business Process",
+          "difficulty": "Level 3",
+          "text": "How would you analyze inefficiencies in a client’s supply chain process?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Operations Coordinator",
+          "topic": "Data Analysis",
+          "difficulty": "Level 3",
+          "text": "How would you use operational data to improve decision-making?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Supply Chain Analyst",
+          "topic": "Case Study",
+          "difficulty": "Level 3",
+          "text": "A company’s order fulfillment accuracy dropped by 10%. How would you investigate?"
+        },
+        {
+          "company": "Amazon",
+          "role": "Operations Coordinator",
+          "topic": "Inventory Control",
+          "difficulty": "Level 1",
+          "text": "What techniques are used to manage warehouse inventory efficiently?"
+        },
+        {
+          "company": "Flipkart",
+          "role": "Operations Executive",
+          "topic": "Problem Solving",
+          "difficulty": "Level 2",
+          "text": "How would you handle a sudden spike in customer complaints related to deliveries?"
+        },
+        {
+          "company": "HUL",
+          "role": "Supply Chain Coordinator",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Tell me about a time when you worked collaboratively to solve a problem."
+        },
+        {
+          "company": "TCS",
+          "role": "Operations Analyst",
+          "topic": "Communication",
+          "difficulty": "Level 1",
+          "text": "Why are communication and coordination important in operations management?"
+        },
+        {
+          "company": "Deloitte",
+          "role": "Operations Executive",
+          "topic": "Stakeholder Management",
+          "difficulty": "Level 2",
+          "text": "How would you coordinate between vendors, warehouses, and internal teams during disruptions?"
+        },
+        {
+          "company": "General",
+          "role": "Operations / Supply Chain Coordinator",
+          "topic": "Supply Chain Risk",
+          "difficulty": "Level 3",
+          "text": "A key supplier fails unexpectedly. How would you maintain business continuity?"
+        },
+        {
+          "company": "General",
+          "role": "Operations / Supply Chain Coordinator",
+          "topic": "Process Improvement",
+          "difficulty": "Level 3",
+          "text": "How would you identify and eliminate a bottleneck reducing throughput by 30%?"
+        },
+        {
+          "company": "General",
+          "role": "Operations / Supply Chain Coordinator",
+          "topic": "Inventory Management",
+          "difficulty": "Level 2",
+          "text": "How would you balance stockout risk against excess inventory costs?"
+        },
+        {
+          "company": "General",
+          "role": "Operations / Supply Chain Coordinator",
+          "topic": "Crisis Management",
+          "difficulty": "Level 3",
+          "text": "A logistics disruption affects nationwide deliveries. What is your response strategy?"
+        },
+        {
+          "company": "General",
+          "role": "Operations / Supply Chain Coordinator",
+          "topic": "Performance Metrics",
+          "difficulty": "Level 2",
+          "text": "Which KPIs would you monitor to evaluate operational efficiency?"
+        }
+      ]
+    },
+    "it_support_technician": {
+      "title": "IT Support / Helpdesk Technician",
+      "category": "Tech",
+      "questions": [
+        {
+          "topic": "Troubleshooting",
+          "difficulty": "Level 1",
+          "text": "A user complains that their computer cannot connect to the internet. What are the first three things you check?"
+        },
+        {
+          "topic": "Active Directory",
+          "difficulty": "Level 2",
+          "text": "How would you reset a user's password and force them to change it at next logon using Active Directory?"
+        },
+        {
+          "company": "TCS",
+          "role": "IT Support Technician (Fresher)",
+          "topic": "Operating Systems",
+          "difficulty": "Level 1",
+          "text": "What is the difference between Windows and Linux operating systems?"
+        },
+        {
+          "company": "TCS",
+          "role": "Helpdesk Technician",
+          "topic": "Networking",
+          "difficulty": "Level 1",
+          "text": "Explain the difference between IP address, MAC address, and DNS."
+        },
+        {
+          "company": "TCS",
+          "role": "IT Support Associate",
+          "topic": "Troubleshooting",
+          "difficulty": "Level 2",
+          "text": "A user cannot connect to the internet. How would you troubleshoot the issue?"
+        },
+        {
+          "company": "Infosys",
+          "role": "IT Support Engineer",
+          "topic": "Hardware",
+          "difficulty": "Level 1",
+          "text": "What are the basic components of a computer system?"
+        },
+        {
+          "company": "Infosys",
+          "role": "Helpdesk Technician",
+          "topic": "Active Directory",
+          "difficulty": "Level 1",
+          "text": "What is Active Directory and why is it used in organizations?"
+        },
+        {
+          "company": "Infosys",
+          "role": "IT Support Associate",
+          "topic": "Behavioral",
+          "difficulty": "Level 2",
+          "text": "Describe a situation where you solved a technical problem for someone."
+        },
+        {
+          "company": "Wipro",
+          "role": "IT Support Technician",
+          "topic": "Networking",
+          "difficulty": "Level 1",
+          "text": "What is the difference between a router and a switch?"
+        },
+        {
+          "company": "Wipro",
+          "role": "Helpdesk Associate",
+          "topic": "Troubleshooting",
+          "difficulty": "Level 2",
+          "text": "How would you troubleshoot a slow computer system?"
+        },
+        {
+          "company": "Wipro",
+          "role": "IT Support Engineer",
+          "topic": "Security",
+          "difficulty": "Level 3",
+          "text": "What steps would you take if a user suspects malware on their system?"
+        },
+        {
+          "company": "Cognizant",
+          "role": "IT Helpdesk Technician",
+          "topic": "Ticketing Systems",
+          "difficulty": "Level 1",
+          "text": "What is the purpose of an IT ticketing system?"
+        },
+        {
+          "company": "Cognizant",
+          "role": "IT Support Associate",
+          "topic": "Remote Support",
+          "difficulty": "Level 2",
+          "text": "How would you remotely troubleshoot a user’s desktop issue?"
+        },
+        {
+          "company": "Cognizant",
+          "role": "Helpdesk Technician",
+          "topic": "Customer Service",
+          "difficulty": "Level 1",
+          "text": "Why are communication skills important in IT support roles?"
+        },
+        {
+          "company": "Accenture",
+          "role": "IT Support Associate",
+          "topic": "Cloud Basics",
+          "difficulty": "Level 1",
+          "text": "What is cloud computing and how does it help organizations?"
+        },
+        {
+          "company": "Accenture",
+          "role": "Helpdesk Technician",
+          "topic": "Office 365",
+          "difficulty": "Level 2",
+          "text": "How would you troubleshoot Outlook email synchronization issues?"
+        },
+        {
+          "company": "Accenture",
+          "role": "IT Support Engineer",
+          "topic": "Behavioral",
+          "difficulty": "Level 1",
+          "text": "Tell me about a time when you handled pressure while solving an issue."
+        },
+        {
+          "company": "TCS",
+          "role": "IT Support Technician",
+          "topic": "Printers & Devices",
+          "difficulty": "Level 2",
+          "text": "How would you troubleshoot a printer that is not responding?"
+        },
+        {
+          "company": "Infosys",
+          "role": "Helpdesk Technician",
+          "topic": "Networking",
+          "difficulty": "Level 1",
+          "text": "Explain DHCP and how IP addresses are assigned automatically."
+        },
+        {
+          "company": "Wipro",
+          "role": "IT Support Associate",
+          "topic": "System Administration",
+          "difficulty": "Level 1",
+          "text": "What are the responsibilities of a system administrator?"
+        },
+        {
+          "company": "Cognizant",
+          "role": "IT Support Engineer",
+          "topic": "Security",
+          "difficulty": "Level 1",
+          "text": "What is multi-factor authentication and why is it important?"
+        },
+        {
+          "company": "Accenture",
+          "role": "Helpdesk Associate",
+          "topic": "Incident Management",
+          "difficulty": "Level 3",
+          "text": "How would you prioritize multiple critical support tickets arriving simultaneously?"
+        },
+        {
+          "company": "General",
+          "role": "IT Support / Helpdesk Technician",
+          "topic": "Major Incident",
+          "difficulty": "Level 3",
+          "text": "Hundreds of users suddenly cannot access email. How would you prioritize and investigate the incident?"
+        },
+        {
+          "company": "General",
+          "role": "IT Support / Helpdesk Technician",
+          "topic": "Active Directory",
+          "difficulty": "Level 3",
+          "text": "A user intermittently loses access to resources despite correct permissions. How would you troubleshoot?"
+        },
+        {
+          "company": "General",
+          "role": "IT Support / Helpdesk Technician",
+          "topic": "Network Troubleshooting",
+          "difficulty": "Level 2",
+          "text": "What steps would you take when a user reports internet access issues?"
+        },
+        {
+          "company": "General",
+          "role": "IT Support / Helpdesk Technician",
+          "topic": "Endpoint Management",
+          "difficulty": "Level 3",
+          "text": "A critical security patch causes failures on multiple machines. How would you respond?"
+        },
+        {
+          "company": "General",
+          "role": "IT Support / Helpdesk Technician",
+          "topic": "Root Cause Analysis",
+          "difficulty": "Level 2",
+          "text": "How do you ensure a recurring support issue is permanently resolved?"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance Report — SkillViva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-white font-sans">
+
+  <!-- ── NAV ── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-[#1a1a1a] bg-black/95 backdrop-blur-md">
+    <div class="max-w-7xl w-full mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="dashboard.html" class="brush-text text-white text-2xl tracking-widest hover:text-[#e63329] transition-colors mt-1">
+        SKILLVIVA
+      </a>
+      <div class="hidden sm:flex items-center gap-6">
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="resume.html" class="nav-link">Resume</a>
+        <a href="interview.html" class="nav-link">Interview</a>
+        <a href="profile.html" class="nav-link">Profile</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="profile.html" class="flex items-center hover:opacity-80 transition-opacity">
+          <div class="hidden sm:flex flex-col items-end mr-2">
+            <span id="user-display-name" class="font-body text-xs text-white font-semibold">User</span>
+            <span id="user-display-role" class="font-body text-[10px] text-[#e63329] uppercase tracking-widest">Frontend Developer</span>
+          </div>
+          <div id="user-display-avatar" class="w-8 h-8 rounded-full bg-[#111] border border-[#333] flex items-center justify-center flex-shrink-0 transition-colors">
+            <span class="font-body text-xs font-bold text-white">U</span>
+          </div>
+        </a>
+        <button id="logout-btn" class="font-body text-xs text-[#555] hover:text-[#e63329] uppercase tracking-widest transition-colors ml-2">
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="h-16"></div>
+
+  <!-- ── REPORT VIEW ── -->
+  <main class="max-w-5xl mx-auto px-4 py-8">
+    <div class="fade-up mb-8">
+      <div class="tag tag-red mb-3">TRAINING CONCLUDED</div>
+      <h1 class="brush-text text-5xl sm:text-6xl text-white">
+        PERFORMANCE REPORT
+      </h1>
+    </div>
+
+    <!-- Overall Summary Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 fade-up">
+      
+      <!-- Big Score Card -->
+      <div class="card-gritty flex flex-col justify-between items-center text-center p-8">
+        <div>
+          <div class="tag tag-red mb-4">OVERALL RATING</div>
+          <h4 id="role-title" class="font-body text-xs text-[#555] uppercase tracking-widest font-bold mb-4">Frontend Developer Mock</h4>
+        </div>
+        
+        <div class="my-6">
+          <div id="report-score" class="brush-text text-white leading-none text-7xl sm:text-8xl">0.0</div>
+          <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mt-2">Weighted average rating</div>
+        </div>
+        
+        <a href="interview.html" class="btn-primary w-full justify-center text-xs py-3">▶ RETAKE TEST</a>
+      </div>
+
+      <!-- Recruiter Review Details -->
+      <div class="card-gritty lg:col-span-2">
+        <div class="tag tag-red mb-4">RECRUITER FEEDBACK</div>
+        <h3 class="brush-text text-white text-3xl mb-4">SUMMARY</h3>
+        <p id="report-overall-feedback" class="font-body text-xs text-[#888] leading-relaxed mb-6">
+          Loading performance summary feedback...
+        </p>
+
+        <!-- Strengths / Weaknesses -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <div class="font-body text-[10px] text-green-500 uppercase tracking-widest mb-3 font-bold">Strong Areas</div>
+            <ul id="strengths-list" class="list-disc pl-4 font-body text-xs text-[#888] flex flex-col gap-1.5">
+              <!-- JS populated -->
+            </ul>
+          </div>
+          <div>
+            <div class="font-body text-[10px] text-[#e63329] uppercase tracking-widest mb-3 font-bold">Weak spots</div>
+            <ul id="weaknesses-list" class="list-disc pl-4 font-body text-xs text-[#888] flex flex-col gap-1.5">
+              <!-- JS populated -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="card-gritty mb-12 fade-up">
+      <div class="tag tag-red mb-4">AI PREPARATION SYSTEM</div>
+      <h3 class="brush-text text-white text-3xl mb-6">RECOMMENDATIONS</h3>
+      <ul id="recommendations-list" class="list-disc pl-4 font-body text-xs text-[#888] flex flex-col gap-3">
+        <!-- JS populated -->
+      </ul>
+    </div>
+
+    <!-- Q&A Transcript -->
+    <div class="fade-up">
+      <div class="tag tag-red mb-4">SESSION DIALOGUE LOG</div>
+      <h3 class="brush-text text-white text-3xl mb-8">DETAILED TRANSCRIPT</h3>
+
+      <div id="transcript-container" class="flex flex-col gap-6">
+        <!-- Questions & Answers populated -->
+      </div>
+    </div>
+    
+    <div class="text-center mt-12 fade-up">
+      <a href="dashboard.html" class="btn-outline py-4 px-8 text-xs inline-flex">▶ BACK TO DASHBOARD</a>
+    </div>
+  </main>
+
+  <script>
+    // ==========================================
+    // EXPLAINING THE REPORT GENERATION FLOW
+    // ==========================================
+    // VISUAL FLOW:
+    // JAVASCRIPT (Reads the saved report from browser memory)
+    // ↓
+    // MATH (Calculates the average score of all answers)
+    // ↓
+    // DOM MANIPULATION (Changes text colors based on the score)
+    // ↓
+    // JAVASCRIPT LOOP (Creates HTML bullet points for strengths and weaknesses)
+    // ↓
+    // JAVASCRIPT LOOP (Creates a box for every single question answered in the interview)
+
+    // 1. Check if the user is logged in
+    const email = localStorage.getItem("skillviva_email");
+    if (!email) {
+      // Not logged in? Get out!
+      window.location.href = "login.html";
+    }
+
+    // 2. Setup the Top Navbar (Shows the user's name and avatar)
+    // API REQUEST: Ask the server who is logged in
+    fetch("/api/auth/me", {
+      headers: { "X-User-Email": email }
+    })
+    .then(res => res.json())
+    .then(user => {
+      // DOM MANIPULATION: Put their name on the screen
+      document.getElementById("user-display-name").innerText = user.name || "User";
+      document.getElementById("user-display-role").innerText = user.targetRole || "Frontend Developer";
+      document.getElementById("user-display-avatar").firstElementChild.innerText = (user.name || "U").charAt(0).toUpperCase();
+    });
+
+    // 3. Load the Final Report Data
+    // We saved this in `sessionStorage` (temporary memory) right after the interview finished!
+    const reportStr = sessionStorage.getItem("skillviva_report");
+    if (!reportStr) {
+      // If there is no report, they shouldn't be on this page!
+      window.location.href = "dashboard.html";
+    }
+
+    // Convert the text back into a JSON object
+    const report = JSON.parse(reportStr);
+    
+    // 4. Set basic text on the screen
+    document.getElementById("role-title").innerText = report.role + " Mock Interview";
+    
+    // 5. MATH: Calculate the Average Score
+    let avg = 0;
+    // Check if they actually answered any questions
+    if (report.history && report.history.length > 0) {
+      // Add up all the scores
+      const sum = report.history.reduce((total, question) => total + (question.score || 0), 0);
+      // Divide by the number of questions
+      avg = sum / report.history.length;
+    }
+    // Show the score with 1 decimal point (e.g. 7.5)
+    document.getElementById("report-score").innerText = avg.toFixed(1);
+
+    // 6. DOM MANIPULATION: Color the Score!
+    if (avg >= 7.5) {
+      // Good score? Make it GREEN!
+      document.getElementById("report-score").className = "brush-text text-green-500 leading-none text-7xl sm:text-8xl";
+    } else if (avg >= 5.0) {
+      // Okay score? Make it YELLOW!
+      document.getElementById("report-score").className = "brush-text text-yellow-500 leading-none text-7xl sm:text-8xl";
+    } else {
+      // Bad score? Make it RED!
+      document.getElementById("report-score").className = "brush-text text-[#e63329] leading-none text-7xl sm:text-8xl";
+    }
+
+    // 7. Show the AI's big paragraph of feedback
+    const data = report.reportData; // This holds the AI's deep analysis
+    document.getElementById("report-overall-feedback").innerText = data.overall_feedback || "Brutal assessment complete.";
+
+    // 8. This is a "Helper Function" to make HTML bullet points easily
+    const populateList = (elementId, listData) => {
+      const el = document.getElementById(elementId);
+      el.innerHTML = ""; // Clear out the loading text
+      
+      // Are there items in the list?
+      if (listData && listData.length > 0) {
+        // Loop through each item
+        listData.forEach(item => {
+          const li = document.createElement("li"); // Create a bullet point
+          li.innerText = item; // Add the text
+          el.appendChild(li); // Put it on the screen
+        });
+      } else {
+        // If the list is empty, show a default message
+        const li = document.createElement("li");
+        li.innerText = "No critical data compiled.";
+        el.appendChild(li);
+      }
+    };
+
+    // Use our helper function to fill the 3 lists on the screen!
+    populateList("strengths-list", data.strong_areas);
+    populateList("weaknesses-list", data.weak_areas);
+    populateList("recommendations-list", data.recommendations);
+
+    // 9. Build the Transcript (The history of the entire interview)
+    const container = document.getElementById("transcript-container");
+    container.innerHTML = ""; // Clear out loading text
+    
+    // Loop through every single question that was asked
+    report.history.forEach((h, index) => {
+      // Create a big box (card) for each question
+      const card = document.createElement("div");
+      card.className = "border border-[#222] p-6 hover:border-[#e63329]/30 transition-colors";
+      
+      // We use "Template Literals" (the ` marks) to write HTML inside JavaScript!
+      card.innerHTML = `
+        <div class="flex justify-between items-center border-b border-[#111] pb-3 mb-4">
+          <span class="font-body text-xs text-[#e63329] font-bold uppercase tracking-widest">Question ${index + 1}</span>
+          <span class="font-body text-xs font-bold text-white bg-[#e63329]/10 border border-[#e63329]/30 px-2 py-0.5 rounded-sm">Score: ${h.score}/10</span>
+        </div>
+        
+        <div class="mb-4">
+          <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-1">Interviewer Query</div>
+          <p class="font-body text-xs text-white leading-relaxed font-semibold">${h.question}</p>
+        </div>
+
+        <div class="mb-4">
+          <div class="font-body text-[10px] text-[#555] uppercase tracking-widest mb-1">Your Response</div>
+          <p class="font-body text-xs text-[#888] leading-relaxed italic">"${h.answer}"</p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-[#111]">
+          <div>
+            <div class="font-body text-[10px] text-yellow-500 uppercase tracking-widest mb-1">Recruiter Review</div>
+            <p class="font-body text-[11px] text-[#888] leading-relaxed">${h.feedback}</p>
+          </div>
+          <div>
+            <div class="font-body text-[10px] text-green-500 uppercase tracking-widest mb-1">Hesitation Duration</div>
+            <p class="font-body text-[11px] text-[#888] leading-relaxed">${h.hesitation || 0} seconds of silent hesitation detected.</p>
+          </div>
+        </div>
+      `;
+      // Put the finished box on the screen
+      container.appendChild(card);
+    });
+
+    // 10. Logout Button
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      // Clear out the browser's memory and send them to the login page
+      localStorage.removeItem("skillviva_email");
+      localStorage.removeItem("skillviva_resume_context");
+      localStorage.removeItem("skillviva_interview_config");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
