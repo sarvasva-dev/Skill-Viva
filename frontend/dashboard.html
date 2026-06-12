@@ -65,6 +65,16 @@
               </select>
             </div>
             
+            <div id="custom-role-container" class="hidden">
+              <label class="font-body text-xs text-[#555] uppercase tracking-widest mb-2 block mt-3">Custom Role Name</label>
+              <input
+                id="custom-role-input"
+                type="text"
+                class="input-gritty"
+                placeholder="e.g. Solidity Developer"
+              >
+            </div>
+            
             <div>
               <label class="font-body text-xs text-[#555] uppercase tracking-widest mb-2 block">Difficulty Level</label>
               <div class="grid grid-cols-3 gap-2">
@@ -215,14 +225,45 @@
         roleSelect.innerHTML = ""; // Clear out any old data
         
         // Loop through the roles and add them to the dropdown menu on screen
+        let roleMatched = false;
         roles.forEach(r => {
           const opt = document.createElement("option");
           opt.value = r.name;
           opt.innerText = r.name;
           if (user.targetRole && user.targetRole.toLowerCase() === r.name.toLowerCase()) {
             opt.selected = true; // Auto-select their favorite role!
+            roleMatched = true;
           }
           roleSelect.appendChild(opt);
+        });
+
+        // Add "Manually Type" option
+        const manualOpt = document.createElement("option");
+        manualOpt.value = "MANUAL_TYPE";
+        manualOpt.innerText = "➕ Manually Type...";
+        roleSelect.appendChild(manualOpt);
+
+        const customRoleContainer = document.getElementById("custom-role-container");
+        const customRoleInput = document.getElementById("custom-role-input");
+
+        // If the user's role is custom (not matched), select MANUAL_TYPE and pre-fill input
+        if (user.targetRole && !roleMatched) {
+          manualOpt.selected = true;
+          customRoleContainer.classList.remove("hidden");
+          customRoleInput.value = user.targetRole;
+          customRoleInput.required = true;
+        }
+
+        // Toggle custom role input visibility on select change
+        roleSelect.addEventListener("change", () => {
+          if (roleSelect.value === "MANUAL_TYPE") {
+            customRoleContainer.classList.remove("hidden");
+            customRoleInput.required = true;
+          } else {
+            customRoleContainer.classList.add("hidden");
+            customRoleInput.required = false;
+            customRoleInput.value = "";
+          }
         });
 
         // 4. Resume status check
@@ -343,7 +384,15 @@
     // What button triggers it? The giant red "ENTER ARENA" button.
     document.getElementById("start-interview-btn").addEventListener("click", async () => {
       // Find out what role they selected from the dropdown
-      const selectedRole = document.getElementById("interview-role-select").value;
+      let selectedRole = document.getElementById("interview-role-select").value;
+      const customRoleInput = document.getElementById("custom-role-input");
+      if (selectedRole === "MANUAL_TYPE") {
+        selectedRole = customRoleInput.value.trim();
+        if (!selectedRole) {
+          alert("Please enter a custom role name.");
+          return;
+        }
+      }
       
       // SAFETY CHECK: Did they upload a resume?
       if (!currentUserProfile.resumeAnalysis || !currentUserProfile.resumeText || currentUserProfile.resumeText.length < 20) {

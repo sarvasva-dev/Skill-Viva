@@ -227,7 +227,10 @@ Skill-Viva/
 
 - **Models**: Sarvam `105b` (heavy reasoning), `30b` (fast fallback), `bulbul:v3` (TTS), `saaras:v1` (STT).
 - **Parameters**: `Temperature = 0.7` is used for reasoning tasks to balance creativity with accuracy.
-- **Prompt Strategy**: Constraint-focused. We inject database context: *"Generate a question for {role}. The candidate is missing these skills: {missingSkills}. Be brutal."*
+- **Prompt Strategy & Seed Question Grounding**: If the selected role matches predefined job roles in the database (e.g., SDE, Frontend/Backend Developer, QA Tester), the system queries the `questions` collection (seeded from `question.json`). These real-world questions from top companies (Google, Amazon, Meta, etc.) are injected into:
+  1. The **Resume Scanner** (`/api/resume`) to align ATS scanning and missing-skill reviews with actual topics present in the question bank.
+  2. The **Batch Question Generator** (`/api/questions/generate-batch`) to act as templates for formatting, tone, and technical depth.
+- **Custom Roles & Pure AI Fallback**: If the candidate manually types a custom role (using the "Manually Type..." option on Onboarding or Dashboard), the system automatically bypasses the database lookup and falls back to pure AI role-based question and concept generation.
 - **Fallback Handling**: If `105b` times out or throws a 504 Gateway Error, the `try/except` block instantly redirects the exact prompt to the `30b` model.
 - **Error Recovery**: `clean_json_string()` prevents JSONDecodeErrors. If parsing fails entirely, hardcoded fallback objects are returned to prevent the app from crashing during a demo.
 

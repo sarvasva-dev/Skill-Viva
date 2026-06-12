@@ -696,8 +696,15 @@ async def api_analyze_resume(req: Request, db_user = Depends(get_current_user)):
         text = body.get("text", "")
         target_role = body.get("targetRole", "Frontend Developer")
         
+        db = get_db()
+        unique_topics = db.questions.distinct("topic", {"role_id": target_role})
+        
+        topics_context = ""
+        if unique_topics:
+            topics_context = f"\nFor context, our interview question bank for '{target_role}' specifically tests candidate readiness on the following topics: {', '.join(unique_topics)}.\nPlease evaluate their resume specifically against these topics where relevant and list any gaps under 'missingSkills'."
+            
         prompt = f"""
-You are a brutally honest tech recruiter. Analyze the candidate's resume against the targeted role: {target_role}.
+You are a brutally honest tech recruiter. Analyze the candidate's resume against the targeted role: {target_role}.{topics_context}
 Highlight missing skills, inconsistencies, and improvements.
 
 JSON format response:
@@ -828,6 +835,8 @@ async def api_get_question(req: Request, db_user = Depends(get_current_user)):
         if db_qs:
             db_question = db_qs[0]["text"]
             fetched_id = str(db_qs[0]["_id"])
+            topic = db_qs[0].get("topic", "General")
+            company = db_qs[0].get("company", "Generic")
             
             # Adapt the question using LLM
             resume_analysis = db_user.get("resumeAnalysis", {})
@@ -837,9 +846,10 @@ async def api_get_question(req: Request, db_user = Depends(get_current_user)):
                 
             adapt_prompt = f"""
 You are an expert interviewer conducting a mock interview for the role of {role_id}.
-You want to ask the following standard interview question: "{db_question}"
+You want to ask a question inspired by this real-world seed question from {company} on the topic of '{topic}':
+Seed Question: "{db_question}"
 
-Rewrite this question so it applies directly to the candidate's experience, target domain, or skills/tools mentioned in their resume. 
+Rewrite this question so it applies directly to the candidate's experience, target domain, or skills/tools mentioned in their resume. Keep the core testing focus of '{topic}' intact. 
 
 CRITICAL REQUIREMENTS:
 1. Make it sound conversational, direct, and brutal. 
@@ -909,17 +919,40 @@ async def api_generate_batch(req: Request, db_user = Depends(get_current_user)):
         
         db = get_db()
         
+        # Fetch seed questions from database for the role
+        db_questions = list(db.questions.find({"role_id": role}))
+        seed_context = ""
+        if db_questions:
+            grouped_seeds = {}
+            for q in db_questions:
+                diff = q.get("difficulty", "Level 1")
+                if diff not in grouped_seeds:
+                    grouped_seeds[diff] = []
+                grouped_seeds[diff].append(f"- [{q.get('company', 'Generic')}] {q.get('text')} (Topic: {q.get('topic', 'General')})")
+                
+            seed_context = "\nTo ensure the questions are highly relevant, realistic, and match industry standards, here are actual seed questions from real companies for this role:\n"
+            for diff, q_list in grouped_seeds.items():
+                seed_context += f"Difficulty: {diff}\n" + "\n".join(q_list[:8]) + "\n\n"
+            seed_context += "CRITICAL: Use these real-world questions as a reference for style, format, and technical depth. Generate new, customized questions by adapting/blending these core topics/concepts to the candidate's projects and skills in their resume."
+        else:
+            seed_context = "\nNo pre-defined seed questions exist in the database for this custom role. Please generate realistic, relevant questions covering core concepts for this role adapted directly to the candidate's resume."
+
         # Persona prompt for 30 questions
         prompt = f"""
 Generate exactly 30 interview questions for a mock interview for the role of {role}.
 Based strictly on this resume: {resume_context[:4000]}
+{seed_context}
 
 DISTRIBUTION:
 - 10 Questions at Level 1 (Basic / Intro)
 - 10 Questions at Level 2 (Intermediate)
 - 10 Questions at Level 3 (Advanced / Stress-test)
 
-Requirements: Max 25 words per question. Output ONLY a raw JSON array of objects:
+Requirements:
+1. Max 25 words per question.
+2. Direct, conversational, and technical.
+3. Make sure to strip out specific company names (e.g., Google, Amazon) from the final generated questions so they are company-neutral.
+4. Output ONLY a raw JSON array of objects:
 [
   {{ "text": "Question text...", "difficulty": "Level 1" }},
   {{ "text": "Question text...", "difficulty": "Level 2" }}

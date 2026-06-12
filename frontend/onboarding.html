@@ -51,6 +51,18 @@
           </select>
         </div>
 
+        <div id="custom-role-container" class="hidden">
+          <label class="font-body text-xs text-[#555] uppercase tracking-widest mb-2 block">
+            Custom Job Role Name
+          </label>
+          <input
+            id="custom-role-input"
+            type="text"
+            class="input-gritty"
+            placeholder="e.g. Solidity Developer"
+          >
+        </div>
+
         <button
           type="submit"
           id="submit-btn"
@@ -85,6 +97,8 @@
     const form = document.getElementById("onboarding-form");
     const nameInput = document.getElementById("name-input");
     const roleSelect = document.getElementById("role-select");
+    const customRoleContainer = document.getElementById("custom-role-container");
+    const customRoleInput = document.getElementById("custom-role-input");
     const submitBtn = document.getElementById("submit-btn");
 
     // 2. Check if the user is actually logged in
@@ -108,8 +122,26 @@
           opt.innerText = role.name; // The text the user sees
           roleSelect.appendChild(opt); // Add it to the dropdown menu on screen
         });
+
+        // Add "Manually Type" option
+        const manualOpt = document.createElement("option");
+        manualOpt.value = "MANUAL_TYPE";
+        manualOpt.innerText = "➕ Manually Type...";
+        roleSelect.appendChild(manualOpt);
       })
       .catch(err => console.error("Failed to load roles:", err)); // If it fails, log an error
+
+    // Monitor select changes to toggle custom input
+    roleSelect.addEventListener("change", () => {
+      if (roleSelect.value === "MANUAL_TYPE") {
+        customRoleContainer.classList.remove("hidden");
+        customRoleInput.required = true;
+      } else {
+        customRoleContainer.classList.add("hidden");
+        customRoleInput.required = false;
+        customRoleInput.value = "";
+      }
+    });
 
     // 4. Form Submission Event Listener
     // What button triggers it? The giant red "ENTER THE ARENA" button!
@@ -120,7 +152,10 @@
       
       // Get what the user typed
       const name = nameInput.value.trim();
-      const targetRole = roleSelect.value;
+      let targetRole = roleSelect.value;
+      if (targetRole === "MANUAL_TYPE") {
+        targetRole = customRoleInput.value.trim();
+      }
       
       // If they left it blank, do nothing
       if (!name || !targetRole) return;
