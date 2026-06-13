@@ -28,8 +28,16 @@ Because the frontend (HTML/JavaScript) cannot securely talk to databases or AI s
 We need this middleman to protect our passwords and handle heavy tasks.
 """
 import os
+# Work: Interacts with the operating system.
+# Need: Used for accessing environment variables (like API keys) and handling file paths.
+
 import sys
+# Work: Provides access to some variables used or maintained by the interpreter.
+# Need: Used here to reconfigure the standard output/error to UTF-8 to prevent encoding errors on Windows.
+
 import codecs
+# Work: Provides access to the Python codec registry.
+# Need: Generally used for encoding and decoding strings/files, helping to handle different character sets.
 
 # Force stdout/stderr to UTF-8 to prevent UnicodeEncodeError on Windows terminals
 if sys.stdout and hasattr(sys.stdout, "reconfigure"):
@@ -44,25 +52,84 @@ if sys.stderr and hasattr(sys.stderr, "reconfigure"):
         pass
 
 import re           # for JSON regex fallback parsing
+# Work: Provides regular expression matching operations.
+# Need: Used to extract and clean JSON strings from AI responses by finding text patterns.
+
 import traceback     # for detailed error logging
+# Work: Extracts, formats and prints stack traces of Python programs.
+# Need: Useful for debugging by printing exactly where and why an error occurred in the code.
+
 import requests      # for calling Sarvam AI REST API (HTTP calls - Sarvam has no Python SDK)
+# Work: Allows sending HTTP/1.1 requests extremely easily.
+# Need: Used to make API calls to external services like Sarvam AI (for LLM, TTS) and Resend API (for sending emails).
+
 import json
+# Work: Parses JSON strings into Python dictionaries and vice versa.
+# Need: Used to parse the responses from AI APIs, read local JSON data files, and format data to send back to the frontend.
+
 import base64
+# Work: Provides encoding and decoding of binary data to printable ASCII characters.
+# Need: Used for converting binary data like audio files (TTS output) into strings that can be safely sent over JSON.
+
 import math
+# Work: Provides mathematical functions.
+# Need: Used for calculations, like rounding off numbers or computing scores.
+
 from datetime import datetime, timedelta
+# Work: Provides classes for manipulating dates and times.
+# Need: Used to set timestamps for when users are created, and to set OTP expiration times.
+
 from typing import Optional, List
+# Work: Provides support for type hints.
+# Need: Used to declare expected types for function arguments and return values, making the code readable and safer.
+
 from fastapi import FastAPI, Header, HTTPException, Request, UploadFile, File, Depends
+# Work: A modern, fast web framework for building APIs with Python.
+# Need: Used to define the API routes, handle incoming requests, extract headers, manage dependencies (like auth), and handle file uploads.
+
 from fastapi.responses import JSONResponse
+# Work: Returns a response with JSON content.
+# Need: Used to send structured error messages or custom JSON responses back to the frontend.
+
 from fastapi.staticfiles import StaticFiles
+# Work: Serves static files from a directory.
+# Need: Used if the backend needs to directly serve frontend files like HTML, CSS, or JS.
+
 from fastapi.middleware.cors import CORSMiddleware
+# Work: Middleware to handle Cross-Origin Resource Sharing (CORS).
+# Need: Allows the frontend (running on a different domain/port) to successfully communicate with this backend API without browser security errors.
+
 from pymongo import MongoClient
+# Work: The official Python driver for MongoDB.
+# Need: Used to connect to the MongoDB database, create the client, and interact with the database collections (users, questions, etc.).
+
 from pymongo.errors import PyMongoError
+# Work: Base class for all PyMongo exceptions.
+# Need: Used to catch database connection and query errors gracefully without crashing the entire application.
+
 from bson import ObjectId
+# Work: Represents a MongoDB ObjectId.
+# Need: Used to convert string IDs into MongoDB's native ObjectId format when querying documents by their unique ID.
+
 from dotenv import load_dotenv
+# Work: Reads key-value pairs from a .env file and sets them as environment variables.
+# Need: Used to securely load secret keys (like MONGODB_URI, API keys) from a file so they aren't hardcoded in the code.
+
 import smtplib
+# Work: Defines an SMTP client session object that can be used to send mail.
+# Need: Used as a fallback method to send OTP emails directly via an SMTP server (like Gmail) if the primary API fails.
+
 from email.mime.text import MIMEText
+# Work: Creates MIME objects of major type text.
+# Need: Used to construct the HTML or plain text body of the OTP emails.
+
 from email.mime.multipart import MIMEMultipart
+# Work: Base class for MIME multipart messages.
+# Need: Used to create the email container that can hold both the subject headers and the body content.
+
 import random
+# Work: Implements pseudo-random number generators.
+# Need: Used to generate the random 6-digit OTP codes for user authentication.
 
 # NOTE: Sarvam AI is NOT a pip package — it is a REST API.
 # We call it using: requests.post("https://api.sarvam.ai/v1/chat/completions", ...)
