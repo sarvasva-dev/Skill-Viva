@@ -1392,7 +1392,12 @@ async def api_stt(file: UploadFile = File(...)):
 
 # ── SERVE FRONTEND STATIC FILES ──────────────────────────────────
 # Mount the static files folder so index.html, dashboard.html etc. load.
-app.mount("/", StaticFiles(directory="../frontend", html=True), name="static")
+# Wrapped in a check to prevent crashing on Render if the frontend folder isn't uploaded.
+frontend_path = os.path.join(os.path.dirname(__file__), "..", "frontend")
+if os.path.exists(frontend_path):
+    app.mount("/", StaticFiles(directory=frontend_path, html=True), name="static")
+else:
+    print("[Warning] Frontend folder not found. Running in API-only mode (Render backend).")
 
 @app.on_event("startup")
 async def startup_event():
@@ -1401,4 +1406,7 @@ async def startup_event():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    # Bind to PORT for Render, default 8000 for local. 0.0.0.0 allows external access.
+    port = int(os.environ.get("PORT", 8000))
+    is_local = port == 8000
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=is_local)
